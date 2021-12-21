@@ -1,0 +1,147 @@
+body {
+	background-color: black;
+	color: white;
+	font-family: sans-serif;
+	padding: 20px;
+	margin: 0;
+}
+
+button {
+	align-items: center;
+	background-color: #c0a040;
+	border: solid 3px #ffe080;
+	border-radius: 8px;
+	color: white;
+	cursor: pointer;
+	display: inline-flex;
+	font-weight: bold;
+	height: 30px;
+	justify-content: center;
+	padding: 6px 12px;
+	text-shadow: 0px 0px 5px #ffe080;
+}
+
+button:not([disabled]):hover {
+	background-color: #c8a848;
+	text-shadow: 0px 0px 10px white;
+}
+
+button[disabled] {
+	background-color: #a09040;
+	border-color: #c0a040;
+	color: #a09040;
+	cursor: default;
+}
+
+textarea {
+	background-color: #181008;
+	border: solid 1px #403810;
+	border-radius: 4px;
+	color: #c0a040;
+	padding: 4px 8px;
+	resize: none;
+}
+
+.buttonSmall {
+	border-width: 2px;
+	height: initial;
+	padding: 2px 4px;
+}
+
+h1, h2, h3, h4, h5 {
+	margin: 0px 0px 8px 0px;
+	padding: 0;
+}
+
+h1 {
+	text-align: center;
+	text-shadow: 0px 0px 5px #800000;
+}
+
+section {
+	border: solid 4px #600000;
+	border-radius: 8px;
+	background-color: #400000;
+	width: 100%;
+}
+
+section + section {
+	margin-top: 20px;
+}
+
+#textSection {
+	display: flex;
+	height: 400px;
+	justify-content: center;
+}
+
+#input, #output {
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
+	width: 100%;
+}
+
+#input textarea, #output textarea {
+	height: 100%;
+	width: 100%;
+}
+
+#output > *:first-child {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+#output > *:nth-child(2) {
+	flex-basis: 100%;
+}
+
+#output > *:last-child {
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+}
+
+#notesSection > * + *, #cheatsheets > * + * {
+	margin-top: 0px;
+}
+
+#notesSection h2, #cheatsheets h2 {
+	text-align: center;
+}
+
+#notesSection > *, #cheatsheets > * {
+	margin: 10px;
+}
+
+#notesSection {
+	display: flex;
+	flex-direction: column;
+}
+
+#notesSection textarea {
+	height: 300px;
+}
+
+#rankTable {
+	border: solid 1px #200000;
+	display: grid;
+	grid-template-columns: auto repeat(3, min-content);
+}
+
+#rankTable > div {
+	border: solid 1px #200000;
+	padding: 2px 8px;
+	white-space: nowrap;
+}
+
+#rankTable > div:first-child, #rankTable > div:nth-child(2), #rankTable > div:nth-child(3), #rankTable > div:nth-child(4) {
+	font-weight: bold;
+}
+
+.subsection {
+	border: solid 2px #200000;
+	border-radius: 4px;
+	padding: 8px;
+}

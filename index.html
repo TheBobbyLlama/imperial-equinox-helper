@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Imperial Equinox - SWTOR RP Helper</title>
+	<link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+	<h1>Imperial Equinox - RP Helper</h1>
+	<section id="textSection">
+		<div id="input">
+			<h2>Text Input</h2>
+			<textarea id="inputText" placeholder="Enter your long text here..."></textarea>
+		</div>
+		<div id="output">
+			<div>
+				<h2>Text Output</h2>
+				<div>
+					<button id="btnPanelBack" type="button" class="buttonSmall" disabled="true">&lt;</button>
+					<span id="outputTracker">0/0</span>
+					<button id="btnPanelForward" type="button" class="buttonSmall" disabled="true">&gt;</button>
+				</div>
+			</div>
+			<div>
+				<textarea id="outputText" readonly="true" maxlength="255"></textarea>
+			</div>
+			<div>
+				<button id="btnCopyOutput" type="button" disabled="true">Copy</button>
+			</div>
+		</div>
+	</section>
+	<section id="notesSection">
+		<h2>Notes</h2>
+		<textarea id="notes" placeholder="Jot down any notes you want here!"></textarea>
+	</section>
+	<section id="cheatsheets">
+		<h2>Cheatsheets</h2>
+		<div class="subsection">
+			<h3>Rank Table</h3>
+			<div id="rankTable">
+				<div>Rank Name</div>
+				<div>HP</div>
+				<div>Die</div>
+				<div>Bonus</div>
+
+				<div>Citizen/Initiate/Cadet/Acolyte/Private (E1 & E2)</div>
+				<div>2</div>
+				<div>d20</div>
+				<div>+0</div>
+
+				<div>Apprentice/Sergeant (E3)</div>
+				<div>3</div>
+				<div>d20</div>
+				<div>+2</div>
+
+				<div>Lord/Lieutenant (O1)</div>
+				<div>4</div>
+				<div>d25</div>
+				<div>+5</div>
+
+				<div>Lord II/Lieutenant II (O2)</div>
+				<div>4</div>
+				<div>d25</div>
+				<div>+7</div>
+
+				<div>Lord III/Lieutenant III (O3)</div>
+				<div>4</div>
+				<div>d25</div>
+				<div>+9</div>
+
+				<div>Darth/Moff (O4)</div>
+				<div>5</div>
+				<div>d30</div>
+				<div>+15</div>
+
+				<div>Council/Grand Moff (O5)</div>
+				<div>6</div>
+				<div>d40</div>
+				<div>+20</div>
+
+				<div>Wrath (O6)</div>
+				<div>7</div>
+				<div>d45</div>
+				<div>+25</div>
+
+				<div>Voice (O7)</div>
+				<div>10</div>
+				<div>d50</div>
+				<div>+30</div>
+
+				<div>Emperor (GM)</div>
+				<div>15</div>
+				<div>d65</div>
+				<div>+35</div>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript" src="assets/js/script.js"></script>
+</body>
+</html>
