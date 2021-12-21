@@ -6,6 +6,18 @@ body {
 	margin: 0;
 }
 
+a:link {
+	color: #c0a040;
+}
+
+a:link:hover, a:visited:hover {
+	color: #ffe080;
+}
+
+a:visited {
+	color: #a09040;
+}
+
 button {
 	align-items: center;
 	background-color: #c0a040;
@@ -128,6 +140,7 @@ section + section {
 	border: solid 1px #200000;
 	display: grid;
 	grid-template-columns: auto repeat(3, min-content);
+	width: 600px;
 }
 
 #rankTable > div {
@@ -140,8 +153,62 @@ section + section {
 	font-weight: bold;
 }
 
+#guildDocs {
+	align-items: flex-start;
+	counter-reset: documents 1;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 400px;
+}
+
+#guildDocs a {
+	counter-increment: documents;
+}
+
+#guildDocs > div {
+	margin-left: 50px;
+	position: relative;
+}
+
+#guildDocs > div:not([subItem]):not([spacer])::before {
+	content: counter(documents) ': ';
+	position: absolute;
+	right: calc(100% + 4px);
+}
+
+#guildDocs > div[spacer] {
+	font-style: italic;
+	font-weight: bold;
+	margin: 4px 0px 0px 20px;
+}
+
+#guildDocs > div[subItem]::before {
+	content: '- ';
+}
+
+#guildDocs > h4 {
+	margin: 12px 0px 4px 8px;
+}
+
 .subsection {
 	border: solid 2px #200000;
 	border-radius: 4px;
 	padding: 8px;
+}
+
+.subsection + .subsection {
+	margin-top: 20px !important;
+}
+
+@media screen and (max-width: 1000px) {
+	#guildDocs {
+		height: 560px;
+	}
+}
+
+@media screen and (max-width: 780px) {
+	#guildDocs {
+		height: auto;
+	}
 }
