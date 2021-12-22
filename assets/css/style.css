@@ -45,15 +45,6 @@ button[disabled] {
 	cursor: default;
 }
 
-textarea {
-	background-color: #181008;
-	border: solid 1px #403810;
-	border-radius: 4px;
-	color: #c0a040;
-	padding: 4px 8px;
-	resize: none;
-}
-
 .buttonSmall {
 	border-width: 2px;
 	height: initial;
@@ -74,11 +65,22 @@ section {
 	border: solid 4px #600000;
 	border-radius: 8px;
 	background-color: #400000;
+	background-image: url('../images/greebling.png'), linear-gradient(#400000, #400000, #300000);
 	width: 100%;
 }
 
 section + section {
 	margin-top: 20px;
+}
+
+textarea {
+	background-color: #181008;
+	background-image: linear-gradient(#0c0804, #181008);
+	border: solid 1px #403810;
+	border-radius: 4px;
+	color: #c0a040;
+	padding: 4px 8px;
+	resize: none;
 }
 
 #textSection {
@@ -192,6 +194,7 @@ section + section {
 }
 
 .subsection {
+	background-color: #400000;
 	border: solid 2px #200000;
 	border-radius: 4px;
 	padding: 8px;
@@ -199,6 +202,10 @@ section + section {
 
 .subsection + .subsection {
 	margin-top: 20px !important;
+}
+
+.subsection:last-child {
+	background-image: linear-gradient(#400000, #400000, #380000);
 }
 
 @media screen and (max-width: 1000px) {
