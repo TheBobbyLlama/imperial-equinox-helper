@@ -61,19 +61,21 @@ function processInput(e) {
 		if (inputMe.startsWith("/")) {
 			textPrefix = inputMe.substring(0, inputMe.indexOf(" ") + 1);
 
-			if (textPrefix.length !== 3) {
-				textPrefix = "/e ";
-				inputMe = inputMe.substring(1).trim();
-			} else if ("epsy".indexOf(textPrefix[1]) < 0) {
-				inputMe = inputMe.substring(3).trim();
-				textPrefix = "/s ";
-			} else {
+			if (textPrefix.match(/^\/(e|ops|p|ra|s|y) $/g)?.length) {
 				inputMe = inputMe.substring(textPrefix.length).trim();
+			} else {
+				if (textPrefix.length > 4) {
+					textPrefix = "/e ";
+					inputMe = inputMe.substring(1).trim();
+				} else {
+					inputMe = inputMe.substring(textPrefix.length).trim();
+					textPrefix = "/s ";
+				}
 			}
 		}
 
 		var start = 0;
-		var end = start + 252;
+		var end = start + 253 - textPrefix.length;
 
 		// Loop to break apart input text...
 		while (end < inputMe.length - 1) {
@@ -82,7 +84,7 @@ function processInput(e) {
 				end--;
 
 				if (end === start) {
-					end = start + 250;
+					end = start + 251 - textPrefix.length;
 					break;
 				}
 			}
@@ -96,7 +98,7 @@ function processInput(e) {
 				start++;
 			}
 
-			end = start + 250;
+			end = start + 251 - textPrefix.length;
 		}
 
 		// Finally, grab the last piece.
