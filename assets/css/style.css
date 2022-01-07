@@ -8,7 +8,7 @@ body {
 	background-color: black;
 	color: white;
 	font-family: sans-serif;
-	padding: 20px;
+	padding: 20px 20px 8px 20px;
 	margin: 0;
 }
 
@@ -57,6 +57,13 @@ button[disabled] {
 	padding: 2px 4px;
 }
 
+footer {
+	color: #404040;
+	font-size: 14px;
+	margin: 8px 16px 0 16px;
+	text-align: right;
+}
+
 h1, h2, h3, h4, h5 {
 	margin: 0px 0px 8px 0px;
 	padding: 0;
@@ -85,6 +92,7 @@ section {
 	border-radius: 8px;
 	background-color: #400000;
 	background-image: url('../images/greebling.png'), linear-gradient(#400000, #400000, #300000);
+	position: relative;
 	width: 100%;
 }
 
@@ -108,6 +116,10 @@ textarea {
 	justify-content: center;
 }
 
+#textSection:not(.closed) > h2 {
+	display: none;
+}
+
 #input, #output {
 	display: flex;
 	flex-direction: column;
@@ -120,20 +132,19 @@ textarea {
 	width: 100%;
 }
 
-#output > *:first-child {
-	align-items: center;
-	display: flex;
-	justify-content: space-between;
-}
-
 #output > *:nth-child(2) {
 	flex-basis: 100%;
 }
 
 #output > *:last-child {
+	align-items: center;
 	display: flex;
 	justify-content: center;
 	padding-top: 20px;
+}
+
+#output > *:last-child > * {
+	margin: 0 20px;
 }
 
 #notesSection > * + *, #cheatsheets > * + * {
@@ -144,7 +155,7 @@ textarea {
 	text-align: center;
 }
 
-#notesSection > *, #cheatsheets > * {
+#textSection > h2, #notesSection > *:not(.closeButton), #cheatsheets > *:not(.closeButton) {
 	margin: 10px;
 }
 
@@ -245,6 +256,24 @@ textarea {
 	top: 4px;
 }
 
+.closeButton {
+	position: absolute;
+	right: 8px;
+	top: 8px;
+}
+
+.closeButton button {
+	background-color: #600000;
+	border-color: #800000;
+	height: 16px;
+	padding-top: 0px;
+	width: 16px;
+}
+
+.closeButton button:not(disabled):hover {
+	background-color: #800000;
+}
+
 .emoteFree {
 	background-color: black;
 	border: solid 2px #200000;
@@ -284,6 +313,7 @@ textarea {
 	border: solid 2px #200000;
 	border-radius: 4px;
 	padding: 8px;
+	position: relative;
 }
 
 .subsection + .subsection {
@@ -294,9 +324,26 @@ textarea {
 	background-image: linear-gradient(#400000, #400000, #380000);
 }
 
+/* IMPORTANT - Needs to be at the bottom to override everything else! */
+.closed {
+	height: auto !important;
+}
+.closed * {
+	display: none !important;
+}
+
+.closed > h2, .closed > h3, .closed > .closeButton {
+	display: block !important;
+}
+
+.closed > .closeButton > button {
+	display: inline-flex !important;
+	padding-top: 3px;
+}
+
 @media screen and (max-width: 1700px) {
 	#emoteTable {
-		height: 1888px;
+		height: 2000px;
 	}
 }
 
@@ -308,7 +355,7 @@ textarea {
 
 @media screen and (max-width: 1060px) {
 	#emoteTable {
-		height: 3800px;
+		height: 4000px;
 	}
 }
 

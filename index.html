@@ -10,6 +10,10 @@
 <body>
 	<h1>Imperial Equinox - RP Helper</h1>
 	<section id="textSection">
+		<div class="closeButton">
+			<button type="button" class="buttonSmall">-</button>
+		</div>
+		<h2>Text Input</h2>
 		<div id="input">
 			<h2>Text Input</h2>
 			<textarea id="inputText" placeholder="Enter your long text here..."></textarea>
@@ -17,27 +21,33 @@
 		<div id="output">
 			<div>
 				<h2>Text Output</h2>
+			</div>
+			<div>
+				<textarea id="outputText" readonly="true" maxlength="255" placeholder="...and it will be split into chunks you can paste into SWTOR chat!"></textarea>
+			</div>
+			<div>
 				<div>
 					<button id="btnPanelBack" type="button" class="buttonSmall" disabled="true">&lt;</button>
 					<span id="outputTracker">0/0</span>
 					<button id="btnPanelForward" type="button" class="buttonSmall" disabled="true">&gt;</button>
 				</div>
-			</div>
-			<div>
-				<textarea id="outputText" readonly="true" maxlength="255"></textarea>
-			</div>
-			<div>
 				<button id="btnCopyOutput" type="button" disabled="true">Copy</button>
 			</div>
 		</div>
 	</section>
 	<section id="notesSection">
+		<div class="closeButton">
+			<button type="button" class="buttonSmall">-</button>
+		</div>
 		<h2>Notes</h2>
 		<textarea id="notes" placeholder="Jot down any notes you want here!"></textarea>
 	</section>
 	<section id="cheatsheets">
 		<h2>Cheatsheets</h2>
 		<div class="subsection">
+			<div class="closeButton">
+				<button type="button" class="buttonSmall">-</button>
+			</div>
 			<h3>Rank Table</h3>
 			<div id="rankTable">
 				<div>Rank Name</div>
@@ -97,6 +107,9 @@
 			</div>
 		</div>
 		<div class="subsection">
+			<div class="closeButton">
+				<button type="button" class="buttonSmall">-</button>
+			</div>
 			<h3>Documents</h3>
 			<div id="guildDocs">
 				<h4>General Guild Info</h4>
@@ -246,6 +259,9 @@
 			</div>
 		</div>
 		<div class="subsection">
+			<div class="closeButton">
+				<button type="button" class="buttonSmall">-</button>
+			</div>
 			<h3>Emotes</h3>
 			<div class="flexMe">
 				<div><strong>Emote Types:</strong></div>
@@ -262,7 +278,7 @@
 				</div>
 				<div class="emoteUnlocked">
 					<div>/agent</div>
-					<div>???</div>
+					<div>Spin a couple of blades.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/aircontrol</div>
@@ -278,7 +294,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/angry</div>
-					<div>???</div>
+					<div>Tremble with anger.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/angrydance</div>
@@ -286,11 +302,11 @@
 				</div>
 				<div class="emoteSub">
 					<div>/apologize</div>
-					<div>???</div>
+					<div>Say you're sorry (with voice line).</div>
 				</div>
 				<div class="emoteSub">
 					<div>/applaud</div>
-					<div>???</div>
+					<div>Clap for someone.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/armscrossed</div>
@@ -298,7 +314,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/attacktarget</div>
-					<div>???</div>
+					<div>Call for an attack.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/backflip</div>
@@ -322,7 +338,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/beg</div>
-					<div>???</div>
+					<div>Plead with someone.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/belch</div>
@@ -338,7 +354,7 @@
 				</div>
 				<div class="emoteUnlocked">
 					<div>/binoculars</div>
-					<div>???</div>
+					<div>Survey the area with optics.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/blink</div>
@@ -350,11 +366,11 @@
 				</div>
 				<div class="emoteSub">
 					<div>/blush</div>
-					<div>???</div>
+					<div>Act shyly.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/bonk</div>
-					<div>???</div>
+					<div>Bonk someone on the head.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/boogie</div>
@@ -382,7 +398,7 @@
 				</div>
 				<div class="emoteUnlocked">
 					<div>/bountyhunter</div>
-					<div>???</div>
+					<div>Quick rocket jump.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/bow</div>
@@ -410,7 +426,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/cackle</div>
-					<div>???</div>
+					<div>Laugh uncontrollably.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/calm</div>
@@ -422,7 +438,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/catchup</div>
-					<div>???</div>
+					<div>Call for others to catch up.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/chair</div>
@@ -490,7 +506,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/clubdance</div>
-					<div>???</div>
+					<div>Sensual dance.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/comfort</div>
@@ -498,11 +514,11 @@
 				</div>
 				<div class="emoteSub">
 					<div>/commend</div>
-					<div>???</div>
+					<div>Praise someone (with voice line).</div>
 				</div>
 				<div class="emoteSub">
 					<div>/confused</div>
-					<div>???</div>
+					<div>Look confused (no animation).</div>
 				</div>
 				<div class="emoteFree">
 					<div>/congratulate</div>
@@ -522,7 +538,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/cower</div>
-					<div>???</div>
+					<div>Show fear (no animation).</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/crazytalk</div>
@@ -534,11 +550,11 @@
 				</div>
 				<div class="emoteSub">
 					<div>/crossarms</div>
-					<div>???</div>
+					<div>Wait impatiently (no animation).</div>
 				</div>
 				<div class="emoteSub">
 					<div>/cry</div>
-					<div>???</div>
+					<div>Show some tears.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/dance</div>
@@ -546,7 +562,7 @@
 				</div>
 				<div class="emoteUnlocked">
 					<div>/datapad</div>
-					<div>???</div>
+					<div>Type some quick notes.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/dejarik</div>
@@ -554,7 +570,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/disappoint</div>
-					<div>???</div>
+					<div>Act frustrated.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/dodge</div>
@@ -562,11 +578,11 @@
 				</div>
 				<div class="emoteSub">
 					<div>/doh</div>
-					<div>???</div>
+					<div>Disbelief.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/done</div>
-					<div>???</div>
+					<div>Slap your hands.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/doubleguns</div>
@@ -574,7 +590,7 @@
 				</div>
 				<div class="emoteUnlocked">
 					<div>/doublelasers</div>
-					<div>???</div>
+					<div>Show fingerguns.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/doublethumbs</div>
@@ -582,7 +598,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/drink</div>
-					<div>Drink ???.</div>
+					<div>Make a toast.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/droid</div>
@@ -594,7 +610,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/eat</div>
-					<div>???</div>
+					<div>Nom on a space onion.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/empoweredshuffle</div>
@@ -602,11 +618,11 @@
 				</div>
 				<div class="emoteSub">
 					<div>/excited</div>
-					<div>???</div>
+					<div>Fired up.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/facepalm</div>
-					<div>???</div>
+					<div>Sad disbelief.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/faint</div>
@@ -614,11 +630,11 @@
 				</div>
 				<div class="emoteSub">
 					<div>/farewell</div>
-					<div>???</div>
+					<div>Bid farewell (with voice line).</div>
 				</div>
 				<div class="emoteSub">
 					<div>/fear</div>
-					<div>???</div>
+					<div>Be afraid.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/fever</div>
@@ -626,7 +642,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/fidget</div>
-					<div>???</div>
+					<div>Shuffle impatiently.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/fistpump</div>
@@ -634,11 +650,11 @@
 				</div>
 				<div class="emoteSub">
 					<div>/flagdown</div>
-					<div>???</div>
+					<div>Wave your hand wildly.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/flap</div>
-					<div>???</div>
+					<div>Wave both hands wildly.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/flee</div>
@@ -646,11 +662,11 @@
 				</div>
 				<div class="emoteSub">
 					<div>/flex</div>
-					<div>???</div>
+					<div>Show off your muscles.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/flirt</div>
-					<div>???</div>
+					<div>Strike a sexy pose.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/flourish</div>
@@ -678,15 +694,15 @@
 				</div>
 				<div class="emoteSub">
 					<div>/getdown</div>
-					<div>???</div>
+					<div>Dance casually.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/giggle</div>
-					<div>???</div>
+					<div>A small laugh.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/giveup</div>
-					<div>???</div>
+					<div>Raise your hands in surrender.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/glare</div>
@@ -694,7 +710,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/gloat</div>
-					<div>???</div>
+					<div>Clench your fist.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/golfclap</div>
@@ -702,7 +718,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/goodbye</div>
-					<div>???</div>
+					<div>Say goodbye (with voice line).</div>
 				</div>
 				<div class="emoteFree">
 					<div>/goodjob</div>
@@ -710,7 +726,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/greet</div>
-					<div>???</div>
+					<div>Say hello (with voice line).</div>
 				</div>
 				<div class="emoteFree">
 					<div>/grin</div>
@@ -718,7 +734,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/groan</div>
-					<div>???</div>
+					<div>Groan (no animation).</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/groove</div>
@@ -730,7 +746,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/grovel</div>
-					<div>???</div>
+					<div>Beg at someone's feet.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/handstandheelclick</div>
@@ -754,15 +770,15 @@
 				</div>
 				<div class="emoteFree">
 					<div>/hello</div>
-					<div>???</div>
+					<div>Say hello (with voice line).</div>
 				</div>
 				<div class="emoteSub">
 					<div>/helpme</div>
-					<div>???</div>
+					<div>Call for help (with voice line).</div>
 				</div>
 				<div class="emoteSub">
 					<div>/hey</div>
-					<div>???</div>
+					<div>Wave a hand for attention.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/hipdip</div>
@@ -770,7 +786,7 @@
 				</div>
 				<div class="emoteUnlocked">
 					<div>/holocom</div>
-					<div>???</div>
+					<div>Talk on a holocommunicator.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/holohoop</div>
@@ -790,11 +806,11 @@
 				</div>
 				<div class="emoteSub">
 					<div>/impatient</div>
-					<div>???</div>
+					<div>Same as /fidget</div>
 				</div>
 				<div class="emoteSub">
 					<div>/incoming</div>
-					<div>???</div>
+					<div>Duck and cover!</div>
 				</div>
 				<div class="emoteUnlocked">
 					<div>/inquisitor</div>
@@ -802,7 +818,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/insult</div>
-					<div>???</div>
+					<div>Make a rude gesture.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/intimidate</div>
@@ -810,11 +826,11 @@
 				</div>
 				<div class="emoteSub">
 					<div>/introduce</div>
-					<div>???</div>
+					<div>Introduce yourself (with voice line).</div>
 				</div>
 				<div class="emoteSub">
 					<div>/ironfist</div>
-					<div>???</div>
+					<div>Sarcastic clapping.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/jig</div>
@@ -822,15 +838,15 @@
 				</div>
 				<div class="emoteSub">
 					<div>/joke</div>
-					<div>???</div>
+					<div>Tell a jolly jest.</div>
 				</div>
-				<div class="emoteSub">
+				<div class="emoteMarket">
 					<div>/joy</div>
 					<div>???</div>
 				</div>
 				<div class="emoteSub">
 					<div>/kiss</div>
-					<div>???</div>
+					<div>Blow a kiss.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/kloo</div>
@@ -866,11 +882,11 @@
 				</div>
 				<div class="emoteSub">
 					<div>/mad</div>
-					<div>???</div>
+					<div>Same as /anger.</div>
 				</div>
 				<div class="emoteUnlocked">
 					<div>/map</div>
-					<div>???</div>
+					<div>Play on your iPad.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/meditate</div>
@@ -886,15 +902,15 @@
 				</div>
 				<div class="emoteSub">
 					<div>/mock</div>
-					<div>???</div>
+					<div>Laugh in superiority.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/mourn</div>
-					<div>???</div>
+					<div>Have a sad time.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/nerfherder</div>
-					<div>???</div>
+					<div>Insult someone.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/no</div>
@@ -914,7 +930,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/notdroids</div>
-					<div>???</div>
+					<div title="This is the best Battlestar Galactica game.">Pull a Vulcan Mind Trick.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/observe</div>
@@ -926,7 +942,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/openfire</div>
-					<div>???</div>
+					<div>Call your shot.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/oor</div>
@@ -938,22 +954,27 @@
 				</div>
 				<div class="emoteUnlocked">
 					<div>/overeat</div>
+					<div>???</div>
 				</div>
 				<div class="emoteSub">
 					<div>/overthere</div>
-					<div>???</div>
+					<div>Point behind yourself.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/panic</div>
-					<div>???</div>
+					<div>Have a little freak out.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/paranoid</div>
-					<div>???</div>
+					<div>Look all over.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/pbj</div>
 					<div>???</div>
+				</div>
+				<div class="emoteFree">
+					<div>/peer</div>
+					<div>Peer at someone (no animation).</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/perform</div>
@@ -977,7 +998,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/poke</div>
-					<div>???</div>
+					<div>Jab someone with your finger.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/ponder</div>
@@ -989,7 +1010,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/praise</div>
-					<div>???</div>
+					<div>Praise someone (with voice line).</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/punchdance</div>
@@ -1025,9 +1046,9 @@
 				</div>
 				<div class="emoteSub">
 					<div>/rude</div>
-					<div>???</div>
+					<div>Same as /insult.</div>
 				</div>
-				<div class="emoteSub">
+				<div class="emoteMarket">
 					<div>/runningman</div>
 					<div>???</div>
 				</div>
@@ -1041,11 +1062,11 @@
 				</div>
 				<div class="emoteUnlocked">
 					<div>/scangreen</div>
-					<div>???</div>
+					<div>Biological scanning device.</div>
 				</div>
 				<div class="emoteUnlocked">
 					<div>/scanred</div>
-					<div>???</div>
+					<div>Technical scanning device.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/search</div>
@@ -1057,7 +1078,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/shakefist</div>
-					<div>???</div>
+					<div>Same as /anger.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/shiver</div>
@@ -1065,19 +1086,19 @@
 				</div>
 				<div class="emoteSub">
 					<div>/shock</div>
-					<div>???</div>
+					<div>Surprised.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/shovel</div>
 					<div>???</div>
 				</div>
-				<div class="emoteSub">
+				<div class="emoteFree">
 					<div>/shrug</div>
 					<div>Shrug, I guess.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/shy</div>
-					<div>???</div>
+					<div>Smile shyly.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/sigh</div>
@@ -1097,11 +1118,11 @@
 				</div>
 				<div class="emoteSub">
 					<div>/slap</div>
-					<div>???</div>
+					<div>Backhand someone.</div>
 				</div>
 				<div class="emoteSub">
 					<div>/sleep</div>
-					<div>???</div>
+					<div>Lie down for a snooze.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/slowclap</div>
@@ -1113,7 +1134,7 @@
 				</div>
 				<div class="emoteUnlocked">
 					<div>/smuggler</div>
-					<div>???</div>
+					<div>Smoke bomb!</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/smugglershuffle</div>
@@ -1125,7 +1146,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/sorry</div>
-					<div>???</div>
+					<div>Apologize (with voice line).</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/spike</div>
@@ -1133,7 +1154,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/spit</div>
-					<div>???</div>
+					<div>Spit.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/stare</div>
@@ -1145,7 +1166,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/stretch</div>
-					<div>???</div>
+					<div>Stretch your muscles.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/style</div>
@@ -1157,7 +1178,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/surprised</div>
-					<div>???</div>
+					<div>Surprised!</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/sweep</div>
@@ -1169,7 +1190,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/talk</div>
-					<div>???</div>
+					<div>Chat with someone.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/tap</div>
@@ -1177,7 +1198,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/taunt</div>
-					<div>???</div>
+					<div>Threaten to cut a throat.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/tease</div>
@@ -1187,7 +1208,7 @@
 					<div>/thank</div>
 					<div>Thank someone (with voice line).</div>
 				</div>
-				<div class="emoteSub">
+				<div class="emoteMarket">
 					<div>/think</div>
 					<div>???</div>
 				</div>
@@ -1201,7 +1222,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/threaten</div>
-					<div>???</div>
+					<div>Punch your hands together.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/thumbsdown</div>
@@ -1221,7 +1242,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/tired</div>
-					<div>???</div>
+					<div>Sigh (with voice line).</div>
 				</div>
 				<div class="emoteUnlocked">
 					<div>/toast</div>
@@ -1237,15 +1258,15 @@
 				</div>
 				<div class="emoteUnlocked">
 					<div>/trooper</div>
-					<div>???</div>
+					<div>Salute w/ an energy shield?</div>
 				</div>
-				<div class="emoteSub">
+				<div class="emoteUnlocked">
 					<div>/typing</div>
 					<div>???</div>
 				</div>
 				<div class="emoteSub">
 					<div>/victory</div>
-					<div>???</div>
+					<div>Pump your fist.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/victorywave</div>
@@ -1253,7 +1274,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/wait</div>
-					<div>???</div>
+					<div>Tell someone to wait.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/waltz</div>
@@ -1261,7 +1282,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/warmup</div>
-					<div>???</div>
+					<div>Limber up.</div>
 				</div>
 				<div class="emoteUnlocked">
 					<div>/warrior</div>
@@ -1273,11 +1294,11 @@
 				</div>
 				<div class="emoteSub">
 					<div>/welcome</div>
-					<div>???</div>
+					<div>Welcome with arms wide.</div>
 				</div>
 				<div class="emoteUnlocked">
 					<div>/weld</div>
-					<div>???</div>
+					<div>Make repairs.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/whatup</div>
@@ -1309,7 +1330,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/woot</div>
-					<div>???</div>
+					<div>Same as /cheer</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/worthy</div>
@@ -1321,7 +1342,7 @@
 				</div>
 				<div class="emoteSub">
 					<div>/yawn</div>
-					<div>???</div>
+					<div>Yawn and stretch.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/yes</div>
@@ -1362,11 +1383,11 @@
 				</div>
 				<div class="emoteMarket">
 					<div>/creepy</div>
-					<div>???</div>
+					<div>Leering unpleasantly.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/crying</div>
-					<div>???</div>
+					<div>Weeping.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/dejected</div>
@@ -1406,7 +1427,7 @@
 				</div>
 				<div class="emoteFree">
 					<div>/frustrated</div>
-					<div>???</div>
+					<div>Angry and impatient.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/furious</div>
@@ -1422,7 +1443,7 @@
 				</div>
 				<div class="emoteMarket">
 					<div>/jawaface</div>
-					<div>???</div>
+					<div>Making a funny face.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/joyful</div>
@@ -1446,11 +1467,11 @@
 				</div>
 				<div class="emoteMarket">
 					<div>/pained</div>
-					<div>???</div>
+					<div>Wincing.</div>
 				</div>
 				<div class="emoteMarket">
 					<div>/pout</div>
-					<div>???</div>
+					<div>Petulant.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/saddened</div>
@@ -1466,7 +1487,7 @@
 				</div>
 				<div class="emoteMarket">
 					<div>/snide</div>
-					<div>???</div>
+					<div>Unimpressed.</div>
 				</div>
 				<div class="emoteFree">
 					<div>/stunned</div>
@@ -1479,6 +1500,7 @@
 			</div>
 		</div>
 	</section>
+	<footer>Brought to you by <strong>Jeira Nyl</strong></footer>
 	<script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>
