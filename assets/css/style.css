@@ -116,10 +116,6 @@ textarea {
 	justify-content: center;
 }
 
-#textSection:not(.closed) > h2 {
-	display: none;
-}
-
 #input, #output {
 	display: flex;
 	flex-direction: column;
@@ -168,7 +164,22 @@ textarea {
 	height: 300px;
 }
 
+#quickRef {
+	align-items: flex-start;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#quickRef > * {
+	margin: 0 20px 20px 0;
+}
+
+#quickRef h3 {
+	margin-left: 4px;
+}
+
 #rankTable {
+	background-image: url('../images/greebling.png'), linear-gradient(#400000, #400000, #300000);
 	border: solid 1px #200000;
 	display: grid;
 	grid-template-columns: auto repeat(3, min-content);
@@ -182,7 +193,21 @@ textarea {
 }
 
 #rankTable > div:first-child, #rankTable > div:nth-child(2), #rankTable > div:nth-child(3), #rankTable > div:nth-child(4) {
+	background-color: #300000;
 	font-weight: bold;
+	padding-top: 4px;
+}
+
+#sithCode {
+	background-image: url('../images/greebling.png'), linear-gradient(#400000, #400000, #300000);
+	border: solid 2px #200000;
+	border-radius: 4px;
+	padding: 4px 8px;
+}
+
+#sithCode p {
+	font-style: italic;
+	padding: 4px 8px;
 }
 
 #guildDocs {
@@ -308,7 +333,12 @@ textarea {
 	margin-left: 4px;
 }
 
+.showClosed {
+	display: none;
+}
+
 .subsection {
+	background: linear-gradient(#400000, #400000, #3c0000);
 	background-color: #400000;
 	border: solid 2px #200000;
 	border-radius: 4px;
@@ -321,7 +351,7 @@ textarea {
 }
 
 .subsection:last-child {
-	background-image: linear-gradient(#400000, #400000, #380000);
+	background: linear-gradient(#400000, #400000, #380000);
 }
 
 /* IMPORTANT - Needs to be at the bottom to override everything else! */
@@ -332,7 +362,7 @@ textarea {
 	display: none !important;
 }
 
-.closed > h2, .closed > h3, .closed > .closeButton {
+.closed > h2, .closed > h3, .closed > .closeButton, .closed > .showClosed {
 	display: block !important;
 }
 
