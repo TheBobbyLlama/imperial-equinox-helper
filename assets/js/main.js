@@ -1,5 +1,6 @@
 const noteStorageToken = "SWTOR[IE]Notes";
 const sectionStorageToken = "SWTOR[IE]Sections";
+const charListToken = "[IECharList]";
 
 var inputText = document.getElementById("inputText");
 var outputText = document.getElementById("outputText");
@@ -151,6 +152,28 @@ function toggleSection(index, doUpdate = true) {
 	}
 }
 
+function showCharSelectModal() {
+	var charList = JSON.parse(localStorage.getItem(charListToken) || "[]");
+	var buttonHolder = document.querySelector("#charSelectOptions");
+
+	document.querySelector("#modalBG").className = "show";
+	document.querySelector("#selectModal").className = "show";
+
+	buttonHolder.innerHTML = "";
+
+	charList.forEach(character => {
+		var tmpButton = document.createElement("button");
+		tmpButton.type = "button";
+		tmpButton.innerHTML = character;
+		tmpButton.addEventListener("click", () => { window.open(window.location.href + "charsheet.html?n=" + encodeURI(character)); hideModal(); });
+		buttonHolder.appendChild(tmpButton);
+	})
+}
+
+function hideModal() {
+	document.querySelectorAll("#modalBG, #modalBG > section").forEach(element => element.className = "");
+}
+
 inputText.addEventListener("change", processInput);
 
 btnPanelBack.addEventListener("click", () => { setCurrentPanel(curPanel - 1); });
@@ -160,5 +183,9 @@ btnCopyOutput.addEventListener("click", () => { navigator.clipboard.writeText(ou
 notesField.value = localStorage.getItem(noteStorageToken);
 
 notesField.addEventListener("change", () => { localStorage.setItem(noteStorageToken, notesField.value); });
+
+document.querySelector("nav").addEventListener("click", showCharSelectModal);
+document.querySelector("#blankChar").addEventListener("click", () => { window.open(window.location.href + "charsheet.html"); hideModal(); });
+document.querySelector("#dismissSelect").addEventListener("click", hideModal);
 
 initializeSections();

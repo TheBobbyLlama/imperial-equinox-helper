@@ -428,6 +428,7 @@
 				"name": "Force Stasis",
 				"description": "<b>Requires Force Stun</b> Allows the use of the Force to deaden the senses of an enemy, inducing a near-catatonic state and in effect freezing that person in place.  Could also be used on objects such as blaster bolts to great effect.",
 				"key": "ST0",
+				"requires": [ "Force Stun" ],
 				"restricted": "fu"
 			},
 			{
@@ -513,7 +514,7 @@
 
 			{
 				"name": "Attack Drone 1",
-				"description": "<b>Requires Drone Protocols 1</b> Allows the individual to outfit a drone with <b>one</p> weapon they know how to use and send them out to attack targets.<br /><b>Rule:</b> Drone has d15; 1HP<br /><b>PVP Rule/Restriction:</b> Can only use one Attack Drone per fight.",
+				"description": "<b>Requires Drone Protocols 1</b> Allows the individual to outfit a drone with <b>one</b> weapon they know how to use and send them out to attack targets.<br /><b>Rule:</b> Drone has d15; 1HP<br /><b>PVP Rule/Restriction:</b> Can only use one Attack Drone per fight.",
 				"key": "AD1",
 				"requires": [ "Drone Protocols 1" ]
 			},

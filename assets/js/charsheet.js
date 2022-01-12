@@ -10,6 +10,7 @@ var character = {
 	rank: "",
 }
 
+// Sets the info to be displayed in the footer, or hides it if there is no info.
 function setFooter(header, info) {
 	if ((header) && (info)) {
 		pageFooter.querySelector("h3").innerHTML = header;
@@ -21,6 +22,74 @@ function setFooter(header, info) {
 	}
 }
 
+// Lookup function for the master ability list.
+function findAbilityByName(name) {
+	for (var i = 0; i < abilityData.rankList.length; i++) {
+		var testMe = abilityData[abilityData.rankList[i].tag].abilities.find(ability => ability.name === name);
+
+		if (testMe) {
+			return { rank: abilityData.rankList[i].tag, ability: testMe };
+		}
+	}
+}
+
+// Utility function to check if the current character has an ability selected.
+function abilitySelected(rank, key) {
+	var abilityList = character[rank] || [];
+
+	return !!abilityList.find(item => item === key);
+}
+
+// Loops through all abilities on the character sheet for validation.
+function validateAbilities() {
+	var rankSections = document.querySelectorAll("#characterSheet .subsection");
+
+	for (var r = 0; r < rankSections.length; r++) {
+		let rankKey = rankSections[r].getAttribute("data-rank");
+		let abilityList = rankSections[r].querySelectorAll("div[data-key]");
+		let abilityCount = (character[rankKey] || []).length;
+		let abilityMax = abilityData.rankList.find(rank => rank.tag === character.rank).limits[r];
+
+		if (abilityMax > 0) {
+			rankSections[r].querySelector("h2 > span").innerHTML = "(" + abilityCount + "/" + abilityMax + ")";
+		} else {
+			rankSections[r].querySelector("h2 > span").innerHTML = "";
+		}
+
+		for (var a = 0; a < abilityList.length; a++) {
+			let curAbility = findAbilityByName(abilityList[a].querySelector("div").innerHTML)?.ability;
+			if (curAbility) {
+				if ((curAbility.requires) && (curAbility.requires.find(findMe => { var testMe = findAbilityByName(findMe); return !abilitySelected(testMe.rank, testMe.ability.key); }))) {
+					if (abilityList[a].className.indexOf("invalid") < 0) {
+						abilityList[a].className += " invalid";
+					}
+
+					if (character[rankKey]) {
+						let tmpIdx = character[rankKey].indexOf(curAbility.key);
+
+						// Oops!  We're in an invalid state!  Wipe out the current ability and start over.
+						if (tmpIdx > -1) {
+							character[rankKey].splice(tmpIdx, 1);
+							abilityList[a].querySelector("input[type='checkbox']").checked = false;
+							validateAbilities();
+							return;
+						}
+					}
+				} else if ((abilityMax > -1) && (abilityCount >= abilityMax) && (!abilityList[a].querySelector("input[type='checkbox']").checked)) {
+					if (abilityList[a].className.indexOf("invalid") < 0) {
+						abilityList[a].className += " invalid";
+					}
+				} else {
+					if (abilityList[a].className.endsWith(" invalid")) {
+						abilityList[a].className = abilityList[a].className.substring(0, abilityList[a].className.length - 8);
+					}
+				}
+			}
+		}
+	}
+}
+
+// Fired when clicking an ability checkbox to select/deselect.
 function toggleAbility(e) {
 	var abilityKey = e.target.parentElement.getAttribute("data-key");
 	var rankKey = e.target.parentElement.parentElement.getAttribute("data-rank");
@@ -44,8 +113,12 @@ function toggleAbility(e) {
 		character[rankKey].push(abilityKey);
 		character[rankKey].sort();
 	}
+
+	validateAbilities();
+	setActionable(true);
 }
 
+// Fired when type and rank are selected, generates the appropriate skill lists.
 function generateAbilityLists() {
 	document.querySelectorAll("#characterSheet > .subsection").forEach(element => element.remove());
 
@@ -64,7 +137,7 @@ function generateAbilityLists() {
 				curHolder.setAttribute("data-rank", abilityData.rankList[i].tag);
 
 				tmpElement = document.createElement("h2");
-				tmpElement.innerHTML = abilityData.rankList[i][character.type] + " Abilities";
+				tmpElement.innerHTML = abilityData.rankList[i][character.type] + " Abilities <span></span>";
 				curHolder.appendChild(tmpElement);
 
 				var curBlock = document.createElement("div");
@@ -104,8 +177,11 @@ function generateAbilityLists() {
 			}
 		}
 	}
+
+	validateAbilities();
 }
 
+// Used to enable/disable the button controls for saving, sharing, etc.
 function setActionable(modified) {
 	if (modified) {
 		delete character.saved;
@@ -118,6 +194,7 @@ function setActionable(modified) {
 	}
 }
 
+// Wipes out the character's selected abilities.
 function clearSelectedAbilities() {
 	abilityData.rankList.forEach(rank => delete character[rank.tag]);
 }
@@ -150,6 +227,7 @@ function setCharRank(val) {
 	setActionable(true);
 }
 
+// Adds elements to the page for the user in edit mode.
 function initializePageEditable() {
 	var tmpElement;
 	var tmpChild;
@@ -209,6 +287,7 @@ function initializePageEditable() {
 	generateAbilityLists();
 }
 
+// Adds elements to the page for the user in view mode.
 function initializePageStatic() {
 	var tmpElement;
 	var curRank = abilityData.rankList.find(rank => rank.tag === character.rank);
@@ -267,6 +346,7 @@ function initializePageStatic() {
 	}
 }
 
+// Spits out character sheet info in a base64 string.
 function serializeBuildData() {
 	var data = [];
 	var tmpDatum;
@@ -300,7 +380,7 @@ function serializeBuildData() {
 	return btoa(String.fromCharCode.apply(null, data));
 }
 
-// Base64 conversion code from
+// Decodes build info from an exported string.
 function deserializeBuildData(dataBlock) {
 	var tmpCnt;
 	var data = new Uint8Array(atob(dataBlock).split("").map(function(c) { return c.charCodeAt(0); }));
@@ -333,17 +413,23 @@ function deserializeBuildData(dataBlock) {
 	}
 }
 
+// Saves character to local storage.
 function saveCharacterBuild() {
 	var charList = JSON.parse(localStorage.getItem(listToken) || "[]");
 	var buildData = serializeBuildData();
 
-	charList.push(character.name);
-	charList.sort();
+	if (charList.indexOf(character.name) < 0) {
+		charList.push(character.name);
+		charList.sort();
+		localStorage.setItem(listToken, JSON.stringify(charList));
+	}
 
 	localStorage.setItem(storageToken + character.name, buildData);
-	localStorage.setItem(listToken, JSON.stringify(charList));
+
+	character.saved = true;
 }
 
+// Shows a popup with a link to the character sheet.
 function shareCharacterBuild() {
 	var buildData = serializeBuildData();
 	var buildLink = window.location.origin + window.location.pathname + "?n=" + encodeURIComponent(character.name) + "&data=" + buildData;
@@ -363,6 +449,7 @@ function hideModal() {
 	document.querySelectorAll("#modalBG, #modalBG > section").forEach(element => element.className = "");
 }
 
+// STARTUP PHASE - Pull in our data JSON, then try to populate the page.
 fetch("./assets/data/abilities.json").then(response => {
 	if (response.ok) {
 		response.json().then(data => {

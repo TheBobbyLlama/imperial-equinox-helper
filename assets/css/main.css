@@ -5,6 +5,45 @@ footer {
 	text-align: right;
 }
 
+nav {
+	align-items: center;
+	background-color: var(--panel-background);
+	background-image: url('../images/greebling.png'), linear-gradient(#400000, #400000, #300000);
+	border-bottom: solid 2px var(--panel-border);
+	border-right: solid 2px var(--panel-border);
+	border-bottom-right-radius: 8px;
+	color: var(--interactive);
+	cursor: pointer;
+	display: flex;
+	left: 0;
+	max-width: 200px;
+	overflow: hidden;
+	padding: 8px;
+	position: absolute;
+	top: 0;
+	transition-duration: 0.5s;
+	transition-property: all;
+}
+
+nav > span {
+	max-width: 200px;
+	opacity: 0;
+	transition-duration: 0.5s;
+	transition-property: width;
+	width: 0px;
+}
+
+nav:hover {
+	background-image: url('../images/greebling.png'), linear-gradient(#500000, #500000, #400000);
+	color: var(--text);
+}
+
+nav:hover > span {
+	opacity: 1;
+	padding-left: 8px;
+	width: auto;
+}
+
 #textSection {
 	display: flex;
 	height: 400px;
@@ -199,6 +238,23 @@ footer {
 	border: solid 2px var(--item-border);
 	color: #c0c0c0;
 	padding: 2px 8px;
+}
+
+#selectModal {
+	width: 400px;
+}
+
+#charSelectOptions {
+	align-items: center;
+	border-bottom: solid 1px var(--item-border);
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 10px;
+	width: 100%;
+}
+
+#charSelectOptions > * + * {
+	margin: 10px 0px 0px 0px;
 }
 
 @media screen and (max-width: 1700px) {
