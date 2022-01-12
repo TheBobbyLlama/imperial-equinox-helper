@@ -1,0 +1,236 @@
+footer {
+	color: #404040;
+	font-size: 14px;
+	margin: 8px 16px 0 16px;
+	text-align: right;
+}
+
+#textSection {
+	display: flex;
+	height: 400px;
+	justify-content: center;
+}
+
+#input, #output {
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
+	width: 100%;
+}
+
+#input textarea, #output textarea {
+	height: 100%;
+	width: 100%;
+}
+
+#output > *:nth-child(2) {
+	flex-basis: 100%;
+}
+
+#output > *:last-child {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+}
+
+#output > *:last-child > * {
+	margin: 0 20px;
+}
+
+#notesSection > * + *, #cheatsheets > * + * {
+	margin-top: 0px;
+}
+
+#notesSection h2, #cheatsheets h2 {
+	text-align: center;
+}
+
+#textSection > h2, #notesSection > *:not(.closeButton), #cheatsheets > *:not(.closeButton) {
+	margin: 10px;
+}
+
+#notesSection {
+	display: flex;
+	flex-direction: column;
+}
+
+#notesSection textarea {
+	height: 300px;
+}
+
+#quickRef {
+	align-items: flex-start;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#quickRef > * {
+	margin: 0 20px 20px 0;
+}
+
+#quickRef h3 {
+	margin-left: 4px;
+}
+
+#rankTable {
+	background-image: url('../images/greebling.png'), linear-gradient(#400000, #400000, #300000);
+	border: solid 1px var(--item-border);
+	display: grid;
+	grid-template-columns: auto repeat(3, min-content);
+	width: 600px;
+}
+
+#rankTable > div {
+	border: solid 1px var(--item-border);
+	padding: 2px 8px;
+	white-space: nowrap;
+}
+
+#rankTable > div:first-child, #rankTable > div:nth-child(2), #rankTable > div:nth-child(3), #rankTable > div:nth-child(4) {
+	background-color: #300000;
+	font-weight: bold;
+	padding-top: 4px;
+}
+
+#sithCode {
+	background-image: url('../images/greebling.png'), linear-gradient(#400000, #400000, #300000);
+	border: solid 2px var(--item-border);
+	border-radius: 4px;
+	padding: 4px 8px;
+}
+
+#sithCode p {
+	font-style: italic;
+	padding: 4px 8px;
+}
+
+#guildDocs {
+	align-items: flex-start;
+	counter-reset: documents 1;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 400px;
+}
+
+#guildDocs a {
+	counter-increment: documents;
+}
+
+#guildDocs > div {
+	margin-left: 50px;
+	position: relative;
+}
+
+#guildDocs > div:not([subItem]):not([spacer])::before {
+	content: counter(documents) ': ';
+	position: absolute;
+	right: calc(100% + 4px);
+}
+
+#guildDocs > div[spacer] {
+	font-style: italic;
+	font-weight: bold;
+	margin: 4px 0px 0px 20px;
+}
+
+#guildDocs > div[subItem]::before {
+	content: '- ';
+}
+
+#guildDocs > h4 {
+	margin: 12px 0px 4px 8px;
+}
+
+#emoteTable {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 1600px;
+	margin-top: 8px;
+}
+
+#emoteTable > div {
+	display: flex;
+	justify-content: stretch;
+	margin-top: -2px;
+	padding: 0;
+	width: 320px;
+}
+
+#emoteTable > div > div {
+	flex-basis: 70%;
+	padding: 2px 8px;
+	width: 60%;
+}
+
+#emoteTable > div > div:not(:last-child) {
+	flex-basis: 30%;
+	border-right: solid 1px var(--item-border);
+}
+
+#emoteTable h4 {
+	position: relative;
+	top: 4px;
+}
+
+.emoteFree {
+	background-color: black;
+	border: solid 2px var(--item-border);
+	padding: 2px 8px;
+}
+
+.emoteSub {
+	background-color: #280000;
+	border: solid 2px var(--item-border);
+	padding: 2px 8px;
+}
+
+.emoteMarket {
+	background-color: #281808;
+	border: solid 2px var(--item-border);
+	padding: 2px 8px;
+}
+
+.emoteUnlocked {
+	background-color: #101010;
+	border: solid 2px var(--item-border);
+	color: #c0c0c0;
+	padding: 2px 8px;
+}
+
+@media screen and (max-width: 1700px) {
+	#emoteTable {
+		height: 2000px;
+	}
+}
+
+@media screen and (max-width: 1360px) {
+	#emoteTable {
+		height: 2600px;
+	}
+}
+
+@media screen and (max-width: 1060px) {
+	#emoteTable {
+		height: 4000px;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	#guildDocs {
+		height: 560px;
+	}
+}
+
+@media screen and (max-width: 780px) {
+	#guildDocs {
+		height: auto;
+	}
+
+	#emoteTable {
+		height: auto;
+	}
+}

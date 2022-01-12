@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Imperial Equinox - Character Sheet</title>
+	<link rel="stylesheet" href="./assets/css/style.css" defer />
+	<link rel="stylesheet" href="./assets/css/charsheet.css" defer />
+</head>
+<body>
+	<h1>Character Sheet</h1>
+	<section id="characterSheet">
+		<div id="sheetHeader">
+			<div id="vitalInfo">
+				<div id="charName"></div>
+				<div id="charType"></div>
+				<div id="charRank"></div>
+				<div id="rollInfo"></div>
+			</div>
+			<div id="charControls">
+			</div>
+		</div>
+	</section>
+	<footer style="display: none;">
+		<h3></h3>
+		<div></div>
+	</footer>
+	<div id="modalBG">
+		<section id="errorModal">
+			<h2>Error!</h2>
+			<p></p>
+			<button type="button" id="btnDismissError">Ok</button>
+		</section>
+		<section id="linkModal">
+			<h2>Share this Character!</h2>
+			<p>Use this link to show your character's abilities to others!  This link will only show your character as it looks <em>right now</em>, so be sure to give people updated links if your abilities change!</p>
+			<textarea id="linkText" readonly="true"></textarea>
+			<div>
+				<button type="button" id="btnCopyLink">Copy</button>
+				<button type="button" id="btnDismissLink">Done</button>
+			</div>
+		</section>
+	</div>
+	<script type="text/javascript" src="assets/js/charsheet.js"></script>
+</body>
+</html>

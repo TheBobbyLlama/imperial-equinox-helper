@@ -1,0 +1,650 @@
+{
+	"rankList": [
+		{
+			"tag": "e1",
+			"fu": "Acolyte",
+			"nfu": "Private",
+			"hp": 2,
+			"die": 20,
+			"bonus": 0,
+			"limits": [-1, 0, 0, 0],
+			"restrictedLimit": 0
+		},
+		{
+			"tag": "e3",
+			"fu": "Apprentice",
+			"nfu": "Sergeant",
+			"hp": 3,
+			"die": 20,
+			"bonus": 2,
+			"limits": [-1, 7, 0, 0],
+			"restrictedLimit": 0
+		},
+		{
+			"tag": "o1",
+			"fu": "Lord",
+			"nfu": "Lieutenant",
+			"hp": 4,
+			"die": 25,
+			"bonus": 5,
+			"limits": [-1, 11, 9, 0],
+			"restrictedLimit": 1
+		},
+		{
+			"tag": "o2",
+			"fu": "Lord I",
+			"nfu": "Captain",
+			"hp": 4,
+			"die": 25,
+			"bonus": 7,
+			"limits": [-1, 11, 9, 0],
+			"restrictedLimit": 2
+		},
+		{
+			"tag": "o3",
+			"fu": "Lord II",
+			"nfu": "Colonel",
+			"hp": 4,
+			"die": 25,
+			"bonus": 9,
+			"limits": [-1, 11, 9, 0],
+			"restrictedLimit": 3
+		},
+		{
+			"tag": "o4",
+			"fu": "Darth",
+			"nfu": "Moff",
+			"hp": 5,
+			"die": 30,
+			"bonus": 15,
+			"limits": [-1, 15, 16, 9],
+			"restrictedLimit": 7
+		},
+		{
+			"tag": "o5",
+			"fu": "Councilor",
+			"nfu": "Grand Moff",
+			"hp": 6,
+			"die": 40,
+			"bonus": 20,
+			"limits": [-1, 18, 20, 14],
+			"restrictedLimit": 13
+		}
+	],
+	"e1": {
+		"abilities": [
+			{
+				"name": "Breath Control",
+				"description": "Ability to regulate the user's breath and hold it for extended periods.",
+				"key": "BC0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Clairvoyance",
+				"description": "Gain vague impressions of events happening in other places or times using the Force.  These visions focus on strong imagery or emotions.  Those skilled in this technique are capable of detecting when friends and apprentices are in danger, examining details of past events, and predicting the probably outcome of a stated course of action.",
+				"key": "CV0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Comprehend Speech",
+				"description": "Ability to understand different language.  Ineffective at comprehending languages of extremely xenophobic cultures; ones that actively refuse contact with others (<i>e.g.</i> Sand People).",
+				"key": "CS0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Dark Healing 1",
+				"description": "Ability to heal minor wounds such as cuts and scrapes through the Force, cannot be used during combat.  It should be noted that \"healing\" was perhaps the weakest link in all the Dark Side's powers.  All DS healing, with the exception of a few quite rare abilites, was only temporary.  There is a Medbay (in the Engine Room) of the ISD Imperator for more permanent healing solutions.",
+				"key": "DH1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Detoxify Poison",
+				"description": "This ability allows the user to detoxify poisons or eject them from their body in a much shorter amount of time than would normally be possible.  This can only be used on oneself and not others.",
+				"key": "DX0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Enhanced Attribute",
+				"description": "Allows the user to increase a physical attribute for a limited time, allowing them to jump higher, move and react faster, see better, and the like.  Can only enhance one attribute at a time.",
+				"key": "EA0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Barrier 1",
+				"description": "The ability allows the user to summon a temporary barrier which can block a few blaster bolts or a weak saber strike, but will not withstand a concentrated attack.  Also includes a basic passive force shield.",
+				"key": "BR1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Bellow",
+				"description": "Allows the user to amplify their voice using the Force.",
+				"key": "BW0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Concealment 1",
+				"description": "At this level, the user is able to temporarily hide their connection to the Force from the more inexperienced Force-sensitives around them.  They would not be able ot maintain this for very long, and likely will not be able to mask it from a Sith Lord or Jedi Knight.",
+				"key": "CN1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Deflection",
+				"description": "An ability to defend against attacks or deflect incoming projectiles without a lightsaber.",
+				"key": "DF0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Jump",
+				"description": "This ability allows the user to augment their physical limitations to leap higher and over greater distances.  As weall as perform Acrobatics and Gymnastics with much greater ease.",
+				"key": "JM0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Sense",
+				"description": "Ability to sense objects, and locations of others using the Force.  May only be used every 15 minutes in an event.  Users must roll their rank at every use.",
+				"key": "SN0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Shock",
+				"description": "Is a Force power that allows the user to create an energy spark that could be sent towards the nearest enemy.  The shock could be thrown at an opponent to stun and injure them.  The shock would not last more than five seconds or so before disappearing into a tiny burst of heat.",
+				"key": "SK0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Slow",
+				"description": "This power clouds the target's mind, causing them to slow down both mentally and physically.",
+				"key": "SW0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Speed",
+				"description": "Ability to move quickly.",
+				"key": "SP0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Stun",
+				"description": "Ability to stun a target briefly or restrain and immobilize people.",
+				"key": "ST0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Wound",
+				"description": "This power allowed a Fore user to telekinetically apply pressure to their opponent's organs or body.",
+				"key": "WD0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Hibernation Trance",
+				"description": "This ability allows the user to go into a very deep hibernation state.  The user slows their metabolism and breathing to a standstill, causing them to onlyuse one thenth of the air an ordinary person requires.  To most, the user appears to be dead.  Other Force users with training inthe sense skill may be able to sense and know they are not dead.",
+				"key": "HB0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Meditation",
+				"description": "Ability to calm one's mind to connect to the Force.",
+				"key": "MD0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Mind Control",
+				"description": "Refers to a spectrum of Force powers which influence the thoughts of sentient creatures, most commonly used to coerce into aggreement by suggestion through voice manipulation.",
+				"key": "MC0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Psychometry",
+				"description": "An ability that allows the user to see glimpses and visions to an object's history, merely by touching it.  The visions are seldom clear, and can be dangerous as all sensations tied to the object can affect the user as well.",
+				"key": "PS0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Pyrokinesis 1",
+				"description": "Allows the user to create a spark using the elemental Force, possible allowing a candle to be lit?  Nothing greater than a lighter flame can be produced but it does offer a small amount of control over preexisting fire within the area.",
+				"key": "PK1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Tapas",
+				"description": "A power used to maintain warmth in cold environments by retaining one's body heat with the Force.",
+				"key": "TP0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Telekinesis 1",
+				"description": "Allows the User to manipulate physical objects, air currents, air pressure and air pockets, as well as creating and/or controlling physical impulses and forces, such as pressure, friction, kinetic energy, and even gravity, all within the power of the Force.  This stage allows the user the use of the following mundane force abilities: Force Push, Force Pull, Force Throw.",
+				"key": "TK1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Telepathy",
+				"description": "used to communicate with other individuals over short or vast distances.  Depending on the level of connection to the Force.  Communication is limited to <u>vague</u> feelings and impressions only.",
+				"key": "TP0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Thought Shield",
+				"description": "An ability that allows the user to protect their mind from outside influence through the Force.  It helps protect the user from Mind Control, Force Horror, Telepathy, etc.",
+				"key": "TS0",
+				"restricted": "fu"
+			},
+
+
+
+			{
+				"name": "Comlink Implant",
+				"description": "A two-part cybernetic implant that integrates itself with the auditory nerve - relaying audio input directly to the brain (without actual noise!).  A comlink without an actual comlink for those discreet conversations.  Must be activated/deactivated manually.  Warning: Can cause severe/permanent damage if the implant is active during an explosion (or within the vicinity of loud noises) to both caller and recipient.<br />Note: What YOU HEAR (as the caller) is what your RECIPIENT HEARS.<br /><b>Rule:</b> Can only be used with another person that also has the Comlink Implant.",
+				"key": "CL0",
+				"restricted": "nfu"
+			},
+			{
+				"name": "Distraction and Subtlety Training",
+				"description": "When direct confrontation may not be the answer; learn to distract and sneak around enemies and dangerous wildlife.  Or kill two birds with one stone and lure them towards each other.  Fight smarter not harder; keep calm and sneak on.<br /><b>Rule:</b> Must roll against opponent perception when attempting to sneak or distract.  Breaks when attacked or attempting to attack.",
+				"key": "DS0"
+			},
+			{
+				"name": "Droid Mechanic Certification 1",
+				"description": "Droid Mechanic Certification Level 1 indicates that the individual has obtained the bare basics of droid mechanics and is now capable of repairing them in case of malfunction.",
+				"key": "DM1"
+			},
+			{
+				"name": "First Aid 1",
+				"description": "The individual has taken their first steps into the world of first aid - capable of treating small, basic injuries such as cuts (including deep lacerations), burns, sprains, etc.  As well as the treatment of alcohol poisoning.",
+				"key": "FA1"
+			},
+			{
+				"name": "Grappler Training",
+				"description": "Learn how to use a grappling hook - used to scale surfaces, pull the user closer to an objective, or to pull items or people toward the user.  Upon mastery of its basics, an individual is capable of customizing it to their personal tastes and style - whether as a gun in their arsenal or more subtle means - as a wrist bracer attachment.",
+				"key": "GP0"
+			},
+			{
+				"name": "Grenade Certification 1",
+				"description": "Grenade Certification 1 allows the individual to possess and use basic grenades.<br /><b>Rule:</b> At this level, the individual is only certified in the carrying and use of Smoke, Stun, Frag, Flash, Ion, and Sonic grenades.",
+				"key": "GC1"
+			},
+			{
+				"name": "IE-20 Compact Rebreather",
+				"description": "A rebreather mask small enough to be easily tucked away and carried consisting of a small filtration device and limited supply of breathable air for the user.  Due to the size of the filtration and supply of breathable air - an individual is able to survive a prolonged period of time in otherwise inhospitable environments.  Due to differing needs of verious species, the supply of breathable air, often in the size of small, refillable capsules, are unique and customized to be the optimalneeds of the user's unique physiological needs.",
+				"key": "RB0"
+			},
+			{
+				"name": "Harsh Environment Survival Training",
+				"description": "The result of training extensively to survive harsh weather and climate conditions.  From freezing landscapes of Hoth to the endless deserts of Tattooine - the ability to survive the climate and less-than-friendly wildlife one my encounter against all odds.",
+				"key": "HE0"
+			},
+			{
+				"name": "Knife Combat",
+				"description": "Basic training in the art of fighting with small daggers and dagger-like weapons in close proximity with one's opponents.",
+				"key": "KF0"
+			},
+			{
+				"name": "Linguistics Implant",
+				"description": "An implant that allows the individual to understand up to 500 of the galaxy's most commonly spoken languages.  This does not allow themto speak the languages, only understand them.",
+				"key": "LG0",
+				"restricted": "nfu"
+			},
+			{
+				"name": "Marksman Certification",
+				"description": "With this certification, the individual is now certified and authorized to use and possess long-range rifles.",
+				"key": "MK0"
+			},
+			{
+				"name": "Mental Resilience",
+				"description": "Whether it's to hide themselves from nearby threats, steady the aim of a trained marksman, or waiting for that perfect moment to strike, it's a skill that becomes inexpendable for a plethora of situations.  These techniques have also been known to allow an NFU to conceal and/or control their \"surface thoughts\", allowing them to push their desired thoughts to the surface while concealing others in an attempt to deter Force mind-reading techniques.  Additionally, the individual develops sharpened spatial awareness; including heightened senses of hearing, increased capabilities to detect small movements, and notice subtle changes or oddities in their surroundings that the average person may overlook.",
+				"key": "MN0",
+				"restricted": "nfu"
+			},
+			{
+				"name": "Neural Implant",
+				"description": "A standard issue cybernetic implant that works to enhance the innate reflexes of sentient beings.",
+				"key": "NR0",
+				"restricted": "nfu"
+			},
+			{
+				"name": "Optical Enhancement Implant",
+				"description": "This device comes in three basic forms: an implant, eye piece, or a high-tech contact lense that must be worn or activated to be used.  It enhances long-distance visual acuity and peripheral vision with reports of increased nigh-vision.<br />Requires eyes.",
+				"key": "OE0"
+			},
+			{
+				"name": "Parkour Training",
+				"description": "With the combination of extensive athletic training and a sharpened sense of spatial awareness, the individual becomes a practitioner of the art of parkour - the art of getting from one point to another in a complex, obstacle-filled enfironment without assistive equipment in the fastest, most efficient way possible.  In combination with other abilities and gadgets, the individual can make hunting or chasing down targets look like an art form.  Or an expert escape artist should they find themselves on the other side of that chase.",
+				"key": "PR0"
+			},
+			{
+				"name": "Personal Electroscanner",
+				"description": "A hand-held or eyewear attachment capable of scanning the user's surroundings, allowing them to detect communication towers, droids, energy fields, and other electronic devices.",
+				"key": "ES0"
+			},
+			{
+				"name": "Personal Shield Generator",
+				"description": "A device that is capable of generating a small, low-powered energy field around the individual - enabling them to guard against blaster bolts and physical attacks.",
+				"key": "PS0"
+			},
+			{
+				"name": "Portable Blowtorch",
+				"description": "A portable blowtorch for convention and unorthodox uses.  Great for welding, fire making, and... uh... fire starting.",
+				"key": "PB0"
+			},
+			{
+				"name": "Slicing 1",
+				"description": "As a beginning slicer, the individual is capable of slicing into low-security terminals and security systems.",
+				"key": "SL1"
+			},
+			{
+				"name": "Stun Cuffs + Shock Collar",
+				"description": "Standard issue stun cuffs and shock collar used for restraining and detainment for the purpose of arrest, capture, interrogation, etc.",
+				"key": "SC0"
+			},
+			{
+				"name": "Stun Gun",
+				"description": "A small handheld device that emits an electroshock capable of incapacitating a target upon contact with its emitter node.",
+				"key": "SG0"
+			},
+			{
+				"name": "Wrist Blade",
+				"description": "A standard issue concealed melee weapon approximately 5 inches in length.  Though minimal in reach, it frees the individual's hands to perform other tasks.",
+				"key": "WB0"
+			},
+			{
+				"name": "Wrist Blaster",
+				"description": "A concealed blaster with minimal range and accuracy used to attack enemies slightly out of melee range.  However in order to miniaturize a blaster, the weapon is only capable of firing a single shot at a time due to the reduced size of the energy cell.  Can only shoot basic blaster bolts.",
+				"key": "WL0"
+			}
+		]
+	},
+	"e3": {
+		"abilities": [
+			{
+				"name": "Aura of Uneasiness",
+				"description": "This ability is a simple technique long employed by the Sith.  As the name implies, practitioners of this ability are able to produce a dark aura around themselves that affects living creatures, filling them with a sense of disquiet and loathing.  While this technique was developed to drive non-sentient life away from a Sith's path so they may work undisturbed. the sinister field does have an effect on sentient life as well, though the results are often less pronounced.",
+				"key": "AU0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Beast Control",
+				"description": "Force ability required to control an animal.  Once calmed, the animal could be used by the Force user in various ways, including as a mount or guard beast.  This is often taught to Acolytes of the Sith Order, as a passive ability.",
+				"key": "BC0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Beast Language",
+				"description": "This ability lets the user speak with one type of creature in a language that it could understand, allowing both the handler and the animal to communicate.  In a capacity limited to the intelligence of the creature, they may exchange information.  This is a very rare ability, since few know of its existence.  It cannot be used to communicate with creatures that do not normally communicate with each other in any way, such as microbes.  Although a beast might be more convinced to help a Force user with this, and to not attack them, it in no way guarantees that they will listen, and thus is better as an augment to Beast Control, rather than a replacement.",
+				"key": "BL0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Dark Healing 2",
+				"description": "<b>Requires Dark Healing 1</b> This level of power cannot halt life threatening injuries, but can temporarily stabilize fractures and non-life threatening internal damage.  This cannot fully mend a fully broken bone or severed muscle fibers.  Sacrifices attack to heal.<br /><b>Rule:</b> Provieds a one HP bonus on a 1d4 roll, three or above to succeed (50% chance).  If successful, the user suffers a (-2) roll deficit for the next ATK/DEF.  Restricted usage at once per day and does not restore health mid-combat.  Target of healing will still require a medical bay for permanent treatment.",
+				"key": "DH2",
+				"requires": [ "Dark Healing 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Affliction",
+				"description": "<b>Requires Force Slow</b> This is a mind affecting ability to make the target sufer as if they were induced to illness.  Prolonged exposure could even cause death if the caster was powerful enough.",
+				"key": "FA0",
+				"requires": [ "Force Slow" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Cloak",
+				"description": "With this power, one can bend light and sound waves around themselves to appear invisible to the naked eye.",
+				"key": "FC0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Flash",
+				"description": "Using the Force to make yourself invisible on cameras.  Both audio and visual.  The cameras would simply turn to static, but security could notice a holocom malfunction.",
+				"key": "FF0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Illusion 1",
+				"description": "At lesser practice, this ability allows a Force user the power to manipulate the perception of an area.  At higher levels, this ability with the use of Sith sorcery could reach targets across the galaxy.  Projected into the mind of target(s), illusions are a trick on other people's minds that not only affect the sight of the target, but all of the target's senses.  Even viewing it through an electronic system such as a cybernetic eye or camera is of no use if the target is withing range of the illusion during its duration.  The target would \"see\" it with the systeam as if the illusion were actually there, though any playback after the illusion had ended would reveal nothing at all.  Droids are immune and Force-resistant species (such as Hutts, Toydarians, Yinchorri, etc.) are nearly immune.  Force illusions can create something out of nothing, but not nothing out of something (in other words, render someone invisible).",
+				"key": "FI1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Lightning",
+				"description": "<b>Requires Force Shock</b> This ability allows its user to cast a single, and optionally continuous, stream of electricity toward their opponent, rather than just a simple jolt.",
+				"key": "FL0",
+				"requires": [ "Force Shock" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Rage",
+				"description": "Creates an aura which radiates outward, empowering the user into a berserk-like state.  Thereby granting greatly increased strength and speed whilst tiring the practicioner.",
+				"key": "FR0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Scream",
+				"description": "This ability allows the user to channel the raw power of the Dark Side into their voice.  Projecting a cone shaped attack in a line out in front of them.  Damaging everything in its path.  At higher levels, such as those of a full Lord of the Sith, one could project the violent sonic attack to everyone that could hear the loud scream.  Dealing damage to allies as well as enemies within 10 meters.",
+				"key": "FS0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Stasis",
+				"description": "<b>Requires Force Stun</b> Allows the use of the Force to deaden the senses of an enemy, inducing a near-catatonic state and in effect freezing that person in place.  Could also be used on objects such as blaster bolts to great effect.",
+				"key": "ST0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Track",
+				"description": "A Force power that allows a Force user to peer into the Force for guidance, picking up the lost path of their quarry.",
+				"key": "FT0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Wave",
+				"description": "Essentially a wave of pure Force energy that pulses out from the user, knocking back anything around them.",
+				"key": "FV0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Whirlwind",
+				"description": "<b>Requires Telekinesis 1</b> A more advanced form of Force Push, and a rather feeble version of Force Wave.  This swirling force will lift an opponent into the air, spin them around, and leave them incapable of moving out of it.",
+				"key": "FW0",
+				"requires": [ "Telekinesis 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Life Sense",
+				"description": "<b>Requires Meditation and Force Sense</b> The Force user is able to determine their target's presence and identity, as well as their physical condition, such as wounds or illness.  Life Sense can also be used to dtect whether a Force user is concealing themselves in any way.",
+				"key": "LF0",
+				"requires": [ "Force Sense", "Meditation" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Lightning Shield",
+				"description": "<b>Requires Force Lightning</b> This is a variation of Force Lighning in which a shield of lightning covers and protects the user.  Its effects can extend beyond the immediate space near the user, and can shock enemies in the distance.  It can lower damage taken by the user, and can also enhance the saber damage the user deals out.  It is not the most powerful form of Force lightning, however; it still takes mastery in the art of Force Lightning and high concentration to use Lightning Shield.",
+				"key": "LD0",
+				"requires": [ "Force Lightning" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Lightning Strike",
+				"description": "<b>Requires Sith Barrage</b> This ability summons Force Lightning from directly above an opponent.",
+				"key": "LS0",
+				"requires": [ "Sith Barrage" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Pyrokinesis 2",
+				"description": "<b>Requires Pyrokinesis 1</b> Allows the user to cast a small blast of fire at a target or control a modest amount of preexisting fire in various ways.",
+				"key": "PK2",
+				"requires": [ "Pyrokinesis 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Sith Alchemy 1",
+				"description": "The ability to alter an object or living thing.  At this level, synthetic lightsaber crystals may be created.  As well as very slight organic changes to lesser than humanoid beings.  Creation of incredibly weak, small, and useless Sith spawn is allowed.",
+				"key": "SA1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Sith Barrage",
+				"description": "<b>Requires Force Lightning</b> This ability creates a series of lightning strikes, originating from the ground, that emanate outward from the caster in a linear fashion.  With enough practice, a powerful user could increase the number of bolts they are able to create at any one time.",
+				"key": "SB0",
+				"requires": [ "Force Lightning" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Stun Droid",
+				"description": "This ability allows its user to channel a small stream of ionized energy throughout a droid's circuitry, leaving it stunned and otherwise dysfunctional for a brief period of several seconds, however leaving the targeted droid mostly unharmed in the process.  The ionized energy looks remarkably similar to a stream of force lightning, but is purle in hue.",
+				"key": "SD0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Telekinesis 2",
+				"description": "<b>Requires Telekinesis 1</b> At this tier, the user is able to lift or squeeze objects similarly sized to that of a standard Imperial crate.  This enable abilities such as Force Rend, Force Levitation, Force Grip, and the classics of Force Choke and a basic Lightsaber Throw.",
+				"key": "TK2",
+				"requires": [ "Telekinesis 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Tutaminis 1",
+				"description": "This power is the basis of absorbing or dissipating energy.  It was a rare feat to be capable of dissipating concentrated energy sugh as what makes up a blaster bolt.",
+				"key": "TU1",
+				"restricted": "fu"
+			},
+
+
+			{
+				"name": "Attack Drone 1",
+				"description": "<b>Requires Drone Protocols 1</b> Allows the individual to outfit a drone with <b>one</p> weapon they know how to use and send them out to attack targets.<br /><b>Rule:</b> Drone has d15; 1HP<br /><b>PVP Rule/Restriction:</b> Can only use one Attack Drone per fight.",
+				"key": "AD1",
+				"requires": [ "Drone Protocols 1" ]
+			},
+			{
+				"name": "Auto-Stimulant Injector",
+				"description": "A two-piece gadget that includes a carry-on pack preloaded with common stimulants tied to the upper thigh and an implant that controls its release.  The needed stimulant is then injected with a micro needle into the thigh before taking effect.  The implant monitors the individual's sensory system, triggering the release of specific stimulants as a result.  (<i>i.e.</i> if the individual finds themself suffering from excrutiating pain, the implant triggers the relase of painblocking stimulants to reduce the feeling of pain)",
+				"key": "AS0",
+				"restricted": "nfu"
+			},
+			{
+				"name": "Biotic Science 1",
+				"description": "Teaches the basics of biochemistry - giving the individual knowledge and authorization to craft basic stimulants, biological enhancments, or genetic alterations of small, primitive life forms.",
+				"key": "BS1"
+			},
+			{
+				"name": "Droid Mechanic Certification 2",
+				"description": "<b>Requires Droid Mechanic Certification 1</b> At level 2, the individual is now capable of manufacturing their own droids with moderate complexity and capabilities (simple battle droids and protocol droids).<br /><b>Rule:</b> Droids have d15 and 1HP; battle droids can only fight with basic blasters.",
+				"key": "DM2",
+				"requires": [ "Droid Mechanic Certification 1" ]
+			},
+			{
+				"name": "Drone Protocols 1",
+				"description": "Allows the individual to use, and carry up to <b>two</b> drones per event.<br /><b>Rule:</b> Only one drone can be active at a time.",
+				"key": "DP1"
+			},
+			{
+				"name": "Electro-Barrier Shield Upgrade",
+				"description": "<b>Requires Personal Shield Generator</b> A modification for the personal shield generator that charges the inital shield barrier with electricity.  This electrobarrier, when met with physical contact, then discharges a jolt of electricity through the object or person at the point of contact.  Also has the capability to block most energy-based attacks, including lightsabers.<br /><b>Rule:</b> Only one shield upgrade can be active at once.",
+				"key": "SE0",
+				"requires": [ "Personal Shield Generator" ]
+			},
+			{
+				"name": "Experimental Ammo Engineer",
+				"description": "The individual is capable of creating and producing special ammo for their blasters based on the skills they have acquired.<br /><b>Rule:</b> Cannot craft or use anything based on skills the individual doesn't have.",
+				"key": "EG0"
+			},
+			{
+				"name": "First Aid 2",
+				"description": "<b>Requires First Aid 1</b> At this level, the individual is capable of treating serious but non-life threatening injuries.  They are capable of setting and splinting broken bones, using advanced medical tools and stabilizing their comrades from these serious, but non-life threatening conditions until they're transported to a properly equipped medical bay or tended to by someone with superior medical prowess.<br /><b>Rule: ONCE per day</b>, roll a 1d4; on a 3+ (50% chance), it will provide +1HP.  (Can be used during combat)",
+				"key": "FA2",
+				"requires": [ "First Aid 1" ]
+			},
+			{
+				"name": "Flamethrower",
+				"description": "A full-sized flamethrower with a fuel canister often carried on the back of the user like a backpack.  It emits a chemical-based flame in a narrow cone of approximately 10 meters.  Use with caution, fire does not distinguish between friend and foe.<br />Usage of this weapon will intimidate crowds and attract attention, at the DM's discretion.",
+				"key": "TR0"
+			},
+			{
+				"name": "Holoshield Gauntlets",
+				"description": "A pair of gauntlets capable of emitting holo-shields used to defend the user from fatal blows from various weaponry.  Designed to be light and portable, the holo-shield's protection must be timed properly due to its limited battery life, known to short out if used or withstanding too much damage for too long and needing to recharge based on how long it was previously used before.",
+				"key": "HG0"
+			},
+			{
+				"name": "ISBS 1 - Cryo-Spray",
+				"description": "<b>Requires First Aid 1</b> A product developed by the Imperial Science Bureau.  Often applied in a spray form - it freezes the area the spray is applied to both to soothe the afflicted area from scrapes, cuts, burns, and to prevent infection by giving it an icy protective layer long enough to seek proper medical attention.",
+				"key": "IS1",
+				"requires": [ "First Aid 1" ]
+			},
+			{
+				"name": "ISBS 2 - PANIC",
+				"description": "<b>Requires Biotic Science 1</b> A product of the Imperial Science Bureau - codenamed \"PANIC\".  An injectable serum that has been known to render the subject into a state of <b>P</b>aranoia, and <b>a</b>nxiety - often leading to <b>n</b>ervous breakdowns, <b>i</b>rrationality and <b>c</b>onsternation.  Since this is a rather volatile substance, it degrades when exposed to outside atmospheres, rendering it useless.  Therefore, this substance can only be injected via syringe.",
+				"key": "IS2",
+				"requires": [ "Biotic Science 1" ]
+			},
+			{
+				"name": "ISBS 3 - Hallucinate",
+				"description": "<b>Requires Biotic Science 1</b> Another product of the Imperial Science Bureau - codenamed \"Hallucinate\".  They didn't have any clever acronyms for this one.  This serum wreaks havoc in the sensory cortex of the brain - causing the user to suffer through a variety of visual, auditory, and other sensory hallucination.  With proper external stimuli, the individual under the influence of this substance can be made to be manipulated to a degree but at risk of them going into a frenzy.  Prolonged use/exposure to this substance can result in permanent, irreversible mental instability.",
+				"key": "IS3",
+				"requires": [ "Biotic Science 1" ]
+			},
+			{
+				"name": "Jetpack",
+				"description": "A backpack sized jetpack capable of allowing the individual to travel long distances over shorter time intervals.  While in the air, it also makes them a harder target to hit.  However, due to the limits of its energy cell, one can only travel distances up to 100 meters at a time to allow the energy cells times to cool down or risk overheating.",
+				"key": "JP0"
+			},
+			{
+				"name": "Kinetic Shield Upgrade",
+				"description": "<b>Requires Personal Shield Generator</b> A modification for the personal shield generator that is engineered to focus on defending the individual from phsyical attacks.<br /><b>Rule:</b> Only one shield upgrade can be active at once.",
+				"key": "SU0",
+				"requires": [ "Personal Shield Generator" ]
+			},
+			{
+				"name": "Laser Cutter",
+				"description": "A handheld device that emits a concentrated, continuous laser beam.  A tool designed specifically to cut through durasteel, though the thicker the durasteel, the longer it will take for the laser to penetrate through.  This can be used as a weapon of last resort.",
+				"key": "LC0"
+			},
+			{
+				"name": "Magnetic/Rocket Boots",
+				"description": "These stylish boots consist of small propeller rockets attached near the ankle and electromagnetic plates at the soles.  The propeller rockets utilize the same technology as jetpacks, however, due to its significantly reduced size (gotta fit it all into boots and have them not look clunky), the fuel cells and cooling mechanism are significantly smaller, allowing the user to travel up to 20 meters in distance at a time or risk overheating.  The electromagnetic plates allow for the individual to scale (or attach themselves) to most surfaces made of durasteel, metal, or metallic alloy.  Only one of these functions can be used at a time.",
+				"key": "MB0"
+			},
+			{
+				"name": "Melee Training 1",
+				"description": "Introduces the individual to the basics of sword fighting and hand-to-hand combat, allows the individual to wield single-handed vibroswords and vibroblades as well as polearm-like weapons with proficient skill.",
+				"key": "MT1"
+			},
+			{
+				"name": "Personal Scanner Upgrade",
+				"description": "<b>Requires Personal Electroscanner</b> This upgrade to the personal scanner allows the individual to scan for both electrical devices and lifesigns - including cloaked or stealthed individuals.",
+				"key": "PU0",
+				"requires": [ "Personal Electroscanner" ]
+			},
+			{
+				"name": "Seeker Drone 1",
+				"description": "<b>Requires Drone Protocols 1</b> A small drone designed for surveillance and reconnaisance work within a range of 50m.  Its small size makes it difficult to detect but it's programmed with a self-destruct command that can be activated remotely should it be detected.<br /><b>Rule:</b> Drone rolls d15 for defense and self-destruct; 1 HP<br/><i>Perception</i> rolls based on rank of user.",
+				"key": "SD1",
+				"requires": [ "Drone Protocols 1" ]
+			},
+			{
+				"name": "Shield Probe 1",
+				"description": "<b>Requires Drone Protocols 1</b> Standard issue shield probe that offers some protection to players from incoming attacks.<br /><b>Rule:</b> Must be activated in a prior turn.  If the person with an active shield probe loses a defense roll, they lose no HP.  However, upon use, the shield collapses.  Otherwise, the shield probe lasts for 2 consecutive turns.  Usable once per fight.",
+				"key": "SP1",
+				"requires": [ "Drone Protocols 1" ]
+			},
+			{
+				"name": "Sonic Blaster",
+				"description": "A special blaster that produces a sonic blast capable of disorienting organics and droids alike (as long as they have audio receptors) with sensory overload - resulting in disorientation.  A particularly excellent weapon against Jedi and Sith alike both due to its ability to disorient as well as its inability to e blocked by lightsabers.<br /><b>Rule:</b> Cannot be deflected or blocked by lightsabers.",
+				"key": "SO0"
+			},
+			{
+				"name": "Stun Gun - Taser Diodes",
+				"description": "<b>Requires Stun Gun</b> An attachment that allows the stun gun to fire two diodes that embed themselves into the skin of the target before releasing a charge strong enough to incapacitate the opponent at greater distance.",
+				"key": "TD0",
+				"requires": [ "Stun Gun" ]
+			},
+			{
+				"name": "Vocal Enhancement Implant",
+				"description": "A two-part implant that includes a sensor planted in the vocal chords of the user to detect their vibrations - which are then transmitted to the amplifier implanted in the mouth that amplifies the sound loud enough to consider it a sonic weapon capable of breaking glass, windows, and eardrums.",
+				"key": "VE0",
+				"restricted": "nfu"
+			}
+		]
+	}
+}
