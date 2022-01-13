@@ -25,7 +25,7 @@ function setFooter(header, info) {
 // Lookup function for the master ability list.
 function findAbilityByName(name) {
 	for (var i = 0; i < abilityData.rankList.length; i++) {
-		var testMe = abilityData[abilityData.rankList[i].tag].abilities.find(ability => ability.name === name);
+		var testMe = abilityData[abilityData.rankList[i].tag]?.abilities.find(ability => ability.name === name);
 
 		if (testMe) {
 			return { rank: abilityData.rankList[i].tag, ability: testMe };
@@ -59,7 +59,8 @@ function validateAbilities() {
 		for (var a = 0; a < abilityList.length; a++) {
 			let curAbility = findAbilityByName(abilityList[a].querySelector("div").innerHTML)?.ability;
 			if (curAbility) {
-				if ((curAbility.requires) && (curAbility.requires.find(findMe => { var testMe = findAbilityByName(findMe); return !abilitySelected(testMe.rank, testMe.ability.key); }))) {
+				if (((curAbility.requires) && (curAbility.requires.find(findMe => { var testMe = findAbilityByName(findMe); return !abilitySelected(testMe.rank, testMe.ability.key); })))
+					|| ((curAbility.requiresAny) && (!curAbility.requiresAny.filter(findMe => { var testMe = findAbilityByName(findMe); return abilitySelected(testMe.rank, testMe.ability.key)}).length))) {
 					if (abilityList[a].className.indexOf("invalid") < 0) {
 						abilityList[a].className += " invalid";
 					}
@@ -132,6 +133,7 @@ function generateAbilityLists() {
 			var curRankAbilities = abilityData[abilityData.rankList[i].tag]?.abilities;
 
 			if (curRankAbilities?.length) {
+				var addCount = 0;
 				var curHolder = document.createElement("div");
 				curHolder.className = "subsection";
 				curHolder.setAttribute("data-rank", abilityData.rankList[i].tag);
@@ -169,11 +171,17 @@ function generateAbilityLists() {
 
 						tmpElement.addEventListener("click", (e) => { setFooter(ability.name, ability.description); e.stopPropagation(); });
 						curBlock.appendChild(tmpElement);
+						addCount++;
 					}
 				});
 
-				curHolder.appendChild(curBlock);
-				charSheet.appendChild(curHolder);
+				if (addCount) {
+					curHolder.appendChild(curBlock);
+					charSheet.appendChild(curHolder);
+				} else {
+					curBlock.remove();
+					curHolder.remove();
+				}
 			}
 		}
 	}
@@ -187,10 +195,18 @@ function setActionable(modified) {
 		delete character.saved;
 	}
 
+	// Save button
 	if ((character.name) && (character.type) && (character.rank) && (!character.saved)) {
-		document.querySelectorAll("#charControls button").forEach(button => button.disabled = false);
+		document.querySelector("#charControls button:first-child").disabled = false;
 	} else {
-		document.querySelectorAll("#charControls button").forEach(button => button.disabled = true);
+		document.querySelector("#charControls button:first-child").disabled = true;
+	}
+
+	// Share button
+	if ((character.name) && (character.type) && (character.rank)) {
+		document.querySelector("#charControls button:last-child").disabled = false;
+	} else {
+		document.querySelector("#charControls button:last-child").disabled = true;
 	}
 }
 
@@ -268,23 +284,29 @@ function initializePageEditable() {
 	tmpElement.addEventListener("change", e => { setCharRank(e.target.value); });
 	document.querySelector("#charRank").appendChild(tmpElement);
 
+	if (character.rank) {
+		var curRank = abilityData.rankList.find(rank => rank.tag === character.rank);
+		document.querySelector("#rollInfo").innerHTML = curRank.hp + " HP, d" + curRank.die + "+" + curRank.bonus;
+	}
+
 	tmpElement = document.querySelector("#charControls");
 
 	tmpChild = document.createElement("button");
 	tmpChild.type = "button";
 	tmpChild.innerHTML = "Save";
-	tmpChild.disabled = true;
+	//tmpChild.disabled = true;
 	tmpChild.addEventListener("click", saveCharacterBuild);
 	tmpElement.appendChild(tmpChild);
 
 	tmpChild = document.createElement("button");
 	tmpChild.type = "button";
 	tmpChild.innerHTML = "Share";
-	tmpChild.disabled = true;
+	//tmpChild.disabled = true;
 	tmpChild.addEventListener("click", shareCharacterBuild);
 	tmpElement.appendChild(tmpChild);
 
 	generateAbilityLists();
+	setActionable();
 }
 
 // Adds elements to the page for the user in view mode.
@@ -414,7 +436,8 @@ function deserializeBuildData(dataBlock) {
 }
 
 // Saves character to local storage.
-function saveCharacterBuild() {
+function saveCharacterBuild(e) {
+	e.stopPropagation();
 	var charList = JSON.parse(localStorage.getItem(listToken) || "[]");
 	var buildData = serializeBuildData();
 
@@ -427,6 +450,8 @@ function saveCharacterBuild() {
 	localStorage.setItem(storageToken + character.name, buildData);
 
 	character.saved = true;
+	setFooter("Saved!", character.name + " was saved successfully.");
+	setActionable(false);
 }
 
 // Shows a popup with a link to the character sheet.
@@ -449,35 +474,56 @@ function hideModal() {
 	document.querySelectorAll("#modalBG, #modalBG > section").forEach(element => element.className = "");
 }
 
+function validateAbilityData() {
+	for (var i = 0; i < abilityData.rankList.length; i++) {
+		var curList = abilityData[abilityData.rankList[i].tag]?.abilities;
+
+		if (curList) {
+			for (var x = 0; x < curList.length; x++) {
+				var testMe = curList.filter(item => item.key === curList[x].key);
+
+				if (testMe.length > 1) {
+					alert("Data error: Duplicate key in " + abilityData.rankList[i].tag.toUpperCase() + " abilities: " + curList[x].key);
+					return false;
+				}
+			}
+		}
+	}
+	return true;
+}
+
 // STARTUP PHASE - Pull in our data JSON, then try to populate the page.
 fetch("./assets/data/abilities.json").then(response => {
 	if (response.ok) {
 		response.json().then(data => {
 			abilityData = data;
 
-			var params = new URLSearchParams(window.location.search);
+			if (validateAbilityData()) {
+				var params = new URLSearchParams(window.location.search);
 
-			if (params.has("data")) {
-				deserializeBuildData(params.get("data"));
-				character.name = params.get("n");
+				if (params.has("data")) {
+					deserializeBuildData(params.get("data"));
+					character.name = params.get("n");
 
-				initializePageStatic();
-			} else {
-				if (params.has("n")) {
-					var tmpName = params.get("n");
-					var charData = localStorage.getItem(storageToken + tmpName);
+					initializePageStatic();
+				} else {
+					if (params.has("n")) {
+						var tmpName = params.get("n");
+						var charData = localStorage.getItem(storageToken + tmpName);
 
-					if (charData) {
-						deserializeBuildData(charData);
-						character.name = tmpName;
+						if (charData) {
+							deserializeBuildData(charData);
+							character.name = tmpName;
+							character.saved = true;
+						}
+						else {
+							showErrorModal("Character '" + tmpName + "' has not been saved on this machine!");
+							return;
+						}
 					}
-					else {
-						showErrorModal("Character '" + tmpName + "' has not been saved on this machine!");
-						return;
-					}
+
+					initializePageEditable();
 				}
-
-				initializePageEditable();
 			}
 		});
 	}

@@ -196,7 +196,7 @@
 			{
 				"name": "Psychometry",
 				"description": "An ability that allows the user to see glimpses and visions to an object's history, merely by touching it.  The visions are seldom clear, and can be dangerous as all sensations tied to the object can affect the user as well.",
-				"key": "PS0",
+				"key": "PY0",
 				"restricted": "fu"
 			},
 			{
@@ -220,7 +220,7 @@
 			{
 				"name": "Telepathy",
 				"description": "used to communicate with other individuals over short or vast distances.  Depending on the level of connection to the Force.  Communication is limited to <u>vague</u> feelings and impressions only.",
-				"key": "TP0",
+				"key": "TL0",
 				"restricted": "fu"
 			},
 			{
@@ -406,7 +406,7 @@
 				"restricted": "fu"
 			},
 			{
-				"name": "Force Lightning",
+				"name": "Force Lightning 1",
 				"description": "<b>Requires Force Shock</b> This ability allows its user to cast a single, and optionally continuous, stream of electricity toward their opponent, rather than just a simple jolt.",
 				"key": "FL0",
 				"requires": [ "Force Shock" ],
@@ -459,9 +459,9 @@
 			},
 			{
 				"name": "Lightning Shield",
-				"description": "<b>Requires Force Lightning</b> This is a variation of Force Lighning in which a shield of lightning covers and protects the user.  Its effects can extend beyond the immediate space near the user, and can shock enemies in the distance.  It can lower damage taken by the user, and can also enhance the saber damage the user deals out.  It is not the most powerful form of Force lightning, however; it still takes mastery in the art of Force Lightning and high concentration to use Lightning Shield.",
+				"description": "<b>Requires Force Lightning 1</b> This is a variation of Force Lighning in which a shield of lightning covers and protects the user.  Its effects can extend beyond the immediate space near the user, and can shock enemies in the distance.  It can lower damage taken by the user, and can also enhance the saber damage the user deals out.  It is not the most powerful form of Force lightning, however; it still takes mastery in the art of Force Lightning and high concentration to use Lightning Shield.",
 				"key": "LD0",
-				"requires": [ "Force Lightning" ],
+				"requires": [ "Force Lightning 1" ],
 				"restricted": "fu"
 			},
 			{
@@ -486,9 +486,9 @@
 			},
 			{
 				"name": "Sith Barrage",
-				"description": "<b>Requires Force Lightning</b> This ability creates a series of lightning strikes, originating from the ground, that emanate outward from the caster in a linear fashion.  With enough practice, a powerful user could increase the number of bolts they are able to create at any one time.",
+				"description": "<b>Requires Force Lightning 1</b> This ability creates a series of lightning strikes, originating from the ground, that emanate outward from the caster in a linear fashion.  With enough practice, a powerful user could increase the number of bolts they are able to create at any one time.",
 				"key": "SB0",
-				"requires": [ "Force Lightning" ],
+				"requires": [ "Force Lightning 1" ],
 				"restricted": "fu"
 			},
 			{
@@ -568,19 +568,19 @@
 				"key": "HG0"
 			},
 			{
-				"name": "ISBS 1 - Cryo-Spray",
+				"name": "ISBS I - Cryo-Spray",
 				"description": "<b>Requires First Aid 1</b> A product developed by the Imperial Science Bureau.  Often applied in a spray form - it freezes the area the spray is applied to both to soothe the afflicted area from scrapes, cuts, burns, and to prevent infection by giving it an icy protective layer long enough to seek proper medical attention.",
 				"key": "IS1",
 				"requires": [ "First Aid 1" ]
 			},
 			{
-				"name": "ISBS 2 - PANIC",
+				"name": "ISBS II - PANIC",
 				"description": "<b>Requires Biotic Science 1</b> A product of the Imperial Science Bureau - codenamed \"PANIC\".  An injectable serum that has been known to render the subject into a state of <b>P</b>aranoia, and <b>a</b>nxiety - often leading to <b>n</b>ervous breakdowns, <b>i</b>rrationality and <b>c</b>onsternation.  Since this is a rather volatile substance, it degrades when exposed to outside atmospheres, rendering it useless.  Therefore, this substance can only be injected via syringe.",
 				"key": "IS2",
 				"requires": [ "Biotic Science 1" ]
 			},
 			{
-				"name": "ISBS 3 - Hallucinate",
+				"name": "ISBS III - Hallucinate",
 				"description": "<b>Requires Biotic Science 1</b> Another product of the Imperial Science Bureau - codenamed \"Hallucinate\".  They didn't have any clever acronyms for this one.  This serum wreaks havoc in the sensory cortex of the brain - causing the user to suffer through a variety of visual, auditory, and other sensory hallucination.  With proper external stimuli, the individual under the influence of this substance can be made to be manipulated to a degree but at risk of them going into a frenzy.  Prolonged use/exposure to this substance can result in permanent, irreversible mental instability.",
 				"key": "IS3",
 				"requires": [ "Biotic Science 1" ]
@@ -645,6 +645,637 @@
 				"description": "A two-part implant that includes a sensor planted in the vocal chords of the user to detect their vibrations - which are then transmitted to the amplifier implanted in the mouth that amplifies the sound loud enough to consider it a sonic weapon capable of breaking glass, windows, and eardrums.",
 				"key": "VE0",
 				"restricted": "nfu"
+			}
+		]
+	},
+	"o1": {
+		"abilities": [
+			{
+				"name": "Ballistakinesis",
+				"description": "<b>Requires Telekinesis 2</b>",
+				"key": "BK0",
+				"requires": [ "Telekinesis 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Battlemind",
+				"description": "<b>Requires Force Rage</b>",
+				"key": "BM0",
+				"requires": [ "Force Rage" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Chain Lightning",
+				"description": "<b>Requires Force Lightning 1 and Telekinesis 2</b>",
+				"key": "CL0",
+				"requires": [ "Force Lightning 1", "Telekinesis 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Consume Essence",
+				"description": "",
+				"key": "CE0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Cryokinesis 1",
+				"description": "",
+				"key": "CK1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Dark Healing 3",
+				"description": "<b>Requires Dark Healing 2</b>",
+				"key": "DH3",
+				"requires": [ "Dark Healing 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Destroy Droid",
+				"description": "<b>Requires Disable Droid</b>",
+				"key": "DD1",
+				"requires": [ "Disable Droid" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Disable Droid",
+				"description": "<b>Requires Stun Droid</b>",
+				"key": "DD0",
+				"requires": [ "Stun Droid" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Drain Knowledge",
+				"description": "",
+				"key": "DK0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Electronic Manipulation",
+				"description": "<b>Requires Mind Control and Tutaminis 2</b>",
+				"key": "EM0",
+				"requires": [ "Mind Control", "Tutaminis 2"],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Barrier 2",
+				"description": "<b>Requires Force Barrier 1</b>",
+				"key": "FB2",
+				"requires": [ "Force Barrier 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Concealment 2",
+				"description": "<b>Requires Force Concealment 1</b>",
+				"key": "FC2",
+				"requires": [ "Force Concealment 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Destruction",
+				"description": "",
+				"key": "FD0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Fear",
+				"description": "",
+				"key": "FF0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Horror",
+				"description": "<b>Requires Force Fear</b>",
+				"key": "FH0",
+				"requires": [ "Force Fear" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Illusion 2",
+				"description": "<b>Requires Force Illusion 1</b>",
+				"key": "FI2",
+				"requires": [ "Force Illusion 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Illusion 3",
+				"description": "<b>Requires Force Illusion 2</b>",
+				"key": "FI3",
+				"requires": [ "Force Illusion 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Lightning 2",
+				"description": "<b>Requires Force Lightning 1/b>",
+				"key": "FL2",
+				"requires": [ "Force Lightning 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Tempest",
+				"description": "<b>Requires Force Lightning 1</b>",
+				"key": "FT0",
+				"requires": [ "Force Lightning 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Weapon",
+				"description": "",
+				"key": "FW0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Inertia",
+				"description": "",
+				"key": "IT0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Intuitive Astrogation",
+				"description": "",
+				"key": "IA0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Kinetite",
+				"description": "<b>Requires Force Lightning 1</b>",
+				"key": "KT0",
+				"requires": [ "Force Lightning 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Lightning Burst",
+				"description": "<b>Requires Force Lightning 1</b>",
+				"key": "LB0",
+				"requires": [ "Force Lightning 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Lighning Grenade",
+				"description": "<b>Requires Force Lightning 1</b>",
+				"key": "LG0",
+				"requires": [ "Force Lightning 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Mechu-Deru",
+				"description": "",
+				"key": "MD0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Protection Bubble",
+				"description": "",
+				"key": "PB0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Pyrokinesis 3",
+				"description": "<b>Requires Pyrokinesis 2</b>",
+				"key": "PK3",
+				"requires": [ "Pyrokinesis 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Sith Alchemy 2",
+				"description": "<b>Requires Dark Healing 2 and Sith Alchemy 1</b>",
+				"key": "SA2",
+				"requires": [ "Dark Healing 2", "Sith Alchemy 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Stasis Field",
+				"description": "<b>Requires Force Stasis</b>",
+				"key": "SF0",
+				"requires": [ "Force Stasis" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Tutaminis 2",
+				"description": "<b>Requires Tutaminis 1</b>",
+				"key": "TU2",
+				"requires": [ "Tutaminis 1" ],
+				"restricted": "fu"
+			},
+
+
+			{
+				"name": "Attack Drone 2",
+				"description": "<b>Requires Attack Drone 1</b>",
+				"key": "AD2",
+				"requires": [ "Attack Drone 1" ]
+			},
+			{
+				"name": "Banshee",
+				"description": "",
+				"key": "BE0"
+			},
+			{
+				"name": "Biotic Science 2",
+				"description": "<b>Requires Biotic Science 1</b>",
+				"key": "BS2",
+				"requires": [ "Biotic Science 1" ]
+			},
+			{
+				"name": "Carbonite Rifle",
+				"description": "",
+				"key": "CR0"
+			},
+			{
+				"name": "Drone Protocols 2",
+				"description": "<b>Requires Drone Protocols 1</b>",
+				"key": "DP2",
+				"requires": [ "Drone Protocols 1" ]
+			},
+			{
+				"name": "Electro-Barrier Overload",
+				"description": "<b>Requires Electro-Barrier Shield Upgrade</b>",
+				"key": "EO0",
+				"requires": [ "Electro-Barrier Shield Upgrade" ],
+				"restricted": "nfu"
+			},
+			{
+				"name": "Electronet",
+				"description": "",
+				"key": "EN0"
+			},
+			{
+				"name": "Electro Whip",
+				"description": "",
+				"key": "EW0"
+			},
+			{
+				"name": "First Aid 3",
+				"description": "<b>Requires Biotic Science 2 and First Aid 2",
+				"key": "FA3",
+				"requires": [ "Biotic Science 2", "First Aid 2" ]
+			},
+			{
+				"name": "Force Field Generator",
+				"description": "",
+				"key": "FG0"
+			},
+			{
+				"name": "Grenade Salvo",
+				"description": "<b>Requires Grenade Certification 1 and Jetpack</b>",
+				"key": "GS0",
+				"requires": [ "Grenade Certification 1", "Jetpack" ]
+			},
+			{
+				"name": "ISBS IV - BERZERKER",
+				"description": "<b>Requires Biotic Science 2</b>",
+				"key": "IS4",
+				"requires": [ "Biotic Science 2" ]
+			},
+			{
+				"name": "ISBS V - HYSTERIA",
+				"description": "<b>Requires ISBS II - Panic</b>",
+				"key": "IS5",
+				"requires": [ "ISBS II - PANIC" ]
+			},
+			{
+				"name": "ISBS VI - SCORCH",
+				"description": "<b>Requires Biotic Science 2</b>",
+				"key": "IS6",
+				"requires": [ "Biotic Science 2" ]
+			},
+			{
+				"name": "ISBS VII - BRUTE",
+				"description": "<b>Requires Biotic Science 2</b>",
+				"key": "IS7",
+				"requires": [ "Biotic Science 2" ]
+			},
+			{
+				"name": "ISBS X - Frostbite",
+				"description": "<b>Requires Biotic Science 2</b>",
+				"key": "IS0",
+				"requires": [ "Biotic Science 2" ]
+			},
+			{
+				"name": "Jet Slam",
+				"description": "<b>Requires Jetpack and Kinetic Shield Upgrade</b>",
+				"key": "JS0",
+				"requires": [ "Jetpack", "Kinetic Shield Upgrade" ]
+			},
+			{
+				"name": "Melee Training 2",
+				"description": "<b>Requires Melee Training 1</b>",
+				"key": "MT2",
+				"requires": [ "Melee Training 1" ]
+			},
+			{
+				"name": "Neural Defense Implant",
+				"description": "",
+				"key": "ND0",
+				"restricted": "nfu"
+			},
+			{
+				"name": "Scattergun",
+				"description": "",
+				"key": "SG0"
+			},
+			{
+				"name": "Seeker Drone - Scanner Upgrade",
+				"description": "<b>Requires Seeker Drone</b>",
+				"key": "SU0",
+				"requires": [ "Seeker Drone 1" ]
+			},
+			{
+				"name": "Sentry Turret 1",
+				"description": "",
+				"key": "ST1"
+			},
+			{
+				"name": "Shield Drain",
+				"description": "",
+				"key": "SD0"
+			},
+			{
+				"name": "Shield Probe 2",
+				"description": "<b>Requires Shield Probe 1</b>",
+				"key": "SP2",
+				"requires": [ "Shield Probe 1" ]
+			},
+			{
+				"name": "Slicing 2",
+				"description": "<b>Requires Slicing 1</b>",
+				"key": "SL2",
+				"requires": [ "Slicing 1" ]
+			}
+		]
+	},
+	"o4": {
+		"abilities": [
+			{
+				"name": "Alter Environment",
+				"description": "",
+				"key": "AE0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Consitor Sato",
+				"description": "<b>Requires Sith Alchemy 3</b>",
+				"key": "CS0",
+				"requires": [ "Sith Alchemy 3" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Cryokinesis 2",
+				"description": "<b>Requires Cryokinesis 1</b>",
+				"key": "CK2",
+				"requires": [ "Cryokinesis 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Darkshear",
+				"description": "",
+				"key": "DS0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Dark Energy Trap",
+				"description": "",
+				"key": "DE0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Dark Transfer",
+				"description": "",
+				"key": "DT0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Dopplegänger",
+				"description": "<b>Requires Force Illusion 3</b>",
+				"key": "DG0",
+				"requires": [ "Force Illusion 3" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Drain",
+				"description": "",
+				"key": "FD0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Insanity",
+				"description": "<b>Requires Force Horror</b>",
+				"key": "FI0",
+				"requires": [ "Force Horror" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Maelstrom",
+				"description": "<b>Rerquires Force Lightning 1, Protection Bubble, and Telekinesis 2</b>",
+				"key": "FM0",
+				"requires": [ "Force Lightning 1", "Protection Bubble", "Telekinesis 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Sphere",
+				"description": "<b>Requires Kinetite</b>",
+				"key": "FP0",
+				"requires": [ "Kinetite" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Storm",
+				"description": "<b>Requires Chain Lightning and Force Lightning 2</b>",
+				"key": "FS0",
+				"requires": [ "Chain Lightning", "Force Lightning 2"],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Subjugate",
+				"description": "",
+				"key": "FS1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Lightning Bomb",
+				"description": "<b>Requires Force Lightning 1</b>",
+				"key": "LB0",
+				"requires": [ "Force Lightning 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Memory Rub",
+				"description": "",
+				"key": "MR0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Mind Shard",
+				"description": "",
+				"key": "MS0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Morichro",
+				"description": "<b>Requires Sith Alchemy 3</b>",
+				"key": "MO0",
+				"requires": [ "Sith Alchemy 3" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Qâzoi Kyantuska",
+				"description": "<b>Requires Mind Control</b>",
+				"key": "QK0",
+				"requires": [ "Mind Control" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Sith Alchemy 3",
+				"description": "<b>Requires Dark Healing 3 and Sith Alchemy 2</b>",
+				"key": "SA3",
+				"requires": [ "Dark Healing 3", "Sith Alchemy 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Sith Seeker",
+				"description": "<b>Requires Force Lightning 1</b>",
+				"key": "SS0",
+				"requires": [ "Force Lightning 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Sutta Chwituskak",
+				"description": "",
+				"key": "SC0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Tutaminus 3",
+				"description": "<b>Requires Protection Bubble and Tutaminis 2</b>",
+				"key": "TU3",
+				"requires": [ "Protection Bubble", "Tutaminis 2" ],
+				"restricted": "fu"
+			},
+
+
+			{
+				"name": "Attack Drone 3",
+				"description": "<b>Requires Attack Drone 2</b>",
+				"key": "AD3",
+				"requires": [ "Attack Drone 2" ]
+			},
+			{
+				"name": "Biotic Science 3",
+				"description": "<b>Requires Biotic Science 2</b>",
+				"key": "BS3",
+				"requires": [ "Biotic Science 2" ]
+			},
+			{
+				"name": "Bioweapons Research Authorization",
+				"description": "<b>Requires Biotic Science 3</b>",
+				"key": "BW0",
+				"requires": [ "Biotic Science 3" ]
+			},
+			{
+				"name": "Cognitive Enhancement Implant",
+				"description": "",
+				"key": "CE0",
+				"restricted": "nfu"
+			},
+			{
+				"name": "Droid Mechanic Certification 2",
+				"description": "<b>Requires Droid Mechanic Certification 2</b>",
+				"key": "DM3",
+				"requires": [ "Droid Mechanic Certification 2" ]
+			},
+			{
+				"name": "Drone Protocols 3",
+				"description": "<b>Requires Drone Protocols 2</b>",
+				"key": "DP3",
+				"requires": [ "Drone Protocols 2" ]
+			},
+			{
+				"name": "Electronet/Whip Upgrade - Overcharge",
+				"description": "<b>Requires Electronet or Electro Whip</b>",
+				"key": "EO0",
+				"requiresAny": [ "Electronet", "Electro Whip" ]
+			},
+			{
+				"name": "Experimental Holographic Body Double",
+				"description": "",
+				"key": "HD0",
+				"restricted": "nfu"
+			},
+			{
+				"name": "Experimental Protective Armor",
+				"description": "",
+				"key": "EP0"
+			},
+			{
+				"name": "Heavy Artillery",
+				"description": "",
+				"key": "HA0"
+			},
+			{
+				"name": "ISBS VIII - NERUAL DEGENERATOR",
+				"description": "<b>Requires Biotic Science 3</b>",
+				"key": "IS8",
+				"requires": [ "Biotic Science 3" ]
+			},
+			{
+				"name": "ISBS IX - THERMALGENESIS",
+				"description": "<b>Requires Biotic Science 3</b>",
+				"key": "IS9",
+				"requires": [ "Biotic Science 3" ]
+			},
+			{
+				"name": "Seeker Drone 2 (Stealth Upgrade)",
+				"description": "<b>Requires Seeker Drone 1</b>",
+				"key": "SD2",
+				"requires": [ "Seeker Drone 1"]
+			},
+			{
+				"name": "Sentry Turret 2 - Advanced Prototype",
+				"description": "<b>Requires Sentry Turret 2</b>",
+				"key": "ST2",
+				"requires": [ "Sentry Turret 1" ]
+			},
+			{
+				"name": "Shatter Beam",
+				"description": "<b>Requires Drone Protocols 1</b>",
+				"key": "SB0",
+				"requires": [ "Drone Protocols 1" ]
+			},
+			{
+				"name": "Slicing 3",
+				"description": "<b>Requires Slicing 2</b>",
+				"key": "SL3",
+				"requires": [ "Slicing 2" ]
+			}
+		]
+	},
+	"o5": {
+		"abilities": [
+			{
+				"name": "Art of the Small",
+				"description": "<b>Requires Force Concealment 1 and Sith Alchemy 3</b>",
+				"key": "AS0",
+				"requires": [ "Force Concealment 1", "Sith Alchemy 3" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Shadow",
+				"description": "",
+				"key": "FS0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Sever Force",
+				"description": "<b>Requires Force Suppression</b>",
+				"key": "SF0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Telekinetice Lightsaber Combat",
+				"description": "<b>Requires Ballistakinesis and Telekinesis 3</b>",
+				"key": "TK4",
+				"requires": [ "Ballistakinesis", "Telekinesis 3" ],
+				"restricted": "fu"
 			}
 		]
 	}

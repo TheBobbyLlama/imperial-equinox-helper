@@ -1,6 +1,7 @@
 const noteStorageToken = "SWTOR[IE]Notes";
 const sectionStorageToken = "SWTOR[IE]Sections";
 const charListToken = "[IECharList]";
+const characterToken = "[IEChar]";
 
 var inputText = document.getElementById("inputText");
 var outputText = document.getElementById("outputText");
@@ -162,12 +163,47 @@ function showCharSelectModal() {
 	buttonHolder.innerHTML = "";
 
 	charList.forEach(character => {
+		var tmpDiv = document.createElement("div");
 		var tmpButton = document.createElement("button");
 		tmpButton.type = "button";
 		tmpButton.innerHTML = character;
 		tmpButton.addEventListener("click", () => { window.open(window.location.href + "charsheet.html?n=" + encodeURI(character)); hideModal(); });
-		buttonHolder.appendChild(tmpButton);
+		tmpDiv.appendChild(tmpButton);
+
+		tmpButton = document.createElement("button");
+		tmpButton.type = "button";
+		tmpButton.className = "buttonDelete";
+		tmpButton.innerHTML = "X";
+		tmpButton.addEventListener("click", () => { hideModal(); showDeleteModal(character); });
+		tmpDiv.appendChild(tmpButton);
+
+		buttonHolder.appendChild(tmpDiv);
 	})
+}
+
+function showDeleteModal(name) {
+	var modal = document.querySelector("#deleteModal");
+
+	document.querySelector("#modalBG").className = "show";
+	modal.className = "show";
+	modal.setAttribute("data-name", name);
+	modal.querySelector("h2").innerHTML = "Delete " + name + "?";
+}
+
+function deleteCharacter(e) {
+	var charList = JSON.parse(localStorage.getItem(charListToken) || "[]");
+	var charName = e.target.parentElement.parentElement.getAttribute("data-name");
+	var listIndex = charList.indexOf(charName);
+
+	if (listIndex > -1) {
+		charList.splice(listIndex, 1);
+		localStorage.setItem(charListToken, JSON.stringify(charList));
+	}
+
+	localStorage.removeItem(characterToken + charName);
+
+	hideModal();
+	showCharSelectModal();
 }
 
 function hideModal() {
@@ -187,5 +223,7 @@ notesField.addEventListener("change", () => { localStorage.setItem(noteStorageTo
 document.querySelector("nav").addEventListener("click", showCharSelectModal);
 document.querySelector("#blankChar").addEventListener("click", () => { window.open(window.location.href + "charsheet.html"); hideModal(); });
 document.querySelector("#dismissSelect").addEventListener("click", hideModal);
+document.querySelector("#deleteChar").addEventListener("click", deleteCharacter);
+document.querySelector("#deleteCancel").addEventListener("click", () => { hideModal(); showCharSelectModal(); });
 
 initializeSections();
