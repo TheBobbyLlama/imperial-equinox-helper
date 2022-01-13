@@ -7,14 +7,14 @@ var pageFooter = document.querySelector("footer");
 
 var character = {
 	type: "",
-	rank: "",
+	rank: ""
 }
 
 // Sets the info to be displayed in the footer, or hides it if there is no info.
 function setFooter(header, info) {
-	if ((header) && (info)) {
+	if (header) {
 		pageFooter.querySelector("h3").innerHTML = header;
-		pageFooter.querySelector("div").innerHTML = info;
+		pageFooter.querySelector("div").innerHTML = info || "<i>No data available.</i>";
 		pageFooter.style.display = "block";
 		document.body.style.marginBottom = (20 + pageFooter.clientHeight) + "px";
 	} else {
@@ -24,11 +24,22 @@ function setFooter(header, info) {
 
 // Lookup function for the master ability list.
 function findAbilityByName(name) {
-	for (var i = 0; i < abilityData.rankList.length; i++) {
-		var testMe = abilityData[abilityData.rankList[i].tag]?.abilities.find(ability => ability.name === name);
+	for (let i = 0; i < abilityData.rankList.length; i++) {
+		let testMe = abilityData[abilityData.rankList[i].tag]?.abilities.find(ability => ability.name === name);
 
 		if (testMe) {
 			return { rank: abilityData.rankList[i].tag, ability: testMe };
+		}
+	}
+
+	var restrictedLists = Object.entries(abilityData.restricted);
+
+	for (let i = 0; i < restrictedLists.length; i++) {
+		restrictedLists[i];
+		let testMe = restrictedLists[i][1].find(ability => ability.name === name);
+
+		if (testMe) {
+			return { rank: "restricted", ability: testMe };
 		}
 	}
 }
@@ -48,7 +59,13 @@ function validateAbilities() {
 		let rankKey = rankSections[r].getAttribute("data-rank");
 		let abilityList = rankSections[r].querySelectorAll("div[data-key]");
 		let abilityCount = (character[rankKey] || []).length;
-		let abilityMax = abilityData.rankList.find(rank => rank.tag === character.rank).limits[r];
+		let abilityMax;
+		
+		if (rankKey === "restricted") {
+			abilityMax = abilityData.rankList.find(rank => rank.tag === character.rank).restrictedLimit;
+		} else {
+			abilityMax = abilityData.rankList.find(rank => rank.tag === character.rank).limits[r];
+		}
 
 		if (abilityMax > 0) {
 			rankSections[r].querySelector("h2 > span").innerHTML = "(" + abilityCount + "/" + abilityMax + ")";
@@ -59,6 +76,10 @@ function validateAbilities() {
 		for (var a = 0; a < abilityList.length; a++) {
 			let curAbility = findAbilityByName(abilityList[a].querySelector("div").innerHTML)?.ability;
 			if (curAbility) {
+				if (curAbility.requires) {
+					findAbilityByName(curAbility.requires[0]);
+				}
+
 				if (((curAbility.requires) && (curAbility.requires.find(findMe => { var testMe = findAbilityByName(findMe); return !abilitySelected(testMe.rank, testMe.ability.key); })))
 					|| ((curAbility.requiresAny) && (!curAbility.requiresAny.filter(findMe => { var testMe = findAbilityByName(findMe); return abilitySelected(testMe.rank, testMe.ability.key)}).length))) {
 					if (abilityList[a].className.indexOf("invalid") < 0) {
@@ -119,70 +140,114 @@ function toggleAbility(e) {
 	setActionable(true);
 }
 
+function generateAbilityCategory(tag, abilityList) {
+	var addCount = 0;
+	var tmpElement;
+	var tmpChild;
+	var rankTarget = abilityData.rankList.findIndex(rank => rank.tag === character.rank);
+	var curBlock = document.createElement("div");
+	curBlock.setAttribute("data-rank", tag);
+
+	abilityList.forEach(ability => {
+		// Force Users cannot have non-Force abilities until they make Apprentice.
+		if (((!ability.restricted) || (ability.restricted === character.type))
+		&& ((character.type !== "fu") || (ability.restricted === "fu") || (rankTarget > 0))) {
+			tmpElement = document.createElement("div");
+			tmpElement.setAttribute("data-key", ability.key);
+
+			if (ability.restricted) {
+				tmpElement.className = "restrict" + ability.restricted.toUpperCase();
+			}
+
+			tmpChild = document.createElement("input");
+			tmpChild.setAttribute("type", "checkbox");
+			tmpChild.addEventListener("change", toggleAbility);
+
+			if (character[tag]?.find(item => item === ability.key)) {
+				tmpChild.checked = true;
+			}
+			tmpElement.appendChild(tmpChild);
+
+			tmpChild = document.createElement("div");
+			tmpChild.innerHTML = ability.name;
+			tmpElement.appendChild(tmpChild);
+
+			tmpElement.addEventListener("click", (e) => { setFooter(ability.name, ability.description); e.stopPropagation(); });
+			curBlock.appendChild(tmpElement);
+			addCount++;
+		}
+	});
+
+	return [addCount, curBlock];
+}
+
 // Fired when type and rank are selected, generates the appropriate skill lists.
 function generateAbilityLists() {
 	document.querySelectorAll("#characterSheet > .subsection").forEach(element => element.remove());
 
 	if ((character.type) && (character.rank)) {
+		var curHolder;
 		var tmpElement;
-		var tmpChild;
 		var rankTarget = abilityData.rankList.findIndex(rank => rank.tag === character.rank);
 		var charSheet = document.querySelector("#characterSheet");
 
-		for (var i = 0; i <= rankTarget; i++) {
+		for (let i = 0; i <= rankTarget; i++) {
 			var curRankAbilities = abilityData[abilityData.rankList[i].tag]?.abilities;
 
 			if (curRankAbilities?.length) {
-				var addCount = 0;
-				var curHolder = document.createElement("div");
+				curHolder = document.createElement("div");
 				curHolder.className = "subsection";
 				curHolder.setAttribute("data-rank", abilityData.rankList[i].tag);
-
+			
 				tmpElement = document.createElement("h2");
 				tmpElement.innerHTML = abilityData.rankList[i][character.type] + " Abilities <span></span>";
 				curHolder.appendChild(tmpElement);
 
-				var curBlock = document.createElement("div");
-				curBlock.setAttribute("data-rank", abilityData.rankList[i].tag);
+				var addResult = generateAbilityCategory(abilityData.rankList[i].tag, curRankAbilities);
 
-				curRankAbilities.forEach(ability => {
-					// Force Users cannot have non-Force abilities until they make Apprentice.
-					if (((!ability.restricted) || (ability.restricted === character.type))
-					&& ((character.type !== "fu") || (ability.restricted === "fu") || (rankTarget > 0))) {
-						tmpElement = document.createElement("div");
-						tmpElement.setAttribute("data-key", ability.key);
-
-						if (ability.restricted) {
-							tmpElement.className = "restrict" + ability.restricted.toUpperCase();
-						}
-
-						tmpChild = document.createElement("input");
-						tmpChild.setAttribute("type", "checkbox");
-						tmpChild.addEventListener("change", toggleAbility);
-
-						if (character[abilityData.rankList[i].tag]?.find(item => item === ability.key)) {
-							tmpChild.checked = true;
-						}
-						tmpElement.appendChild(tmpChild);
-
-						tmpChild = document.createElement("div");
-						tmpChild.innerHTML = ability.name;
-						tmpElement.appendChild(tmpChild);
-
-						tmpElement.addEventListener("click", (e) => { setFooter(ability.name, ability.description); e.stopPropagation(); });
-						curBlock.appendChild(tmpElement);
-						addCount++;
-					}
-				});
-
-				if (addCount) {
-					curHolder.appendChild(curBlock);
+				if (addResult[0]) {
+					curHolder.appendChild(addResult[1]);
 					charSheet.appendChild(curHolder);
 				} else {
-					curBlock.remove();
+					addResult[1].remove();
 					curHolder.remove();
 				}
 			}
+		}
+
+		var restrictedCount = 0;
+
+		curHolder = document.createElement("div");
+		curHolder.className = "subsection";
+		curHolder.setAttribute("data-rank", "restricted");
+	
+		tmpElement = document.createElement("h2");
+		tmpElement.innerHTML = "Restricted Abilities <span></span>";
+		curHolder.appendChild(tmpElement);
+
+		for (let i = 0; i <= rankTarget; i++) {
+			var curRankAbilities = abilityData.restricted[abilityData.rankList[i].tag];
+			var tmpHeader = document.createElement("h3");
+			tmpHeader.innerHTML = abilityData.rankList[i][character.type];
+
+			if (curRankAbilities?.length) {
+				var addResult = generateAbilityCategory("restricted", curRankAbilities);
+
+				if (addResult[0]) {
+					curHolder.appendChild(tmpHeader);
+					curHolder.appendChild(addResult[1]);
+					restrictedCount += addResult[0];
+				} else {
+					tmpHeader.remove();
+					addResult[1].remove();
+				}
+			}
+		}
+
+		if (restrictedCount) {
+			charSheet.appendChild(curHolder);
+		} else {
+			curHolder.remove();
 		}
 	}
 
@@ -250,7 +315,7 @@ function initializePageEditable() {
 
 	tmpElement = document.createElement("input");
 	tmpElement.setAttribute("type", "text");
-	tmpElement.setAttribute("maxlength", "32");
+	tmpElement.setAttribute("maxlength", "20");
 	tmpElement.setAttribute("placeholder", "Character Name");
 
 	if (character.name) {
@@ -309,6 +374,29 @@ function initializePageEditable() {
 	setActionable();
 }
 
+function createAbilityBlock(tag, abilityList) {
+	var curBlock = document.createElement("div");
+	curBlock.setAttribute("data-rank", tag);
+
+	abilityList.forEach(ability => {
+		tmpElement = document.createElement("div");
+		tmpElement.setAttribute("data-key", ability.key);
+
+		if (ability.restricted) {
+			tmpElement.className = "restrict" + ability.restricted.toUpperCase();
+		}
+
+		tmpChild = document.createElement("div");
+		tmpChild.innerHTML = ability.name;
+		tmpElement.appendChild(tmpChild);
+
+		tmpElement.addEventListener("click", (e) => { setFooter(ability.name, ability.description); e.stopPropagation(); });
+		curBlock.appendChild(tmpElement);
+	});
+
+	return curBlock;
+}
+
 // Adds elements to the page for the user in view mode.
 function initializePageStatic() {
 	var tmpElement;
@@ -326,15 +414,16 @@ function initializePageStatic() {
 	document.querySelector("#rollInfo").innerHTML = curRank.hp + " HP, d" + curRank.die + "+" + curRank.bonus;
 
 	// FILL ABILITY LISTS
+	let abilityList;
 	var tmpElement;
 	var tmpChild;
 	var rankTarget = abilityData.rankList.findIndex(rank => rank.tag === character.rank);
 	var charSheet = document.querySelector("#characterSheet");
 
 	for (var i = 0; i <= rankTarget; i++) {
-		var validRankAbilities = abilityData[abilityData.rankList[i].tag]?.abilities.filter(ability => character[abilityData.rankList[i].tag].indexOf(ability.key) > -1);
+		abilityList = abilityData[abilityData.rankList[i].tag]?.abilities.filter(ability => character[abilityData.rankList[i].tag].indexOf(ability.key) > -1);
 		
-		if (validRankAbilities?.length) {
+		if (abilityList?.length) {
 			var curHolder = document.createElement("div");
 			curHolder.className = "subsection";
 			curHolder.setAttribute("data-rank", abilityData.rankList[i].tag);
@@ -343,33 +432,69 @@ function initializePageStatic() {
 			tmpElement.innerHTML = abilityData.rankList[i][character.type] + " Abilities";
 			curHolder.appendChild(tmpElement);
 
-			var curBlock = document.createElement("div");
-			curBlock.setAttribute("data-rank", abilityData.rankList[i].tag);
-
-			validRankAbilities.forEach(ability => {
-				tmpElement = document.createElement("div");
-				tmpElement.setAttribute("data-key", ability.key);
-
-				if (ability.restricted) {
-					tmpElement.className = "restrict" + ability.restricted.toUpperCase();
-				}
-
-				tmpChild = document.createElement("div");
-				tmpChild.innerHTML = ability.name;
-				tmpElement.appendChild(tmpChild);
-
-				tmpElement.addEventListener("click", (e) => { setFooter(ability.name, ability.description); e.stopPropagation(); });
-				curBlock.appendChild(tmpElement);
-			});
-
-			curHolder.appendChild(curBlock);
+			curHolder.appendChild(createAbilityBlock(abilityData.rankList[i].tag, abilityList));
 			charSheet.appendChild(curHolder);
 		}
 	}
+
+	abilityList = [];
+
+	Object.entries(abilityData.restricted).forEach(item => abilityList.push(...item[1]));
+	abilityList = abilityList.filter(ability => character.restricted.indexOf(ability.key) > -1)
+	abilityList.sort((a, b) => {
+		var keyA;
+		var keyB;
+
+		switch (a.restricted) {
+			case "fu": keyA = "1" + a.name; break;
+			case "nfu": keyA = "2" + a.name; break;
+			default: keyA = "3" + a.name;
+		}
+
+		switch (b.restricted) {
+			case "fu": keyB = "1" + b.name; break;
+			case "nfu": keyB = "2" + b.name; break;
+			default: keyB = "3" + b.name;
+		}
+
+		return keyA.localeCompare(keyB);
+	});
+
+	if (abilityList.length) {
+		var curHolder = document.createElement("div");
+		curHolder.className = "subsection";
+		curHolder.setAttribute("data-rank", "restricted");
+
+		tmpElement = document.createElement("h2");
+		tmpElement.innerHTML = "Restricted Abilities";
+		curHolder.appendChild(tmpElement);
+
+		curHolder.appendChild(createAbilityBlock("restricted", abilityList));
+		charSheet.appendChild(curHolder);
+	}
+}
+
+function encodeKey (key) {
+	var val1 = key.charCodeAt(0) - 65;
+	var val2 = key.charCodeAt(1) - 65;
+
+	return [((val1 << 2 )+ (val2 >> 4)) & 255,
+			((val2 << 4 )+ Number(key[2])) & 255 ];
+}
+
+function decodeKey(val1, val2) {
+	var tmpStr = "";
+
+	tmpStr += String.fromCharCode(65 + (val1 >> 2));
+	tmpStr += String.fromCharCode(65 + (((val1 << 4) + (val2 >> 4)) & 31));
+	tmpStr += (val2 & 3);
+
+	return tmpStr;
 }
 
 // Spits out character sheet info in a base64 string.
 function serializeBuildData() {
+	let curList;
 	var data = [];
 	var tmpDatum;
 
@@ -384,19 +509,21 @@ function serializeBuildData() {
 	data.push(tmpDatum);
 
 	for (let i = 0; i <= rankTarget; i++) {
-		var curList = character[abilityData.rankList[i].tag] || [];
+		curList = character[abilityData.rankList[i].tag] || [];
 
 		data.push(curList.length);
 
 		for (let x = 0; x < curList.length; x++) {
-			// Compact ability keys
-			let tmpVals = [];
-			tmpVals[0] = curList[x].charCodeAt(0) - 65;
-			tmpVals[1] = curList[x].charCodeAt(1) - 65;
-
-			data.push(((tmpVals[0] << 2 )+ (tmpVals[1] >> 4)) & 255);
-			data.push(((tmpVals[1] << 4 )+ Number(curList[x][2])) & 255);
+			data.push(...encodeKey(curList[x]));
 		}
+	}
+
+	curList = character.restricted || [];
+
+	data.push(curList.length);
+
+	for (let x = 0; x < curList.length; x++) {
+		data.push(...encodeKey(curList[x]));
 	}
 
 	return btoa(String.fromCharCode.apply(null, data));
@@ -420,18 +547,18 @@ function deserializeBuildData(dataBlock) {
 		tmpCnt = data[++curPos];
 
 		while (tmpCnt-- > 0) {
-			// Extract ability keys.
-			let byteData = [];
-			let tmpStr = "";
-			byteData[0] = data[++curPos];
-			byteData[1] = data[++curPos];
-
-			tmpStr += String.fromCharCode(65 + (byteData[0] >> 2));
-			tmpStr += String.fromCharCode(65 + (((byteData[0] << 4) + (byteData[1] >> 4)) & 31));
-			tmpStr += (byteData[1] & 3);
-
+			let tmpStr = decodeKey(data[++curPos], data[++curPos]);
 			character[abilityData.rankList[i].tag].push(tmpStr);
 		}
+	}
+
+	character.restricted = [];
+
+	tmpCnt = data[++curPos];
+
+	while (tmpCnt-- > 0) {
+		let tmpStr = decodeKey(data[++curPos], data[++curPos]);
+		character.restricted.push(tmpStr);
 	}
 }
 
@@ -475,11 +602,13 @@ function hideModal() {
 }
 
 function validateAbilityData() {
-	for (var i = 0; i < abilityData.rankList.length; i++) {
-		var curList = abilityData[abilityData.rankList[i].tag]?.abilities;
+	var curList;
+
+	for (let i = 0; i < abilityData.rankList.length; i++) {
+		curList = abilityData[abilityData.rankList[i].tag]?.abilities;
 
 		if (curList) {
-			for (var x = 0; x < curList.length; x++) {
+			for (let x = 0; x < curList.length; x++) {
 				var testMe = curList.filter(item => item.key === curList[x].key);
 
 				if (testMe.length > 1) {
@@ -489,6 +618,22 @@ function validateAbilityData() {
 			}
 		}
 	}
+
+	curList = [];
+
+	Object.entries(abilityData.restricted).forEach(items => {
+		curList.push(...items[1]);
+	});
+
+	for (let x = 0; x < curList.length; x++) {
+		var testMe = curList.filter(item => item.key === curList[x].key);
+
+		if (testMe.length > 1) {
+			alert("Data error: Duplicate key in restricted abilities: " + curList[x].key);
+			return false;
+		}
+	}
+
 	return true;
 }
 

@@ -303,7 +303,7 @@
 			},
 			{
 				"name": "Optical Enhancement Implant",
-				"description": "This device comes in three basic forms: an implant, eye piece, or a high-tech contact lense that must be worn or activated to be used.  It enhances long-distance visual acuity and peripheral vision with reports of increased nigh-vision.<br />Requires eyes.",
+				"description": "This device comes in three basic forms: an implant, eye piece, or a high-tech contact lense that must be worn or activated to be used.  It enhances long-distance visual acuity and peripheral vision with reports of increased night-vision.<br />Requires eyes.",
 				"key": "OE0"
 			},
 			{
@@ -851,6 +851,13 @@
 				"restricted": "fu"
 			},
 			{
+				"name": "Telekinesis 3",
+				"description": "<b>Requires Telekinesis 2</b>",
+				"key": "TK3",
+				"requires": [ "Telekinesis 2" ],
+				"restricted": "fu"
+			},
+			{
 				"name": "Tutaminis 2",
 				"description": "<b>Requires Tutaminis 1</b>",
 				"key": "TU2",
@@ -1178,7 +1185,7 @@
 				"restricted": "nfu"
 			},
 			{
-				"name": "Droid Mechanic Certification 2",
+				"name": "Droid Mechanic Certification 3",
 				"description": "<b>Requires Droid Mechanic Certification 2</b>",
 				"key": "DM3",
 				"requires": [ "Droid Mechanic Certification 2" ]
@@ -1268,14 +1275,322 @@
 				"name": "Sever Force",
 				"description": "<b>Requires Force Suppression</b>",
 				"key": "SF0",
+				"requires": [ "Force Suppression" ],
 				"restricted": "fu"
 			},
 			{
-				"name": "Telekinetice Lightsaber Combat",
+				"name": "Telekinetic Lightsaber Combat",
 				"description": "<b>Requires Ballistakinesis and Telekinesis 3</b>",
 				"key": "TK4",
 				"requires": [ "Ballistakinesis", "Telekinesis 3" ],
 				"restricted": "fu"
+			}
+		]
+	},
+	"restricted": {
+		"o1": [
+			{
+				"name": "Battle Meditation",
+				"description": "",
+				"key": "BM0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Combustion",
+				"description": "<b>Requires Telekinesis 3</b>",
+				"key": "CM0",
+				"requires": [ "Telekinesis 3" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Crucitorn",
+				"description": "",
+				"key": "CT0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Deadly Sight",
+				"description": "<b>Requires Pyrokinesis 3</b>",
+				"key": "DS0",
+				"requires": [ "Pyrokinesis 3" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Charged Striking",
+				"description": "<b>Requires Telekinesis 3</b>",
+				"key": "FC0",
+				"requires": [ "Telekinesis 3" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Crush",
+				"description": "<b>Requires Telekinesis 3</b>",
+				"key": "FX0",
+				"requires": [ "Telekinesis 3" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Fury",
+				"description": "<b>Requires Battlemind</b>",
+				"key": "FF0",
+				"requires": [ "Battlemind" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Plague",
+				"description": "<b>Requires Force Affliction</b>",
+				"key": "FP0",
+				"requires": [ "Force Affliction" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Repulse",
+				"description": "<b>Requires Force Wave and Telekinesis 3</br>",
+				"key": "FR0",
+				"requires": [ "Force Wave", "Telekinesis 3" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Travel",
+				"description": "",
+				"key": "FT0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Odojinya",
+				"description": "",
+				"key": "OJ0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Precognition",
+				"description": "",
+				"key": "PC0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Shatterpoint",
+				"description": "",
+				"key": "SP0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Transfer Essence",
+				"description": "",
+				"key": "TE0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Anti-Gravity Gauntlets",
+				"description": "",
+				"key": "AG0"
+			},
+			{
+				"name": "Artifical Intelligence Integration",
+				"description": "",
+				"key": "AI0"
+			},
+			{
+				"name": "Compression Bubble",
+				"description": "",
+				"key": "CB0"
+			},
+			{
+				"name": "Flesh-Melting Compound",
+				"description": "<b>Requires Flamethrower</b>",
+				"key": "FM0",
+				"requires": [ "Flamethrower" ]
+			},
+			{
+				"name": "Iron Body",
+				"description": "",
+				"key": "IB0"
+			},
+			{
+				"name": "Isotope-9 Mini-Bowcaster",
+				"description": "",
+				"key": "BC9"
+			},
+			{
+				"name": "Neural Amplifier (Gree Device)",
+				"description": "",
+				"key": "NA0"
+			},
+			{
+				"name": "Rail Gun (Pistol)",
+				"description": "",
+				"key": "RG0"
+			},
+			{
+				"name": "Slingshot Slug Railgun",
+				"description": "",
+				"key": "SG0"
+			},
+			{
+				"name": "Stasis Field Emitter",
+				"description": "",
+				"key": "SF0"
+			},
+			{
+				"name": "Superweapon: Javelin-Class Beams",
+				"description": "<b>Requires Personal Starship</b>",
+				"key": "JB0"
+			}
+		],
+		"o2": [
+			{
+				"name": "Dark Healing 4",
+				"description": "<b>Requires Dark Healing 3</b>",
+				"key": "DH4",
+				"requires": [ "Dark Healing 3" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Walk",
+				"description": "<b>Requires Consume Essence and Drain Knowledge</b>",
+				"key": "FW0",
+				"requires": [ "Consume Essence", "Drain Knowledge" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Phase Blade",
+				"description": "<b>Requires Wrist Blade</b>",
+				"key": "PB0"
+			},
+			{
+				"name": "Mastery of Medical Sciences",
+				"description": "<b>Requires First Aid 3</b>",
+				"key": "FA4",
+				"requires": [ "First Aid 3" ]
+			}
+		],
+		"o3": [
+			{
+				"name": "Force Wraith",
+				"description": "",
+				"key": "FG0",
+				"restricted": "fu"
+			}
+		],
+		"o4": [
+			{
+				"name": "Cryokinesis Aura",
+				"description": "<b>Requires Alter Environment and Cryokinesis 2</b>",
+				"key": "CA0",
+				"requires": [ "Alter Environment", "Cryokinesis 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Dark Rage",
+				"description": "<b>Requires Force Fury</b>",
+				"key": "DR0",
+				"requires": [ "Force Fury" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Dark Side Tendrils",
+				"description": "",
+				"restricted": "fu"
+			},
+			{
+				"name": "Dwomutsiqsa",
+				"description": "<b>Requires Force Insanity</b>",
+				"key": "DW0",
+				"requires": [ "Force Insanity" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Blast",
+				"description": "<b>Requires Force Sphere</b>",
+				"key": "FB0",
+				"requires": [ "Force Sphere" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Suppression",
+				"description": "<b>Requires Force Subjugate</b>",
+				"key": "FU0",
+				"requires": [ "Force Subjugate" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Memory Walk",
+				"description": "<b>Requires Mind Shard</b>",
+				"key": "MW0",
+				"requires": [ "Mind Shard" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Midi-Chlorian Manipulation",
+				"description": "<b>Requires Dark Healing 4 and Sith Alchemy 3</b>",
+				"key": "MM0",
+				"requires": [ "Dark Healing 4", "Sith Alchemy 3" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Reanimated Dead",
+				"description": "<b>Requires Sith Alchemy 3</b>",
+				"key": "RD0",
+				"requires": [ "Sith Alchemy 3" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Sith Holocron Creation",
+				"description": "<b>Requires Sith Alchemy 3</b>",
+				"key": "SH0",
+				"requires": [ "Sith Alchemy 3" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Bioweapons Field-Testing Authorization",
+				"description": "<b>Requires Bioweapons Research Authorization</b>",
+				"key": "BW2",
+				"requires": [ "Bioweapons Research Authorization" ]
+			},
+			{
+				"name": "Cybernetics License",
+				"description": "<b>Requires Droid Mechanic Certification 3 and Mastery of Medical Sciences</b>",
+				"key": "CL0",
+				"requires": [ "Droid Mechanic Certification 3", "Mastery of Medical Sciences" ]
+			},
+			{
+				"name": "Orbital Superweapon - Seismic Destabilizer",
+				"description": "",
+				"key": "SD0"
+			}
+		],
+		"o5": [
+			{
+				"name": "Death Field",
+				"description": "<b>Requires Force Drain</b>",
+				"key": "DF0",
+				"requires": [ "Force Drain" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Flow-Walking",
+				"description": "<b>Requires Precognition</b>",
+				"key": "WK0",
+				"requires": [ "Precognition" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Force Wormhole",
+				"description": "<b>Requires Force Maelstrom, Force Storm, and Sith Alchemy 3</b>",
+				"key": "FH0",
+				"requires": [ "Force Maelstrom", "Force Storm", "Sith Alchemy 3" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Supernova",
+				"description": "",
+				"key": "SV0",
+				"restricted": "fu"
+			},
+			{
+				"name": "Nanotechnology",
+				"description": "",
+				"key": "NT0"
 			}
 		]
 	}
