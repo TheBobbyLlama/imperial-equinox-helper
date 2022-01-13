@@ -10,6 +10,49 @@ var character = {
 	rank: ""
 }
 
+function showAbilityInFooter(ability, minimal = false) {
+	var infoText;
+
+	if (!minimal) {
+		if (ability.requires) {
+			infoText = "<b>Requires ";
+
+			if (ability.requires.length < 3) {
+				infoText += ability.requires.join(" and ");
+			} else {
+				infoText += ability.requires.filter((item, index) => { return index < ability.requires.length - 1; }).join(", ");
+				infoText += ", and " + ability.requires[ability.requires.length - 1];
+			}
+
+			infoText += "</b><br />"
+		} else if (ability.requiresAny) {
+			infoText = "<b>Requires ";
+
+			if (ability.requiresAny.length < 3) {
+				infoText += ability.requiresAny.join(" or ");
+			} else {
+				infoText += ability.requiresAny.filter((item, index) => { return index < ability.requiresAny.length - 1; }).join(", ");
+				infoText += ", or " + ability.requiresAny[ability.requiresAny.length - 1];
+			}
+
+			infoText += "</b><br />"
+		} else {
+			infoText = "";
+		}
+	}
+	else {
+		infoText = "";
+	}
+
+	infoText += ability.description;
+
+	if ((!minimal) && (ability.rules)) {
+		infoText += "<br />" + ability.rules;
+	}
+
+	setFooter(ability.name, infoText);
+}
+
 // Sets the info to be displayed in the footer, or hides it if there is no info.
 function setFooter(header, info) {
 	if (header) {
@@ -172,7 +215,7 @@ function generateAbilityCategory(tag, abilityList) {
 			tmpChild.innerHTML = ability.name;
 			tmpElement.appendChild(tmpChild);
 
-			tmpElement.addEventListener("click", (e) => { setFooter(ability.name, ability.description); e.stopPropagation(); });
+			tmpElement.addEventListener("click", (e) => { showAbilityInFooter(ability); e.stopPropagation(); });
 			curBlock.appendChild(tmpElement);
 			addCount++;
 		}
@@ -390,7 +433,7 @@ function createAbilityBlock(tag, abilityList) {
 		tmpChild.innerHTML = ability.name;
 		tmpElement.appendChild(tmpChild);
 
-		tmpElement.addEventListener("click", (e) => { setFooter(ability.name, ability.description); e.stopPropagation(); });
+		tmpElement.addEventListener("click", (e) => { showAbilityInFooter(ability, true); e.stopPropagation(); });
 		curBlock.appendChild(tmpElement);
 	});
 
