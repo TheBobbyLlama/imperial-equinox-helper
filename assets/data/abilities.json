@@ -283,7 +283,7 @@
 			},
 			{
 				"name": "Linguistics Implant",
-				"description": "An implant that allows the individual to understand up to 500 of the galaxy's most commonly spoken languages.  This does not allow themto speak the languages, only understand them.",
+				"description": "An implant that allows the individual to understand up to 500 of the galaxy's most commonly spoken languages.  This does not allow them to speak the languages, only understand them.",
 				"key": "LG0",
 				"restricted": "nfu"
 			},

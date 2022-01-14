@@ -319,8 +319,16 @@ function setActionable(modified) {
 }
 
 // Wipes out the character's selected abilities.
-function clearSelectedAbilities() {
-	abilityData.rankList.forEach(rank => delete character[rank.tag]);
+function clearSelectedAbilities(maxRank = "") {
+	if (maxRank) {
+		for (var i = abilityData.rankList.findIndex(rank => rank.tag === maxRank) + 1; i < abilityData.rankList.length; i++) {
+			delete character[abilityData.rankList[i].tag];
+		}
+	} else {
+		abilityData.rankList.forEach(rank => delete character[rank.tag]);
+	}
+
+	delete character.restricted;
 }
 
 function setCharName(val) {
@@ -344,7 +352,7 @@ function setCharType(val) {
 function setCharRank(val) {
 	var curRank = abilityData.rankList.find(rank => rank.tag === val);
 	character.rank = val;
-	clearSelectedAbilities();
+	clearSelectedAbilities(character.rank);
 	generateAbilityLists();
 	document.querySelector("#rollInfo").innerHTML = curRank.hp + " HP, d" + curRank.die + "+" + curRank.bonus;
 
