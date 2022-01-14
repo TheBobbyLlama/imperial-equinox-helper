@@ -1463,7 +1463,8 @@
 			{
 				"name": "Superweapon: Javelin-Class Beams",
 				"description": "",
-				"key": "JB0"
+				"key": "JB0",
+				"rules": "<b>Requirement:</b> Must have personal starship."
 			}
 		],
 		"o2": [

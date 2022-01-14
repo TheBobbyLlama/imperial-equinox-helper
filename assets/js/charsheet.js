@@ -47,7 +47,7 @@ function showAbilityInFooter(ability, minimal = false) {
 		infoText = "";
 	}
 
-	infoText += ability.description;
+	infoText += ability.description || "<i>No data available.</i>";
 
 	if ((!minimal) && (ability.rules)) {
 		infoText += "<br />" + ability.rules;
