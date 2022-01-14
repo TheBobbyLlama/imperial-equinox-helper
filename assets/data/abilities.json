@@ -8,7 +8,9 @@
 			"die": 20,
 			"bonus": 0,
 			"limits": [-1, 0, 0, 0],
-			"restrictedLimit": 0
+			"restrictedLimit": 0,
+			"saberForms": 1,
+			"saberVariants": 0
 		},
 		{
 			"tag": "e3",
@@ -18,7 +20,9 @@
 			"die": 20,
 			"bonus": 2,
 			"limits": [-1, 7, 0, 0],
-			"restrictedLimit": 0
+			"restrictedLimit": 0,
+			"saberForms": 2,
+			"saberVariants": 2
 		},
 		{
 			"tag": "o1",
@@ -28,7 +32,9 @@
 			"die": 25,
 			"bonus": 5,
 			"limits": [-1, 11, 9, 0],
-			"restrictedLimit": 1
+			"restrictedLimit": 1,
+			"saberForms": 7,
+			"saberVariants": 4
 		},
 		{
 			"tag": "o2",
@@ -38,7 +44,9 @@
 			"die": 25,
 			"bonus": 7,
 			"limits": [-1, 11, 9, 0],
-			"restrictedLimit": 2
+			"restrictedLimit": 2,
+			"saberForms": 8,
+			"saberVariants": 6
 		},
 		{
 			"tag": "o3",
@@ -48,7 +56,9 @@
 			"die": 25,
 			"bonus": 9,
 			"limits": [-1, 11, 9, 0],
-			"restrictedLimit": 3
+			"restrictedLimit": 3,
+			"saberForms": 9,
+			"saberVariants": 8
 		},
 		{
 			"tag": "o4",
@@ -58,7 +68,9 @@
 			"die": 30,
 			"bonus": 15,
 			"limits": [-1, 15, 16, 9],
-			"restrictedLimit": 7
+			"restrictedLimit": 7,
+			"saberForms": 11,
+			"saberVariants": 10
 		},
 		{
 			"tag": "o5",
@@ -68,7 +80,9 @@
 			"die": 40,
 			"bonus": 20,
 			"limits": [-1, 18, 20, 14],
-			"restrictedLimit": 13
+			"restrictedLimit": 13,
+			"saberForms": 13,
+			"saberVariants": 12
 		}
 	],
 	"e1": {
@@ -1606,6 +1620,262 @@
 				"name": "Nanotechnology",
 				"description": "",
 				"key": "NT0"
+			}
+		]
+	},
+	"saberForms": {
+		"e1": [
+			{
+				"name": "Shii-Cho 1",
+				"description": "",
+				"key": "XA1",
+				"restricted": "fu"
+			}
+		],
+		"e3": [
+			{
+				"name": "Shii-Cho 2",
+				"description": "",
+				"key": "XA2",
+				"requires": [ "Shii-Cho 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Makashi 1",
+				"description": "",
+				"key": "XB1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Soresu 1",
+				"description": "",
+				"key": "XC1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Ataru 1",
+				"description": "",
+				"key": "XD1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Djem So 1",
+				"description": "",
+				"key": "XE1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Shien 1",
+				"description": "",
+				"key": "XE5",
+				"restricted": "fu"
+			}
+		],
+		"o1": [
+			{
+				"name": "Shii-Cho 3",
+				"description": "",
+				"key": "XA3",
+				"requires": [ "Shii-Cho 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Makashi 2",
+				"description": "",
+				"key": "XB2",
+				"requires": [ "Makashi 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Makashi 3",
+				"description": "",
+				"key": "XB3",
+				"requires": [ "Makashi 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Soresu 2",
+				"description": "",
+				"key": "XC2",
+				"requires": [ "Soresu 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Soresu 3",
+				"description": "",
+				"key": "XC3",
+				"requires": [ "Soresu 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Ataru 2",
+				"description": "",
+				"key": "XD2",
+				"requires": [ "Ataru 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Ataru 3",
+				"description": "",
+				"key": "XD3",
+				"requires": [ "Ataru 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Djem So 2",
+				"description": "",
+				"key": "XE2",
+				"requires": [ "Djem So 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Djem So 3",
+				"description": "",
+				"key": "XE3",
+				"requires": [ "Djem So 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Shien 2",
+				"description": "",
+				"key": "XE6",
+				"requires": [ "Shien 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Shien 3",
+				"description": "",
+				"key": "XE7",
+				"requires": [ "Shien 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Niman 1",
+				"description": "",
+				"key": "XF1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Niman 2",
+				"description": "",
+				"key": "XF2",
+				"requires": [ "Niman 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Niman 3",
+				"description": "",
+				"key": "XF3",
+				"requires": [ "Niman 2" ],
+				"requiresAny": [ "Shii-Cho 2", "Makashi 2", "Soresu 2", "Ataru 2", "Djem So 2", "Shien 2", "Juyo 2" ],
+				"rules": "<b>Requirement:</b> Must have Tier 2 of any form other than Niman 2 to learn Niman 3.",
+				"restricted": "fu"
+			},
+			{
+				"name": "Juyo 1",
+				"description": "",
+				"key": "XG1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Juyo 2",
+				"description": "",
+				"key": "XG2",
+				"requires": [ "Juyo 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Juyo 3",
+				"description": "",
+				"key": "XG3",
+				"requires": [ "Juyo 2" ],
+				"restricted": "fu"
+			}
+		]
+	},
+	"saberVariants": {
+		"e3": [
+			{
+				"name": "Dun Möch 1",
+				"description": "",
+				"key": "ZD1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Jar'Kai 1",
+				"description": "",
+				"key": "ZJ1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Sokan 1",
+				"description": "",
+				"key": "ZS1",
+				"restricted": "fu"
+			},
+			{
+				"name": "Tràkata 1",
+				"description": "",
+				"key": "ZT1",
+				"restricted": "fu"
+			}
+		],
+		"o1": [
+			{
+				"name": "Dun Möch 2",
+				"description": "",
+				"key": "ZD2",
+				"requires": [ "Dun Möch 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Dun Möch 3",
+				"description": "",
+				"key": "ZD3",
+				"requires": [ "Dun Möch 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Jar'Kai 2",
+				"description": "",
+				"key": "ZJ2",
+				"requires": [ "Jar'Kai 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Jar'Kai 3",
+				"description": "",
+				"key": "ZJ3",
+				"requires": [ "Jar'Kai 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Sokan 2",
+				"description": "",
+				"key": "ZS2",
+				"requires": [ "Sokan 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Sokan 3",
+				"description": "",
+				"key": "ZS3",
+				"requires": [ "Sokan 2" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Tràkata 2",
+				"description": "",
+				"key": "ZT2",
+				"requires": [ "Tràkata 1" ],
+				"restricted": "fu"
+			},
+			{
+				"name": "Tràkata 3",
+				"description": "",
+				"key": "ZT3",
+				"requires": [ "Tràkata 2" ],
+				"restricted": "fu"
 			}
 		]
 	}

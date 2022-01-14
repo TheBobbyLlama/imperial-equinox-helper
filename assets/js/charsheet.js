@@ -1,8 +1,11 @@
 const listToken = "[IECharList]";
 const storageToken = "[IEChar]";
+const itemTypes = [ "restricted", "saberForms", "saberVariants" ];
+const itemLabels = [ "Restricted Abilities", "Saber Forms", "Saber Variants" ];
 
 var abilityData;
 
+var charSheet = document.querySelector("#characterSheet");
 var pageFooter = document.querySelector("footer");
 
 var character = {
@@ -67,6 +70,22 @@ function setFooter(header, info) {
 
 // Lookup function for the master ability list.
 function findAbilityByName(name) {
+	const findInList = (listType) => {
+		var abilityLists = Object.entries(abilityData[listType]);
+
+		for (let i = 0; i < abilityLists.length; i++) {
+			abilityLists[i];
+			let testMe = abilityLists[i][1].find(ability => ability.name === name);
+	
+			if (testMe) {
+				return { rank: listType, ability: testMe };
+			}
+		}
+
+		return null;
+	};
+	var findMe;
+
 	for (let i = 0; i < abilityData.rankList.length; i++) {
 		let testMe = abilityData[abilityData.rankList[i].tag]?.abilities.find(ability => ability.name === name);
 
@@ -75,14 +94,11 @@ function findAbilityByName(name) {
 		}
 	}
 
-	var restrictedLists = Object.entries(abilityData.restricted);
-
-	for (let i = 0; i < restrictedLists.length; i++) {
-		restrictedLists[i];
-		let testMe = restrictedLists[i][1].find(ability => ability.name === name);
-
-		if (testMe) {
-			return { rank: "restricted", ability: testMe };
+	for (let i = 0; i < itemTypes.length; i++) {
+		findMe = findInList(itemTypes[i]);
+		
+		if (findMe) {
+			return findMe;
 		}
 	}
 }
@@ -103,11 +119,19 @@ function validateAbilities() {
 		let abilityList = rankSections[r].querySelectorAll("div[data-key]");
 		let abilityCount = (character[rankKey] || []).length;
 		let abilityMax;
-		
-		if (rankKey === "restricted") {
-			abilityMax = abilityData.rankList.find(rank => rank.tag === character.rank).restrictedLimit;
-		} else {
-			abilityMax = abilityData.rankList.find(rank => rank.tag === character.rank).limits[r];
+
+		switch (rankKey) {
+			case "restricted":
+				abilityMax = abilityData.rankList.find(rank => rank.tag === character.rank).restrictedLimit;
+				break;
+			case "saberForms":
+				abilityMax = abilityData.rankList.find(rank => rank.tag === character.rank).saberForms;
+				break;
+			case "saberVariants":
+				abilityMax = abilityData.rankList.find(rank => rank.tag === character.rank).saberVariants;
+				break;
+			default:
+				abilityMax = abilityData.rankList.find(rank => rank.tag === character.rank).limits[r];
 		}
 
 		if (abilityMax > 0) {
@@ -224,6 +248,43 @@ function generateAbilityCategory(tag, abilityList) {
 	return [addCount, curBlock];
 }
 
+function generateTieredAbilityList(listType, label) {
+	var addedCount = 0;
+	var rankTarget = abilityData.rankList.findIndex(rank => rank.tag === character.rank);
+	var curHolder = document.createElement("div");
+	curHolder.className = "subsection";
+	curHolder.setAttribute("data-rank", listType);
+
+	tmpElement = document.createElement("h2");
+	tmpElement.innerHTML = label + " <span></span>";
+	curHolder.appendChild(tmpElement);
+
+	for (let i = 0; i <= rankTarget; i++) {
+		var curRankAbilities = abilityData[listType][abilityData.rankList[i].tag];
+		var tmpHeader = document.createElement("h3");
+		tmpHeader.innerHTML = abilityData.rankList[i][character.type];
+
+		if (curRankAbilities?.length) {
+			var addResult = generateAbilityCategory(listType, curRankAbilities);
+
+			if (addResult[0]) {
+				curHolder.appendChild(tmpHeader);
+				curHolder.appendChild(addResult[1]);
+				addedCount += addResult[0];
+			} else {
+				tmpHeader.remove();
+				addResult[1].remove();
+			}
+		}
+	}
+
+	if (addedCount) {
+		charSheet.appendChild(curHolder);
+	} else {
+		curHolder.remove();
+	}
+}
+
 // Fired when type and rank are selected, generates the appropriate skill lists.
 function generateAbilityLists() {
 	document.querySelectorAll("#characterSheet > .subsection").forEach(element => element.remove());
@@ -232,7 +293,6 @@ function generateAbilityLists() {
 		var curHolder;
 		var tmpElement;
 		var rankTarget = abilityData.rankList.findIndex(rank => rank.tag === character.rank);
-		var charSheet = document.querySelector("#characterSheet");
 
 		for (let i = 0; i <= rankTarget; i++) {
 			var curRankAbilities = abilityData[abilityData.rankList[i].tag]?.abilities;
@@ -258,39 +318,8 @@ function generateAbilityLists() {
 			}
 		}
 
-		var restrictedCount = 0;
-
-		curHolder = document.createElement("div");
-		curHolder.className = "subsection";
-		curHolder.setAttribute("data-rank", "restricted");
-	
-		tmpElement = document.createElement("h2");
-		tmpElement.innerHTML = "Restricted Abilities <span></span>";
-		curHolder.appendChild(tmpElement);
-
-		for (let i = 0; i <= rankTarget; i++) {
-			var curRankAbilities = abilityData.restricted[abilityData.rankList[i].tag];
-			var tmpHeader = document.createElement("h3");
-			tmpHeader.innerHTML = abilityData.rankList[i][character.type];
-
-			if (curRankAbilities?.length) {
-				var addResult = generateAbilityCategory("restricted", curRankAbilities);
-
-				if (addResult[0]) {
-					curHolder.appendChild(tmpHeader);
-					curHolder.appendChild(addResult[1]);
-					restrictedCount += addResult[0];
-				} else {
-					tmpHeader.remove();
-					addResult[1].remove();
-				}
-			}
-		}
-
-		if (restrictedCount) {
-			charSheet.appendChild(curHolder);
-		} else {
-			curHolder.remove();
+		for (let i = 0; i < itemTypes.length; i++) {
+			generateTieredAbilityList(itemTypes[i], itemLabels[i]);
 		}
 	}
 
@@ -467,9 +496,7 @@ function initializePageStatic() {
 	// FILL ABILITY LISTS
 	let abilityList;
 	var tmpElement;
-	var tmpChild;
 	var rankTarget = abilityData.rankList.findIndex(rank => rank.tag === character.rank);
-	var charSheet = document.querySelector("#characterSheet");
 
 	for (var i = 0; i <= rankTarget; i++) {
 		abilityList = abilityData[abilityData.rankList[i].tag]?.abilities.filter(ability => character[abilityData.rankList[i].tag].indexOf(ability.key) > -1);
@@ -488,40 +515,42 @@ function initializePageStatic() {
 		}
 	}
 
-	abilityList = [];
+	for (let i = 0; i < itemTypes.length; i++) {
+		abilityList = [];
 
-	Object.entries(abilityData.restricted).forEach(item => abilityList.push(...item[1]));
-	abilityList = abilityList.filter(ability => character.restricted.indexOf(ability.key) > -1)
-	abilityList.sort((a, b) => {
-		var keyA;
-		var keyB;
+		Object.entries(abilityData[itemTypes[i]]).forEach(item => abilityList.push(...item[1]));
+		abilityList = abilityList.filter(ability => character[itemTypes[i]].indexOf(ability.key) > -1)
+		abilityList.sort((a, b) => {
+			var keyA;
+			var keyB;
 
-		switch (a.restricted) {
-			case "fu": keyA = "1" + a.name; break;
-			case "nfu": keyA = "2" + a.name; break;
-			default: keyA = "3" + a.name;
+			switch (a.restricted) {
+				case "fu": keyA = "1" + a.name; break;
+				case "nfu": keyA = "2" + a.name; break;
+				default: keyA = "3" + a.name;
+			}
+
+			switch (b.restricted) {
+				case "fu": keyB = "1" + b.name; break;
+				case "nfu": keyB = "2" + b.name; break;
+				default: keyB = "3" + b.name;
+			}
+
+			return keyA.localeCompare(keyB);
+		});
+
+		if (abilityList.length) {
+			var curHolder = document.createElement("div");
+			curHolder.className = "subsection";
+			curHolder.setAttribute("data-rank", itemTypes[i]);
+
+			tmpElement = document.createElement("h2");
+			tmpElement.innerHTML = itemLabels[i];
+			curHolder.appendChild(tmpElement);
+
+			curHolder.appendChild(createAbilityBlock(itemTypes[i], abilityList));
+			charSheet.appendChild(curHolder);
 		}
-
-		switch (b.restricted) {
-			case "fu": keyB = "1" + b.name; break;
-			case "nfu": keyB = "2" + b.name; break;
-			default: keyB = "3" + b.name;
-		}
-
-		return keyA.localeCompare(keyB);
-	});
-
-	if (abilityList.length) {
-		var curHolder = document.createElement("div");
-		curHolder.className = "subsection";
-		curHolder.setAttribute("data-rank", "restricted");
-
-		tmpElement = document.createElement("h2");
-		tmpElement.innerHTML = "Restricted Abilities";
-		curHolder.appendChild(tmpElement);
-
-		curHolder.appendChild(createAbilityBlock("restricted", abilityList));
-		charSheet.appendChild(curHolder);
 	}
 }
 
@@ -569,12 +598,14 @@ function serializeBuildData() {
 		}
 	}
 
-	curList = character.restricted || [];
+	for (let i = 0; i < itemTypes.length; i++) {
+		curList = character[itemTypes[i]] || [];
 
-	data.push(curList.length);
-
-	for (let x = 0; x < curList.length; x++) {
-		data.push(...encodeKey(curList[x]));
+		data.push(curList.length);
+	
+		for (let x = 0; x < curList.length; x++) {
+			data.push(...encodeKey(curList[x]));
+		}
 	}
 
 	return btoa(String.fromCharCode.apply(null, data));
@@ -603,13 +634,15 @@ function deserializeBuildData(dataBlock) {
 		}
 	}
 
-	character.restricted = [];
+	for (let i = 0; i < itemTypes.length; i++) {
+		character[itemTypes[i]] = [];
 
-	tmpCnt = data[++curPos];
+		tmpCnt = data[++curPos];
 
-	while (tmpCnt-- > 0) {
-		let tmpStr = decodeKey(data[++curPos], data[++curPos]);
-		character.restricted.push(tmpStr);
+		while (tmpCnt-- > 0) {
+			let tmpStr = decodeKey(data[++curPos], data[++curPos]);
+			character[itemTypes[i]].push(tmpStr);
+		}
 	}
 }
 
@@ -670,18 +703,20 @@ function validateAbilityData() {
 		}
 	}
 
-	curList = [];
+	for (let i = 0; i < itemTypes.length; i++) {
+		curList = [];
 
-	Object.entries(abilityData.restricted).forEach(items => {
-		curList.push(...items[1]);
-	});
+		Object.entries(abilityData[itemTypes[i]]).forEach(items => {
+			curList.push(...items[1]);
+		});
 
-	for (let x = 0; x < curList.length; x++) {
-		var testMe = curList.filter(item => item.key === curList[x].key);
+		for (let x = 0; x < curList.length; x++) {
+			var testMe = curList.filter(item => item.key === curList[x].key);
 
-		if (testMe.length > 1) {
-			alert("Data error: Duplicate key in restricted abilities: " + curList[x].key);
-			return false;
+			if (testMe.length > 1) {
+				alert("Data error: Duplicate key in " + itemTypes[i] + " abilities: " + curList[x].key);
+				return false;
+			}
 		}
 	}
 
