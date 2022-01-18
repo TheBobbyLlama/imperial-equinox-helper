@@ -101,7 +101,7 @@
 			},
 			{
 				"name": "Comprehend Speech",
-				"description": "Ability to understand different language.  Ineffective at comprehending languages of extremely xenophobic cultures; ones that actively refuse contact with others (<i>e.g.</i> Sand People).",
+				"description": "Ability to understand different languages.  Ineffective at comprehending languages of extremely xenophobic cultures; ones that actively refuse contact with others (<i>e.g.</i> Sand People).",
 				"key": "CS0",
 				"restricted": "fu"
 			},
@@ -233,7 +233,7 @@
 			},
 			{
 				"name": "Telepathy",
-				"description": "used to communicate with other individuals over short or vast distances.  Depending on the level of connection to the Force.  Communication is limited to <u>vague</u> feelings and impressions only.",
+				"description": "Used to communicate with other individuals over short or vast distances.  Depending on the level of connection to the Force.  Communication is limited to <u>vague</u> feelings and impressions only.",
 				"key": "TL0",
 				"restricted": "fu"
 			},

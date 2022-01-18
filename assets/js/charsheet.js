@@ -18,7 +18,7 @@ function showAbilityInFooter(ability, minimal = false) {
 
 	if (!minimal) {
 		if (ability.requires) {
-			infoText = "<b>Requires ";
+			infoText = "<div><b>Requires ";
 
 			if (ability.requires.length < 3) {
 				infoText += ability.requires.join(" and ");
@@ -27,9 +27,9 @@ function showAbilityInFooter(ability, minimal = false) {
 				infoText += ", and " + ability.requires[ability.requires.length - 1];
 			}
 
-			infoText += "</b><br />"
+			infoText += "</b></div>"
 		} else if (ability.requiresAny) {
-			infoText = "<b>Requires ";
+			infoText = "<div><b>Requires ";
 
 			if (ability.requiresAny.length < 3) {
 				infoText += ability.requiresAny.join(" or ");
@@ -38,7 +38,7 @@ function showAbilityInFooter(ability, minimal = false) {
 				infoText += ", or " + ability.requiresAny[ability.requiresAny.length - 1];
 			}
 
-			infoText += "</b><br />"
+			infoText += "</b></div>"
 		} else {
 			infoText = "";
 		}
@@ -47,10 +47,10 @@ function showAbilityInFooter(ability, minimal = false) {
 		infoText = "";
 	}
 
-	infoText += ability.description || "<i>No data available.</i>";
+	infoText += "<span>" + (ability.description  || "<i>No data available.</i>") + "</span>";
 
 	if ((!minimal) && (ability.rules)) {
-		infoText += "<br />" + ability.rules;
+		infoText += "<div>" + ability.rules + "</div>";
 	}
 
 	setFooter(ability.name, infoText);
@@ -558,8 +558,8 @@ function encodeKey (key) {
 	var val1 = key.charCodeAt(0) - 65;
 	var val2 = key.charCodeAt(1) - 65;
 
-	return [((val1 << 2 )+ (val2 >> 4)) & 255,
-			((val2 << 4 )+ Number(key[2])) & 255 ];
+	return [((val1 << 2 ) + (val2 >> 4)) & 255,
+			((val2 << 4 ) + (Number(key[2]) & 15)) & 255 ];
 }
 
 function decodeKey(val1, val2) {
@@ -567,7 +567,7 @@ function decodeKey(val1, val2) {
 
 	tmpStr += String.fromCharCode(65 + (val1 >> 2));
 	tmpStr += String.fromCharCode(65 + (((val1 << 4) + (val2 >> 4)) & 31));
-	tmpStr += (val2 & 3);
+	tmpStr += (val2 & 15);
 
 	return tmpStr;
 }

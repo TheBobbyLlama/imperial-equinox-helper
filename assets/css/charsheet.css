@@ -9,12 +9,14 @@ footer {
 	right: 0px;
 }
 
-footer div {
+footer > div {
 	background-color: #181008;
 	background-image: linear-gradient(#0c0804, #181008);
 	border: solid 1px #403810;
 	border-radius: 4px;
 	color: #c0a040;
+	display: flex;
+	flex-direction: column;
 	font-family: monospace;
 	max-height: 100px;
 	overflow-y: auto;
@@ -22,13 +24,12 @@ footer div {
 	width: 100%;
 }
 
-footer div b {
+footer div > b:first-child {
 	color: var(--text);
 }
 
-footer div br + b {
-	display: inline-block;
-	margin-top: 10px;
+footer > div > * + * {
+	margin-top: 6px;
 }
 
 input[type='checkbox'] {
