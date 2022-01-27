@@ -10,7 +10,9 @@ var pageFooter = document.querySelector("footer");
 
 var character = {
 	type: "",
-	rank: ""
+	rank: "",
+	factions: [],
+	special: ""
 }
 
 function showAbilityInFooter(ability, minimal = false) {
@@ -137,7 +139,11 @@ function validateAbilities() {
 		if (abilityMax > 0) {
 			rankSections[r].querySelector("h2 > span").innerHTML = "(" + abilityCount + "/" + abilityMax + ")";
 		} else {
-			rankSections[r].querySelector("h2 > span").innerHTML = "";
+			let tryMe = rankSections[r].querySelector("h2 > span");
+
+			if (tryMe) {
+				tryMe.innerHTML = "";
+			}
 		}
 
 		for (var a = 0; a < abilityList.length; a++) {
@@ -285,6 +291,12 @@ function generateTieredAbilityList(listType, label) {
 	}
 }
 
+function updateArtifactText(e) {
+	character.special = e.target.value;
+
+	document.querySelector(".artifacts .counter").innerHTML = character.special.length + "/" + e.target.maxLength;
+}
+
 // Fired when type and rank are selected, generates the appropriate skill lists.
 function generateAbilityLists() {
 	document.querySelectorAll("#characterSheet > .subsection").forEach(element => element.remove());
@@ -321,6 +333,24 @@ function generateAbilityLists() {
 		for (let i = 0; i < itemTypes.length; i++) {
 			generateTieredAbilityList(itemTypes[i], itemLabels[i]);
 		}
+
+		tmpElement = document.createElement("div");
+		tmpElement.className = "subsection artifacts";
+			tmpChild = document.createElement("h2");
+			tmpChild.innerHTML = "Artifacts/Enhancements";
+			tmpElement.appendChild(tmpChild);
+
+			tmpChild = document.createElement("div");
+			tmpChild.className = "counter";
+			tmpChild.innerHTML = character.special.length + "/1000"
+			tmpElement.appendChild(tmpChild);
+	
+			tmpChild = document.createElement("textarea");
+			tmpChild.placeholder = tmpChild.title = "Put any artifact or bonus equipment info here.\n\nMarkdown (Discord style) formatting will be applied when you share your character sheet!";
+			tmpChild.maxLength = 1000;
+			tmpChild.addEventListener("change", updateArtifactText);
+			tmpElement.appendChild(tmpChild);
+		charSheet.appendChild(tmpElement);
 	}
 
 	validateAbilities();
@@ -435,19 +465,16 @@ function initializePageEditable() {
 	}
 
 	tmpElement = document.querySelector("#charControls");
+		tmpChild = document.createElement("button");
+		tmpChild.type = "button";
+		tmpChild.innerHTML = "Save";
+		tmpChild.addEventListener("click", saveCharacterBuild);
+		tmpElement.appendChild(tmpChild);
 
-	tmpChild = document.createElement("button");
-	tmpChild.type = "button";
-	tmpChild.innerHTML = "Save";
-	//tmpChild.disabled = true;
-	tmpChild.addEventListener("click", saveCharacterBuild);
-	tmpElement.appendChild(tmpChild);
-
-	tmpChild = document.createElement("button");
-	tmpChild.type = "button";
-	tmpChild.innerHTML = "Share";
-	//tmpChild.disabled = true;
-	tmpChild.addEventListener("click", shareCharacterBuild);
+		tmpChild = document.createElement("button");
+		tmpChild.type = "button";
+		tmpChild.innerHTML = "Share";
+		tmpChild.addEventListener("click", shareCharacterBuild);
 	tmpElement.appendChild(tmpChild);
 
 	generateAbilityLists();
@@ -455,20 +482,18 @@ function initializePageEditable() {
 }
 
 function createAbilityBlock(tag, abilityList) {
-	var curBlock = document.createElement("div");
+	var curBlock = document.createElement("ul");
 	curBlock.setAttribute("data-rank", tag);
 
 	abilityList.forEach(ability => {
-		tmpElement = document.createElement("div");
+		tmpElement = document.createElement("li");
 		tmpElement.setAttribute("data-key", ability.key);
 
 		if (ability.restricted) {
 			tmpElement.className = "restrict" + ability.restricted.toUpperCase();
 		}
 
-		tmpChild = document.createElement("div");
-		tmpChild.innerHTML = ability.name;
-		tmpElement.appendChild(tmpChild);
+		tmpElement.innerHTML = ability.name;
 
 		tmpElement.addEventListener("click", (e) => { showAbilityInFooter(ability, true); e.stopPropagation(); });
 		curBlock.appendChild(tmpElement);
@@ -480,13 +505,13 @@ function createAbilityBlock(tag, abilityList) {
 // Adds elements to the page for the user in view mode.
 function initializePageStatic() {
 	var tmpElement;
+	var tmpChild;
 	var curRank = abilityData.rankList.find(rank => rank.tag === character.rank);
 
-	tmpElement = document.createElement("h2");
-	tmpElement.innerHTML = character.name;
-	document.querySelector("#charName").appendChild(tmpElement);
+	document.querySelector("body > h1").innerHTML = character.name;
 
-	document.querySelector("#charType").remove();
+	document.querySelectorAll("#sheetInfo, #charName, #charType").forEach(item => item.remove());
+	document.querySelector("#sheetHeader").className = "display";
 
 	tmpElement = document.querySelector("#charRank");
 	tmpElement.innerHTML = curRank[character.type];
@@ -552,6 +577,21 @@ function initializePageStatic() {
 			charSheet.appendChild(curHolder);
 		}
 	}
+
+	if (character.special) {
+		var converter = new showdown.Converter();
+		var tmpElement = document.createElement("div");
+		tmpElement.className = "subsection";
+			tmpChild = document.createElement("h2");
+			tmpChild.innerHTML = "Artifacts/Enhancements";
+			tmpElement.appendChild(tmpChild);
+
+			tmpChild = document.createElement("div");
+			tmpChild.className = "artifacts";
+			tmpChild.innerHTML = converter.makeHtml(character.special);
+			tmpElement.appendChild(tmpChild);
+		charSheet.appendChild(tmpElement);
+	}
 }
 
 function encodeKey (key) {
@@ -578,6 +618,7 @@ function serializeBuildData() {
 	var data = [];
 	var tmpDatum;
 
+	// Pack rank and FU status in a single byte.
 	var rankTarget = abilityData.rankList.findIndex(rank => rank.tag === character.rank);
 
 	tmpDatum = rankTarget << 1;
@@ -588,6 +629,7 @@ function serializeBuildData() {
 
 	data.push(tmpDatum);
 
+	// Add standard abilities.
 	for (let i = 0; i <= rankTarget; i++) {
 		curList = character[abilityData.rankList[i].tag] || [];
 
@@ -598,6 +640,7 @@ function serializeBuildData() {
 		}
 	}
 
+	// Add supplemental abilities - restricted, saber forms, and saber variants.
 	for (let i = 0; i < itemTypes.length; i++) {
 		curList = character[itemTypes[i]] || [];
 
@@ -608,7 +651,15 @@ function serializeBuildData() {
 		}
 	}
 
-	return btoa(String.fromCharCode.apply(null, data));
+	// Add Factions
+	data.push(character.factions.length);
+	// TODO - Faction data
+
+	var encoder = new TextEncoder();
+	var specialCodes = encoder.encode(character.special, output);
+    var output = Uint8Array.of(...data, ...specialCodes);
+	
+	return btoa(String.fromCharCode.apply(null, output));
 }
 
 // Decodes build info from an exported string.
@@ -618,11 +669,14 @@ function deserializeBuildData(dataBlock) {
 	var curPos = 0;
 
 	character = {};
+
+	// Decode rank + FU status.
 	character.type = (data[curPos] & 1) ? "nfu" : "fu";
 	character.rank = abilityData.rankList[data[curPos] >> 1].tag;
 
 	var rankTarget = abilityData.rankList.findIndex(rank => rank.tag === character.rank);
 
+	// Read standard abilities.
 	for (let i = 0; i <= rankTarget; i++) {
 		character[abilityData.rankList[i].tag] = [];
 
@@ -634,6 +688,7 @@ function deserializeBuildData(dataBlock) {
 		}
 	}
 
+	// Read supplemental abilities - restricted, saber forms, saber variants.
 	for (let i = 0; i < itemTypes.length; i++) {
 		character[itemTypes[i]] = [];
 
@@ -643,6 +698,18 @@ function deserializeBuildData(dataBlock) {
 			let tmpStr = decodeKey(data[++curPos], data[++curPos]);
 			character[itemTypes[i]].push(tmpStr);
 		}
+	}
+
+	// Read factions.
+	character.factions = [];
+	tmpCnt = data[++curPos];
+
+	// Add special artifact/enhancement text
+	if (tmpCnt < data.length) {
+		var decoder = new TextDecoder();
+		character.special = decoder.decode(data.subarray(curPos + 1)).trim();
+	} else {
+		character.special = "";
 	}
 }
 

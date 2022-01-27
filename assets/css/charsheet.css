@@ -66,6 +66,14 @@ input[type='checkbox']:checked::before {
 	content: '●';
 }
 
+#sheetInfo {
+	text-align: center;
+}
+
+#sheetInfo > h2 {
+	font-size: 18px;
+}
+
 #characterSheet {
 	padding: 20px 10px;
 }
@@ -74,6 +82,10 @@ input[type='checkbox']:checked::before {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+}
+
+#sheetHeader.display {
+	justify-content: center;
 }
 
 #vitalInfo {
@@ -130,7 +142,7 @@ input[type='checkbox']:checked::before {
 	display: flex;
 	margin: -2px 0px 0px -2px;
 	padding: 4px 8px;
-	width: 400px;
+	width: 360px;
 }
 
 #characterSheet .subsection > div > div > div {
@@ -139,6 +151,17 @@ input[type='checkbox']:checked::before {
 
 #characterSheet .subsection > div > div > * + * {
 	margin-left: 16px;
+}
+
+#characterSheet ul {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#characterSheet ul > li {
+	cursor: pointer;
+	margin-left: 20px;
+	width: 360px;
 }
 
 .restrictFU {
@@ -175,5 +198,35 @@ input[type='checkbox']:checked::before {
 
 #linkModal textarea {
 	height: 100px;
+	width: 100%;
+}
+
+.subsection.artifacts {
+	position: relative;
+}
+
+.subsection > .artifacts {
+	background-color: #080000;
+	background-image: linear-gradient(black, #100000);
+	border: solid 2px #200000;
+	border-radius: 4px;
+	flex-direction: column;
+	margin-bottom: 0 !important;
+	padding: 8px !important;
+}
+
+.subsection > .artifacts * + * {
+	margin-top: 12px;
+}
+
+.subsection.artifacts .counter {
+	color: gray;
+	position: absolute;
+	right: 16px;
+	top: 12px;
+}
+
+.subsection.artifacts textarea {
+	height: 400px;
 	width: 100%;
 }
