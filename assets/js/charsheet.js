@@ -291,10 +291,12 @@ function generateTieredAbilityList(listType, label) {
 	}
 }
 
-function updateArtifactText(e) {
+function updateSpecialText(e) {
 	character.special = e.target.value;
 
 	document.querySelector(".artifacts .counter").innerHTML = character.special.length + "/" + e.target.maxLength;
+
+	setActionable(true);
 }
 
 // Fired when type and rank are selected, generates the appropriate skill lists.
@@ -346,9 +348,10 @@ function generateAbilityLists() {
 			tmpElement.appendChild(tmpChild);
 	
 			tmpChild = document.createElement("textarea");
-			tmpChild.placeholder = tmpChild.title = "Put any artifact or bonus equipment info here.\n\nMarkdown (Discord style) formatting will be applied when you share your character sheet!";
+			tmpChild.placeholder = tmpChild.title = "Put any artifacts or bonus equipment info here.\n\nMarkdown (Discord style) formatting will be applied when you share your character sheet!";
 			tmpChild.maxLength = 1000;
-			tmpChild.addEventListener("change", updateArtifactText);
+			tmpChild.value = character.special || "";
+			tmpChild.addEventListener("change", updateSpecialText);
 			tmpElement.appendChild(tmpChild);
 		charSheet.appendChild(tmpElement);
 	}
@@ -657,15 +660,20 @@ function serializeBuildData() {
 
 	var encoder = new TextEncoder();
 	var specialCodes = encoder.encode(character.special, output);
-    var output = Uint8Array.of(...data, ...specialCodes);
-	
-	return btoa(String.fromCharCode.apply(null, output));
+	var output = Uint8Array.of(...data, ...specialCodes);
+	var compressed = pako.deflate(output);
+
+	// For some reason, we need to run it through fromCharCode, lest the btoa result is over twice the size of the compressed data.
+	return btoa(String.fromCharCode.apply(null, compressed));
 }
+
 
 // Decodes build info from an exported string.
 function deserializeBuildData(dataBlock) {
 	var tmpCnt;
+
 	var data = new Uint8Array(atob(dataBlock).split("").map(function(c) { return c.charCodeAt(0); }));
+	data = pako.inflate(data);
 	var curPos = 0;
 
 	character = {};
@@ -800,7 +808,7 @@ fetch("./assets/data/abilities.json").then(response => {
 				var params = new URLSearchParams(window.location.search);
 
 				if (params.has("data")) {
-					deserializeBuildData(params.get("data"));
+					deserializeBuildData(params.get("data").replace(/\s/g, "+"));
 					character.name = params.get("n");
 
 					initializePageStatic();
@@ -835,3 +843,4 @@ pageFooter.addEventListener("click", e => { e.stopPropagation(); });
 document.querySelector("#btnDismissError").addEventListener("click", hideModal);
 document.querySelector("#btnCopyLink").addEventListener("click", e => { navigator.clipboard.writeText(document.querySelector("#linkText").value); });
 document.querySelector("#btnDismissLink").addEventListener("click", hideModal);
+document.querySelector("footer > div").addEventListener("mousemove", (e) => { window.getSelection().removeAllRanges(); });

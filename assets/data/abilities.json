@@ -1879,5 +1879,412 @@
 				"restricted": "fu"
 			}
 		]
-	}
+	},
+	"factions": [
+		{
+			"name": "Sith Academy",
+			"key": "SA0",
+			"requirements": {
+				"fu": "e1"
+			},
+			"ranks": [
+				{
+					"name": "Protege",
+					"notes": "0TM",
+					"key": "PR0",
+					"requirements": {
+						"fu": "e3"
+					}
+				},
+				{
+					"name": "Assistant Overseer",
+					"notes": "10TM",
+					"key": "AO0",
+					"requirements": {
+						"fu": "e3"
+					}
+				},
+				{
+					"name": "Overseer",
+					"notes": "20TM",
+					"key": "OV0",
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "Force Scholar",
+					"notes": "40TM",
+					"key": "FC0",
+					"perks": {
+						"bonusForce": 1
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "Blade Scholar",
+					"notes": "40TM",
+					"key": "BL0",
+					"perks": {
+						"bonusForm": 1
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "Historian",
+					"notes": "40TM",
+					"key": "LR0",
+					"perks": {
+						"bonusForceForm": 1
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "Force Disciple",
+					"notes": "50TM",
+					"key": "FC1",
+					"perks": {
+						"bonusForce": 2
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "Blade Marshal",
+					"notes": "50TM",
+					"key": "BL1",
+					"perks": {
+						"bonusForm": 2
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "Chronicler",
+					"notes": "50TM",
+					"key": "LR1",
+					"perks": {
+						"bonusForce": 1,
+						"bonusForm": 1
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "Forcemaster",
+					"key": "FC2",
+					"perks": {
+						"bonusForce": 3
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "Blademaster",
+					"key": "BL2",
+					"perks": {
+						"bonusForm": 3,
+						"bonusVariant": 1
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "Loremaster",
+					"key": "LR2",
+					"perks": {
+						"bonusForce": 2,
+						"bonusForm": 2
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "High Overseer",
+					"notes": "Forcemaster Perks",
+					"key": "HO0",
+					"perks": {
+						"bonusForce": 3
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "High Overseer",
+					"notes": "Blademaster Perks",
+					"key": "HO1",
+					"perks": {
+						"bonusForm": 3,
+						"bonusVariant": 1
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "High Overseer",
+					"notes": "Loremaster Perks",
+					"key": "HO2",
+					"perks": {
+						"bonusForce": 2,
+						"bonusForm": 2
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "Grand Overseer",
+					"notes": "Forcemaster Perks",
+					"key": "GO0",
+					"perks": {
+						"bonusForce": 3
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "Grand Overseer",
+					"notes": "Blademaster Perks",
+					"key": "GO1",
+					"perks": {
+						"bonusForm": 3,
+						"bonusVariant": 1
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				},
+				{
+					"name": "Grand Overseer",
+					"notes": "Loremaster Perks",
+					"key": "GO2",
+					"perks": {
+						"bonusForce": 2,
+						"bonusForm": 2
+					},
+					"requirements": {
+						"fu": "o1"
+					}
+				}
+			]
+		},
+		{
+			"name": "Imperial Navy",
+			"subfaction": "3rd Mobile Fleet",
+			"key": "NV0",
+			"requirements": {
+				"fu": "e3",
+				"nfu": "e1"
+			},
+			"specializations": [
+				{
+					"name": "Bridge Officer",
+					"key": "BO0",
+					"abilities": [
+						{
+							"name": "Officer's Focus",
+							"description": "",
+							"key": "OF0",
+							"marks": "10NM",
+							"rules": "<b>Rule:</b> A +1 modifier can be added to one specialized Bridge position."
+						},
+						{
+							"name": "Computer Skill",
+							"description": "",
+							"key": "CS0",
+							"marks": "15NM",
+							"rules": "<b>Rule:</b> May add a +3 to computer abilities, including slicing and programming."
+						},
+						{
+							"name": "Target, Maximum Firepower!",
+							"description": "",
+							"key": "TG0",
+							"marks": "20NM",
+							"rules": "<b>Rule:</b> Regardless of station, the Bridge Officer may roll a 1d4.  If the result is a 3 or 4, the Bridge Officer may provide a +2 to all gunner checks."
+						},
+						{
+							"name": "Flexible",
+							"description": "",
+							"key": "FX0",
+							"marks": "30NM",
+							"rules": "<b>Rule:</b> At the beginning of the event, roll against a DC20.  If the Bridge Officer succeeds against the DC, they may add a +1 bonus to all checks in that station."
+						},
+						{
+							"name": "Concentration Stimulants",
+							"description": "",
+							"key": "CN0",
+							"marks": "40NM",
+							"rules": "<b>Rule:</b> A +1 modifier can be added to one specialized bridge position (may stack with Officer's Focus)."
+						},
+						{
+							"name": "Spoof Missiles",
+							"description": "",
+							"key": "SM0",
+							"marks": "60NM",
+							"rules": "<b>Rule:</b> Once per day, the Bridge Officer may fire all missiles on a target without a taking a turn to do this.  Roll for success."
+						}
+					]
+				},
+				{
+					"name": "Imperial Pilot",
+					"key": "IP0",
+					"abilities": [
+						{
+							"name": "Takeoff Procedure",
+							"description": "",
+							"key": "TP0",
+							"marks": "10NM",
+							"rules": "<b>Rule:</b> May circumvent the 1 turn penalty to taking off during combat."
+						},
+						{
+							"name": "Dogfighter",
+							"description": "",
+							"key": "DG0",
+							"marks": "15NM",
+							"rules": "<b>Rule:</b> Once per event, may add +5 to an attack against an enemy fighter or bomber."
+						},
+						{
+							"name": "Wing Formation",
+							"description": "",
+							"key": "WF0",
+							"marks": "20NM",
+							"rules": "<b>Rule:</b> Add a +3 modifier to defense if a member of your squadron is targeting your attacker's ship."
+						},
+						{
+							"name": "Repeating Shields",
+							"description": "",
+							"key": "RS0",
+							"marks": "30NM",
+							"rules": "<b>Rule:</b> Add one HP to your starfighter.  May cross over if you change starfighters."
+						},
+						{
+							"name": "Evasive Maneuvers",
+							"description": "",
+							"key": "EM0",
+							"marks": "40NM",
+							"rules": "<b>Rule:</b> In a defense, roll at disadvantage.  If you still beat the enemy attack, you may offer a counterattack."
+						},
+						{
+							"name": "Bombing Retrofit",
+							"description": "",
+							"key": "BR0",
+							"marks": "50NM",
+							"rules": "<b>Rule:</b> Once per event, the use of the bomb may deal 2 points of damage to the enemy capital ship, if your attack roll is at least 5 higher than the defense roll of the enemy.  Otherwise, it will do 1 point of damage on a success."
+						}
+					]
+				},
+				{
+					"name": "Tactician",
+					"key": "TC0",
+					"abilities": [
+						{
+							"name": "Familiar Territory",
+							"description": "",
+							"key": "FT0",
+							"marks": "10NM",
+							"rules": "<b>Rule:</b> The Tactician may select a planet to study, giving them a +1 to all rolls while on that planet.  (<i>e.g.</i> Hoth, Ossus, Dromund Kaas, etc.)"
+						},
+						{
+							"name": "Shield Probe",
+							"description": "",
+							"key": "SP0",
+							"marks": "15NM",
+							"rules": "<b>Rule:</b> Once per event, the tactician may assist in the defense of an ally.  Must be declared before combat that the probe is being pulled."
+						},
+						{
+							"name": "Inspiration",
+							"description": "",
+							"key": "IN0",
+							"marks": "20NM",
+							"rules": "<b>Rule:</b> Once per event, allied teammembers (group) attacking at the same time as the Tactician may get an additional +2 to their attack."
+						},
+						{
+							"name": "Pre-Mission Briefing",
+							"description": "",
+							"key": "MB0",
+							"marks": "30NM",
+							"rules": "<b>Rule:</b> The Tactician learns about potential mission threats, providing a +1 bonus to perception checks for all group members."
+						},
+						{
+							"name": "Preparedness",
+							"description": "",
+							"key": "PP0",
+							"marks": "40NM",
+							"rules": "<b>Rule:</b> Prior to an event, the Tactician may post in RP Gen a post studying the landscape where the event will be held, as well as the battleplan.  If this is done, they may have a +2, and give all allies a +1 during the event, non-stacking with multiple Tacticians (if two or more Tacticians do this in an event, they will each get the +2, but all allies will still get only a +1 flat bonus).  Would likely be made the leader of the team ICly."
+						},
+						{
+							"name": "Assign Guard",
+							"description": "",
+							"key": "AG0",
+							"marks": "50NM",
+							"rules": "<b>Rule:</b> Nominate two members of the Imperial Navy to serve as a guard (may apply to 3rd Mobile or 7th Expeditionary Members).  These members each get a +2 to defense, and if you are attacked, either one could intervene and take the hit instead.  (Doesn't stack with other bonuses, guard only lasts during the single mission)."
+						}
+					]
+				},
+				{
+					"name": "Engineer",
+					"key": "EN0",
+					"abilities": [
+						{
+							"name": "Vessel Familiarization",
+							"description": "",
+							"key": "VF0",
+							"marks": "10NM",
+							"rules": "<b>Rule:</b> Passive +1 to rolls regarding interaction with a specified vessel's systems.  The chosen vessel is declared through an Rp task whenever the engineer is assigned to it."
+						},
+						{
+							"name": "Mechanized Synergy",
+							"description": "",
+							"key": "MS0",
+							"marks": "15NM",
+							"rules": "<b>Rule:</b> Once per event, the user may choose a specific individual to provide a +2 bonus toward their next roll.  For example: The engineering officer cooperates with the tactical officer of a vessel, improving the functions of their station for a limited amount of time."
+						},
+						{
+							"name": "Redundancy Installation",
+							"description": "",
+							"key": "RI0",
+							"marks": "20NM",
+							"rules": "<b>Rule:</b> Through a short RP Task submitted before an event, an engineering officer cna choose a single station to give a passive +2 bonus towards throughout an event."
+						},
+						{
+							"name": "Shrike Cybernetic Augementation",
+							"description": "",
+							"key": "SY0",
+							"marks": "30NM",
+							"rules": "<b>Rule:</b> The engineering officer may add a +2 to rolls related to repairs and maintenance performed upon their assigned vessel."
+						},
+						{
+							"name": "Exterior Repair Team",
+							"description": "",
+							"key": "XR0",
+							"marks": "40NM",
+							"rules": "<b>Rule:</b> Unlike with most systems, the engineering officer may summon a team of engineers assigned to repair damage to the exterior of the ship.  This may apply to important targets such as the communications array, the hull, or life support.  If the vessel they are rolling is in combat, roll a 1d5.  On 3 or higher, the repair succeeds.  2 or lower is a failure which results in the repair crew's death or immolation."
+						},
+						{
+							"name": "Just a Bit More!",
+							"description": "",
+							"key": "JB0",
+							"marks": "50NM",
+							"rules": "<b>Rule:</b> Once per event, should their ship reach 0 HP, the engineering officer can immediately bring the vessel up to 1 HP.  The vessel will still require repairs following the event."
+						}
+					]
+				}
+			]
+		}
+	]
 }

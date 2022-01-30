@@ -15,6 +15,7 @@ footer > div {
 	border: solid 1px #403810;
 	border-radius: 4px;
 	color: #c0a040;
+	cursor: default;
 	display: flex;
 	flex-direction: column;
 	font-family: monospace;
