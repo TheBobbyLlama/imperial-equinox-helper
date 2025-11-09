@@ -118,7 +118,7 @@ section + section {
 textarea {
 	background-color: #181008;
 	/*background-image: linear-gradient(#0c0804, #181008);*/
-	background-image: url('../images/greeblingText.png'), linear-gradient(#0c0804, #0c0804, #181008);
+	background-image: url('../images/greeblingText.png'), linear-gradient(#0c0804, #181008, #181008);
 	border: solid 1px #403810;
 	border-radius: 4px;
 	color: #c0a040;
