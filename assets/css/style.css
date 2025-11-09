@@ -60,8 +60,9 @@ button[disabled] {
 footer {
 	color: #404040;
 	font-size: 14px;
-	margin: 8px 16px 0 16px;
+	margin: 8px 16px 0 auto;
 	text-align: right;
+	width: fit-content;
 }
 
 footer > aside {
@@ -116,7 +117,8 @@ section + section {
 
 textarea {
 	background-color: #181008;
-	background-image: linear-gradient(#0c0804, #181008);
+	/*background-image: linear-gradient(#0c0804, #181008);*/
+	background-image: url('../images/greeblingText.png'), linear-gradient(#0c0804, #0c0804, #181008);
 	border: solid 1px #403810;
 	border-radius: 4px;
 	color: #c0a040;
@@ -376,6 +378,7 @@ textarea {
 .subsection {
 	background: linear-gradient(#400000, #400000, #3c0000);
 	background-color: #400000;
+	background-image: url('../images/greebling.png'), linear-gradient(#400000, #400000, #300000);
 	border: solid 2px #200000;
 	border-radius: 4px;
 	padding: 8px;
