@@ -64,6 +64,16 @@ footer {
 	text-align: right;
 }
 
+footer > aside {
+	display: inline-block;
+	opacity: 0;
+	transition: opacity 0.25s;
+}
+
+footer:hover > aside {
+	opacity: 1;
+}
+
 h1, h2, h3, h4, h5 {
 	margin: 0px 0px 8px 0px;
 	padding: 0;
@@ -85,6 +95,10 @@ h1::before, h1::after {
 	position: relative;
 	top: 8px;
 	width: 40px;
+}
+
+li {
+	margin-left: 24px;
 }
 
 section {
@@ -212,36 +226,19 @@ textarea {
 
 #guildDocs {
 	align-items: flex-start;
-	counter-reset: documents 1;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	flex-wrap: wrap;
-	height: 400px;
+	gap: 32px;
+	padding: 0 20px;
 }
 
-#guildDocs a {
-	counter-increment: documents;
-}
-
-#guildDocs > div {
-	margin-left: 50px;
-	position: relative;
-}
-
-#guildDocs > div:not([subItem]):not([spacer])::before {
-	content: counter(documents) ': ';
-	position: absolute;
-	right: calc(100% + 4px);
-}
-
-#guildDocs > div[spacer] {
-	font-style: italic;
-	font-weight: bold;
-	margin: 4px 0px 0px 20px;
-}
-
-#guildDocs > div[subItem]::before {
+#guildDocs *[subItem]::before {
 	content: '- ';
+}
+
+#guildDocs *[subItem] {
+	display: block;
 }
 
 #guildDocs > h4 {
@@ -249,12 +246,35 @@ textarea {
 }
 
 #emoteTable {
-	align-items: flex-start;
+	align-items: start;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	height: 1600px;
+	max-height: 1600px;
+	width: 100%;
 	margin-top: 8px;
+	min-height: 100px;
+}
+
+#emoteDisplay[hideFree="1"] #emoteTable,
+#emoteDisplay[hideSub="1"] #emoteTable,
+#emoteDisplay[hideMarket="1"] #emoteTable,
+#emoteDisplay[hideUnlocked="1"] #emoteTable {
+	max-height: 1600px;
+}
+
+#emoteDisplay[hideFree="2"] #emoteTable,
+#emoteDisplay[hideSub="2"] #emoteTable,
+#emoteDisplay[hideMarket="2"] #emoteTable,
+#emoteDisplay[hideUnlocked="2"] #emoteTable {
+	max-height: 1200px;
+}
+
+#emoteDisplay[hideFree="3"] #emoteTable,
+#emoteDisplay[hideSub="3"] #emoteTable,
+#emoteDisplay[hideMarket="3"] #emoteTable,
+#emoteDisplay[hideUnlocked="3"] #emoteTable {
+	max-height: 600px;
 }
 
 #emoteTable > div {
@@ -300,7 +320,7 @@ textarea {
 }
 
 .emoteFree {
-	background-color: black;
+	background-color: #0c1808;
 	border: solid 2px #200000;
 	padding: 2px 8px;
 }
@@ -318,10 +338,26 @@ textarea {
 }
 
 .emoteUnlocked {
-	background-color: #101010;
+	background-color: black;
 	border: solid 2px #200000;
-	color: #c0c0c0;
 	padding: 2px 8px;
+}
+
+#btnEmoteFree,
+#btnEmoteSub,
+#btnEmoteMarket,
+#btnEmoteUnlocked {
+	border-radius: 2px;
+	cursor: pointer;
+	min-width: 140px;
+	text-align: center;
+}
+
+#btnEmoteFree:hover,
+#btnEmoteSub:hover,
+#btnEmoteMarket:hover,
+#btnEmoteUnlocked:hover {
+	font-weight: bold;
 }
 
 .flexMe {
@@ -352,6 +388,20 @@ textarea {
 
 .subsection:last-child {
 	background: linear-gradient(#400000, #400000, #380000);
+}
+
+#emoteDisplay[hideFree] .emoteFree,
+#emoteDisplay[hideSub] .emoteSub,
+#emoteDisplay[hideMarket] .emoteMarket,
+#emoteDisplay[hideUnlocked] .emoteUnlocked {
+	color: gray;
+}
+
+#emoteDisplay[hideFree] #emoteTable .emoteFree,
+#emoteDisplay[hideSub] #emoteTable .emoteSub,
+#emoteDisplay[hideMarket] #emoteTable .emoteMarket,
+#emoteDisplay[hideUnlocked] #emoteTable .emoteUnlocked {
+	display: none;
 }
 
 /* IMPORTANT - Needs to be at the bottom to override everything else! */

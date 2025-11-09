@@ -1,22 +1,29 @@
 const noteStorageToken = "SWTOR[IE]Notes";
 const sectionStorageToken = "SWTOR[IE]Sections";
+const emoteStorageToken = "SWTOR[IE]Emotes";
 
-var inputText = document.getElementById("inputText");
-var outputText = document.getElementById("outputText");
+const inputText = document.getElementById("inputText");
+const outputText = document.getElementById("outputText");
 
-var btnPanelBack = document.getElementById("btnPanelBack");
-var btnPanelForward = document.getElementById("btnPanelForward");
-var btnCopyOutput = document.getElementById("btnCopyOutput");
+const btnPanelBack = document.getElementById("btnPanelBack");
+const btnPanelForward = document.getElementById("btnPanelForward");
+const btnCopyOutput = document.getElementById("btnCopyOutput");
+const btnEmoteFree = document.getElementById("btnEmoteFree");
+const btnEmoteSub = document.getElementById("btnEmoteSub");
+const btnEmoteMarket = document.getElementById("btnEmoteMarket");
+const btnEmoteUnlocked = document.getElementById("btnEmoteUnlocked");
 
-var outputTracker = document.getElementById("outputTracker");
+const outputTracker = document.getElementById("outputTracker");
 
-var notesField = document.getElementById("notes");
+const notesField = document.getElementById("notes");
+const emoteSection = document.getElementById("emoteDisplay");
 
-var sectionStatus = localStorage.getItem(sectionStorageToken) || 0;
+let sectionStatus = localStorage.getItem(sectionStorageToken) || 0;
+let emoteHidden = JSON.parse(localStorage.getItem(emoteStorageToken)) || [];
 
-var textPrefix;
-var textChunks;
-var curPanel;
+let textPrefix;
+let textChunks;
+let curPanel;
 
 function setCurrentPanel(newPanel) {
 	if ((newPanel < 0) || (newPanel >= textChunks.length)) {
@@ -39,7 +46,7 @@ function setCurrentPanel(newPanel) {
 
 	outputTracker.innerHTML = (curPanel + 1) + "/" + textChunks.length;
 
-	var tmpOutput = textPrefix;
+	let tmpOutput = textPrefix;
 
 	if (curPanel > 0) {
 		tmpOutput += "+ ";
@@ -57,7 +64,7 @@ function setCurrentPanel(newPanel) {
 function processInput(e) {
 	if (e.target.value) {
 		textPrefix = "/s ";
-		var inputMe = e.target.value;
+		let inputMe = e.target.value;
 		textChunks = [];
 
 		// Determine which slash prefix we should be using.
@@ -77,8 +84,8 @@ function processInput(e) {
 			}
 		}
 
-		var start = 0;
-		var end = start + 253 - textPrefix.length;
+		let start = 0;
+		let end = start + 253 - textPrefix.length;
 
 		// Loop to break apart input text...
 		while (end < inputMe.length - 1) {
@@ -119,7 +126,7 @@ function processInput(e) {
 }
 
 function initializeSections() {
-	var closeButtons = document.querySelectorAll(".closeButton button");
+	const closeButtons = document.querySelectorAll(".closeButton button");
 
 	closeButtons.forEach((element, index) => {
 		element.addEventListener("click", () => { toggleSection(index); });
@@ -131,8 +138,8 @@ function initializeSections() {
 }
 
 function toggleSection(index, doUpdate = true) {
-	var currentSection = document.querySelectorAll(".closeButton")[index].parentElement;
-	var currentClasses = currentSection.className.split(" ");
+	const currentSection = document.querySelectorAll(".closeButton")[index].parentElement;
+	const currentClasses = currentSection.className.split(" ");
 
 	if (currentClasses.indexOf("closed") > -1) {
 		currentSection.className = currentClasses.filter(element => element !== "closed").join(" ");
@@ -151,6 +158,28 @@ function toggleSection(index, doUpdate = true) {
 	}
 }
 
+function setEmoteDisplay() {
+	[ "Free", "Sub", "Market", "Unlocked" ].forEach(emoteType => {
+		if (emoteHidden.indexOf(emoteType) > -1) {
+			emoteSection.setAttribute("hide" + emoteType, emoteHidden.length);
+		} else {
+			emoteSection.removeAttribute("hide" + emoteType);
+		}
+	})
+}
+
+function toggleEmoteType(emoteType) {
+	if (emoteHidden.indexOf(emoteType) > -1) {
+		emoteHidden = emoteHidden.filter(emote => emote !== emoteType);
+	} else {
+		emoteHidden.push(emoteType);
+	}
+
+	setEmoteDisplay();
+
+	localStorage.setItem(emoteStorageToken, JSON.stringify(emoteHidden));
+}
+
 inputText.addEventListener("change", processInput);
 
 btnPanelBack.addEventListener("click", () => { setCurrentPanel(curPanel - 1); });
@@ -161,4 +190,10 @@ notesField.value = localStorage.getItem(noteStorageToken);
 
 notesField.addEventListener("change", () => { localStorage.setItem(noteStorageToken, notesField.value); });
 
+btnEmoteFree.addEventListener("click", () => { toggleEmoteType("Free") });
+btnEmoteSub.addEventListener("click", () => { toggleEmoteType("Sub") });
+btnEmoteMarket.addEventListener("click", () => { toggleEmoteType("Market") });
+btnEmoteUnlocked.addEventListener("click", () => { toggleEmoteType("Unlocked") });
+
 initializeSections();
+setEmoteDisplay();
